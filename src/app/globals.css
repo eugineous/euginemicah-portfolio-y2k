@@ -4,9 +4,9 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ffffff;
-  --primary: #dc2626;
-  --primary-light: #ef4444;
-  --accent: #f97316;
+  --primary:H #009245;
+  --primary-light: #FCEE21;
+  --accent: #FF5F6D;
 }
 
 * {
@@ -31,14 +31,14 @@ html, body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #dc2626, #f97316, #fbbf24);
+  background: linear-gradient(135deg, #009245, #FF5F6D, #fbbf24);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-bg {
-  background: linear-gradient(135deg, #dc2626, #f97316);
+  background: linear-gradient(135deg, #009245, #FF5F6D);
 }
 
 .glow-red {
@@ -81,7 +81,7 @@ html, body {
 }
 
 .live-badge {
-  background: #dc2626;
+  background: #009245;
   color: white;
   padding: 4px 12px;
   border-radius: 4px;
@@ -118,6 +118,6 @@ html, body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #dc2626, #f97316);
+  background: linear-gradient(180deg, #009245, #FF5F6D);
   border-radius: 4px;
 }
