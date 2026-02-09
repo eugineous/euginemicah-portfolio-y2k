@@ -9,12 +9,28 @@ const stats = [
   ];
 
 const shows = [
-  { id: 'PLxiuxBobXxN2Swp44BE8FpO-qajoJ9Dxz', title: 'Urban News PPP TV', desc: 'Fast, youth culture news from Nairobi' },
-  { id: 'PLxiuxBobXxN1n5I5Awd8VxpfzsxSlZBmz', title: 'The Nairobi Podcast', desc: 'Conversations on city life, work, and youth' },
-  { id: 'PLxiuxBobXxN2WTp4OpjdI8zW51o0FTPjL', title: 'Campus Xposure', desc: 'Stories of student life and innovation' },
-  { id: 'PLxiuxBobXxN0hMXo1gSmYg98NywNBz4Zc', title: 'Pacesetters Talent Search', desc: 'National talent hunt from auditions to finals' },
-  { id: 'PLxiuxBobXxN1GereB-vIDo80el58VK1Mi', title: 'Hoods Finest', desc: 'Docuseries profiling artists and community leaders' },
-  { id: 'PLxiuxBobXxN3g4EoZcuuiP1y4LUjj8W3L', title: 'Celebrity Interviews', desc: 'One-on-one talks with entertainers and creators' },
+  { id: 'PLxiuxBobXxN2Swp44BE8FpO-qajoJ9Dxz', title: 'Urban News', desc: "Kenya's leading youth culture news show reaching 2M+ weekly viewers on PPP TV.", episodes: 150, platform: 'PPP TV & YouTube' },
+  { id: 'PLxiuxBobXxN1n5I5Awd8VxpfzsxSlZBmz', title: 'The Nairobi Podcast', desc: 'The Digital Kemoview: In-depth conversations with influential voices shaping African culture.', episodes: 45, platform: 'Spotify & YouTube' },
+  { id: 'PLxiuxBobXxN2WTp4OpjdI8zW51o0FTPjL', title: 'Campus Xposure', desc: 'Bridging the gap between student innovation and national visibility.', episodes: 60, platform: 'PPP TV' },
+  { id: 'PLxiuxBobXxN0hMXo1gSmYg98NywNBz4Zc', title: 'Pacesetters Talent Search', desc: 'National talent hunt from auditions to finals', episodes: 30, platform: 'PPP TV' },
+  { id: 'PLxiuxBobXxN1GereB-vIDo80el58VK1Mi', title: 'Hoods Finest', desc: 'Docuseries profiling artists and community leaders', episodes: 25, platform: 'YouTube' },
+  { id: 'PLxiuxBobXxN3g4EoZcuuiP1y4LUjj8W3L', title: 'Celebrity Interviews', desc: 'One-on-one talks with entertainers and creators', episodes: 100, platform: 'YouTube' },
+  ];
+
+const roylandzRules = [
+  { id: 1, text: "The world listens louder when you speak from scars, not ego.", label: "Vulnerability" },
+  { id: 3, text: "When life gives you cow dung, make it your foundation.", label: "Origins" },
+  { id: 11, text: "Silence is survival only until you realize noise is power.", label: "The Shift" },
+  { id: 17, text: "Belief is the most valuable investment anyone can make in you.", label: "Accountability" },
+  { id: 28, text: "Create a version of yourself brave enough to do what you're scared to attempt.", label: "Persona" },
+  { id: 38, text: "Success shows you who you became; therapy shows you why. You need both.", label: "Balance" },
+  ];
+
+const timeline = [
+  { year: '2024 - Present', role: 'Digital Landmark Builder', company: 'PPP TV / Roylandz Media', details: 'Converting childhood noise into national utility. Reaching 20M+ monthly across digital ecosystems.' },
+  { year: '2024', role: 'Valedictorian (The Pivot)', company: 'TIBS College', details: 'Proving that marks do not define worth - utility and confidence do. Graduated top of class.' },
+  { year: '2021', role: 'The Foundation Test', company: 'Lumakanda', details: 'Navigating the loss of Grandpa David and Grandma Gladys while standing on national stages.' },
+  { year: '2008', role: 'The First Audience', company: 'Manyonyi Village', details: 'Managing the "Danson Audience" (younger brother) and reading to chickens to survive silence.' },
   ];
 
 export default function Home() {
@@ -43,20 +59,33 @@ export default function Home() {
             {/* Hero Section - Cinematic */}
                 <section className="relative min-h-screen flex items-center justify-center pt-20">
                         <div className="absolute inset-0 bg-gradient-to-b from-[#009245]/20 via-transparent to-[#0a0a0a]"></div>div>
+                        <div className="absolute inset-0 z-0">
+                                  <iframe 
+                                                className="w-full h-full scale-[1.3] pointer-events-none opacity-30 blur-[2px]"
+                                                src="https://www.youtube.com/embed/wROaKxIgMWs?autoplay=1&mute=1&loop=1&playlist=wROaKxIgMWs&controls=0&modestbranding=1&rel=0&playsinline=1"
+                                                title="Eugine Micah Digital Legacy"
+                                                frameBorder="0"
+                                                allow="autoplay; encrypted-media"
+                                              ></iframe>iframe>
+                        </div>div>
                         <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-                                  <p className="text-[#FCEE21] font-medium tracking-widest uppercase mb-6">Journalist • TV Host • Media Personality</p>p>
+                                  <div className="inline-flex items-center gap-4 px-6 py-2 bg-[#009245]/10 backdrop-blur-xl rounded-full text-[#FCEE21] text-[10px] font-black mb-10 border border-[#009245]/30 tracking-[0.3em] uppercase animate-pulse">
+                                              Official Site of Eugine Micah
+                                  </div>div>
                                   <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight mb-8">
-                                              EUGINE<br />MICAH
+                                              <span className="block opacity-90">BORN BROKE</span>span>
+                                              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#009245] via-[#FCEE21] to-white">BUILT LOUD</span>span>
                                   </h1>h1>
                                   <p className="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto mb-12">
-                                              Shaping African culture through storytelling, media, and conversation.
+                                              Journalist • TV Presenter • Author<br />
+                                              <span className="text-white/60">Converting silence into national narrative currency.</span>span>
                                   </p>p>
                                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                              <Link href="/shows" className="px-8 py-4 bg-gradient-to-r from-[#009245] to-[#00b359] rounded-full text-white font-semibold text-lg hover:opacity-90 transition-opacity">
-                                                            Watch My Shows
+                                              <Link href="#shop" className="px-8 py-4 bg-gradient-to-r from-[#009245] to-[#00b359] rounded-full text-white font-semibold text-lg hover:opacity-90 transition-opacity shadow-[0_15px_50px_rgba(0,146,69,0.5)]">
+                                                            THE MEMOIR
                                               </Link>Link>
-                                              <Link href="/about" className="px-8 py-4 border border-white/30 rounded-full text-white font-semibold text-lg hover:bg-white/10 transition-colors">
-                                                            Learn More
+                                              <Link href="/shows" className="px-8 py-4 border border-white/30 rounded-full text-white font-semibold text-lg hover:bg-white/10 transition-colors">
+                                                            WATCH SHOWS
                                               </Link>Link>
                                   </div>div>
                         </div>div>
@@ -76,7 +105,7 @@ export default function Home() {
                         </div>div>
                 </section>section>
           
-            {/* Featured Shows - Netflix Style */}
+            {/* Featured Shows */}
                 <section className="py-24">
                         <div className="max-w-7xl mx-auto px-6">
                                   <div className="flex items-center justify-between mb-12">
@@ -89,10 +118,56 @@ export default function Home() {
                                           <img src={`https://i.ytimg.com/vi/${show.id.slice(0,11)}/maxresdefault.jpg`} alt={show.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
                                           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>div>
                                           <div className="absolute bottom-0 left-0 right-0 p-6">
+                                                            <div className="flex items-center gap-2 mb-2">
+                                                                                <span className="px-2 py-1 bg-[#009245]/20 text-[#FCEE21] text-xs rounded-full">{show.platform}</span>span>
+                                                                                <span className="text-white/50 text-xs">{show.episodes} episodes</span>span>
+                                                            </div>div>
                                                             <h3 className="text-xl font-bold mb-2">{show.title}</h3>h3>
                                                             <p className="text-white/70 text-sm">{show.desc}</p>p>
                                           </div>div>
                           </a>a>
+                        ))}
+                                  </div>div>
+                        </div>div>
+                </section>section>
+          
+            {/* Roylandz Rules */}
+                <section className="py-24 bg-gradient-to-b from-transparent via-[#009245]/5 to-transparent">
+                        <div className="max-w-6xl mx-auto px-6">
+                                  <div className="text-center mb-16">
+                                              <p className="text-[#FCEE21] font-medium tracking-widest uppercase mb-4">Philosophy</p>p>
+                                              <h2 className="text-4xl md:text-5xl font-bold">The Roylandz Rules</h2>h2>
+                                  </div>div>
+                                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {roylandzRules.map((rule) => (
+                          <div key={rule.id} className="p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl hover:border-[#009245]/50 transition-all">
+                                          <div className="flex items-center gap-3 mb-4">
+                                                            <span className="w-8 h-8 flex items-center justify-center bg-gradient-to-br from-[#009245] to-[#FCEE21] rounded-full text-black font-bold text-sm">#{rule.id}</span>span>
+                                                            <span className="text-[#FCEE21] text-xs uppercase tracking-widest">{rule.label}</span>span>
+                                          </div>div>
+                                          <p className="text-white/80 italic">"{rule.text}"</p>p>
+                          </div>div>
+                        ))}
+                                  </div>div>
+                        </div>div>
+                </section>section>
+          
+            {/* Career Timeline */}
+                <section className="py-24">
+                        <div className="max-w-4xl mx-auto px-6">
+                                  <div className="text-center mb-16">
+                                              <p className="text-[#FCEE21] font-medium tracking-widest uppercase mb-4">Journey</p>p>
+                                              <h2 className="text-4xl md:text-5xl font-bold">Career Timeline</h2>h2>
+                                  </div>div>
+                                  <div className="space-y-8">
+                                    {timeline.map((item, i) => (
+                          <div key={i} className="relative pl-8 border-l-2 border-[#009245]/30 hover:border-[#009245] transition-colors">
+                                          <div className="absolute left-[-9px] top-0 w-4 h-4 bg-gradient-to-br from-[#009245] to-[#FCEE21] rounded-full"></div>div>
+                                          <div className="text-[#FCEE21] text-sm font-bold mb-2">{item.year}</div>div>
+                                          <h3 className="text-xl font-bold mb-1">{item.role}</h3>h3>
+                                          <p className="text-[#009245] text-sm mb-2">{item.company}</p>p>
+                                          <p className="text-white/60">{item.details}</p>p>
+                          </div>div>
                         ))}
                                   </div>div>
                         </div>div>
@@ -126,6 +201,68 @@ export default function Home() {
                                               "Storytelling is how culture remembers itself."
                                   </blockquote>blockquote>
                                   <p className="mt-8 text-white/50">— Eugine Micah</p>p>
+                        </div>div>
+                </section>section>
+          
+            {/* Contact Section */}
+                <section id="contact" className="py-24 bg-[#121214]">
+                        <div className="max-w-7xl mx-auto px-6">
+                                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                                              <div>
+                                                            <h2 className="text-[#FCEE21] font-bold text-sm tracking-[0.3em] uppercase mb-4">Get In Touch</h2>h2>
+                                                            <h3 className="text-4xl md:text-5xl font-extrabold mb-8 tracking-tighter">LET'S CONNECT</h3>h3>
+                                                            <div className="space-y-12 mt-12">
+                                                                            <div>
+                                                                                              <h5 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Booking & Speaking</h5>h5>
+                                                                                              <p className="text-2xl font-bold hover:text-[#009245] transition-all cursor-pointer">eugine.micah@outlook.com</p>p>
+                                                                            </div>div>
+                                                                            <div>
+                                                                                              <h5 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Location</h5>h5>
+                                                                                              <p className="text-2xl font-bold">Nairobi, Kenya</p>p>
+                                                                            </div>div>
+                                                                            <div>
+                                                                                              <h5 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Social</h5>h5>
+                                                                                              <div className="flex gap-6 mt-4">
+                                                                                                                  <a href="https://instagram.com/eugine.micah" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-gray-400 hover:text-[#009245] transition-all uppercase tracking-widest">Instagram</a>a>
+                                                                                                                  <a href="https://x.com/eugineroylandz" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-gray-400 hover:text-[#009245] transition-all uppercase tracking-widest">X</a>a>
+                                                                                                                  <a href="https://tiktok.com/@eugine.micah" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-gray-400 hover:text-[#009245] transition-all uppercase tracking-widest">TikTok</a>a>
+                                                                                                                  <a href="https://youtube.com/@euginemicah" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-gray-400 hover:text-[#009245] transition-all uppercase tracking-widest">YouTube</a>a>
+                                                                                                                  <a href="https://linkedin.com/in/euginemicah" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-gray-400 hover:text-[#009245] transition-all uppercase tracking-widest">LinkedIn</a>a>
+                                                                                                </div>div>
+                                                                            </div>div>
+                                                            </div>div>
+                                              </div>div>
+                                              <div className="p-10 md:p-14 rounded-3xl bg-white/5 backdrop-blur-md border border-white/10">
+                                                            <div className="space-y-6">
+                                                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                                                              <div>
+                                                                                                                  <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">Name</label>label>
+                                                                                                                  <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-[#009245] transition-all" />
+                                                                                                </div>div>
+                                                                                              <div>
+                                                                                                                  <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">Email</label>label>
+                                                                                                                  <input type="email" className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-[#009245] transition-all" />
+                                                                                                </div>div>
+                                                                            </div>div>
+                                                                            <div>
+                                                                                              <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">Subject</label>label>
+                                                                                              <select className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-[#009245] transition-all appearance-none text-gray-300">
+                                                                                                                  <option>Media Inquiry</option>option>
+                                                                                                                  <option>Speaking Engagement</option>option>
+                                                                                                                  <option>Brand Collaboration</option>option>
+                                                                                                                  <option>Book Feedback</option>option>
+                                                                                                </select>select>
+                                                                            </div>div>
+                                                                            <div>
+                                                                                              <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">Message</label>label>
+                                                                                              <textarea rows={5} className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:outline-none focus:border-[#009245] transition-all resize-none"></textarea>textarea>
+                                                                            </div>div>
+                                                                            <button type="submit" className="w-full py-5 bg-gradient-to-r from-[#009245] to-[#00b359] text-white font-bold text-lg rounded-xl hover:opacity-90 transition-all shadow-xl">
+                                                                                              SEND MESSAGE
+                                                                            </button>button>
+                                                            </div>div>
+                                              </div>div>
+                                  </div>div>
                         </div>div>
                 </section>section>
           
