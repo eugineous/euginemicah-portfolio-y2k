@@ -1,179 +1,170 @@
-import Link from "next/link";
+import Link from 'next/link';
+import Image from 'next/image';
 
 const stats = [
-  { label: "Total Reach", value: "20M+" },
-  { label: "Subscribers", value: "3K+" },
-  { label: "Weekly Viewers", value: "3M+" },
-  { label: "Interviews", value: "500+" },
-];
+  { label: 'Total Reach', value: '20M+' },
+  { label: 'Subscribers', value: '3K+' },
+  { label: 'Weekly Viewers', value: '3M+' },
+  { label: 'Interviews', value: '500+' },
+  ];
 
 const shows = [
-  { id: "PLxiuxBobXxN2Swp44BE8FpO-qajoJ9Dxz", title: "Urban News PPP TV", desc: "Fast, youth culture news from Nairobi. Headlines, interviews, and talent spotlights." },
-  { id: "PLxiuxBobXxN1n5I5Awd8VxpfzsxSlZBmz", title: "The Nairobi Podcast", desc: "Conversations on city life, work, and youth issues with Eugine Micah and Lucy Ogunde." },
-  { id: "PLxiuxBobXxN2WTp4OpjdI8zW5lo0FTPjL", title: "Campus Xposure", desc: "A campus road show featuring stories of student life, innovation, and talent." },
-  { id: "PLxiuxBobXxN0hMXo1gSmYg98NywNBz4Zc", title: "Pacesetters Talent Search", desc: "National talent hunt from auditions to finals with stage interviews and spotlights." },
-];
+  { id: 'PLxiuxBobXxN2Swp44BE8FpO-qajoJ9Dxz', title: 'Urban News PPP TV', desc: 'Fast, youth culture news from Nairobi' },
+  { id: 'PLxiuxBobXxN1n5I5Awd8VxpfzsxSlZBmz', title: 'The Nairobi Podcast', desc: 'Conversations on city life, work, and youth' },
+  { id: 'PLxiuxBobXxN2WTp4OpjdI8zW51o0FTPjL', title: 'Campus Xposure', desc: 'Stories of student life and innovation' },
+  { id: 'PLxiuxBobXxN0hMXo1gSmYg98NywNBz4Zc', title: 'Pacesetters Talent Search', desc: 'National talent hunt from auditions to finals' },
+  { id: 'PLxiuxBobXxN1GereB-vIDo80el58VK1Mi', title: 'Hoods Finest', desc: 'Docuseries profiling artists and community leaders' },
+  { id: 'PLxiuxBobXxN3g4EoZcuuiP1y4LUjj8W3L', title: 'Celebrity Interviews', desc: 'One-on-one talks with entertainers and creators' },
+  ];
 
 export default function Home() {
-  return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass-card mx-4 mt-4 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">EM</span>
-            </div>
-            <span className="font-bold text-lg">EM TV HUB</span>
-          </div>
-          <div className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-white hover:text-red-500 transition">Home</Link>
-            <Link href="/about" className="text-gray-400 hover:text-white transition">About</Link>
-            <Link href="/career" className="text-gray-400 hover:text-white transition">Career</Link>
-            <Link href="/shows" className="text-gray-400 hover:text-white transition">Shows</Link>
-            <Link href="/gallery" className="text-gray-400 hover:text-white transition">Gallery</Link>
-            <Link href="/press" className="text-gray-400 hover:text-white transition">Press Kit</Link>
-            <Link href="/contact" className="text-gray-400 hover:text-white transition">Contact</Link>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center hero-gradient pt-20">
-        <div className="absolute inset-0 overflow-hidden">
-          <iframe
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] opacity-30"
-            src="https://www.youtube.com/embed/wROaKxIgMWs?autoplay=1&mute=1&loop=1&playlist=wROaKxIgMWs&controls=0&showinfo=0"
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-          />
-        </div>
-        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          <div className="live-badge inline-block mb-6">LIVE</div>
-          <p className="text-red-500 text-lg mb-4 tracking-widest">KENYAN JOURNALIST & STORYTELLER</p>
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 animate-float">EUGINE MICAH</h1>
-          <p className="text-2xl md:text-3xl italic text-gray-300 mb-8 gradient-text">Born Broke, Built Loud</p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/shows" className="px-8 py-4 gradient-bg rounded-full font-semibold hover:opacity-90 transition glow-red">
-              Watch Shows
-            </Link>
-            <Link href="/press" className="px-8 py-4 glass-card font-semibold hover:bg-white/10 transition">
-              View Press Kit
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
-          {stats.map((stat, i) => (
-            <div key={i} className="glass-card p-6 text-center stat-card animate-pulse-glow">
-              <div className="text-4xl font-bold gradient-text mb-2">{stat.value}</div>
-              <div className="text-gray-400">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* About Preview */}
-      <section className="py-20 px-4 bg-gradient-to-b from-transparent to-red-950/20">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div className="glass-card p-2 glow-red">
-            <img src="https://i.ytimg.com/vi/wROaKxIgMWs/maxresdefault.jpg" alt="Eugine Micah" className="rounded-2xl w-full" />
-          </div>
-          <div>
-            <h2 className="text-4xl font-bold mb-6">Empowering Africa through <span className="gradient-text">fearless journalism</span></h2>
-            <p className="text-gray-300 text-lg mb-6">
-              Eugine Micah is a Kenyan journalist, TV presenter, and digital media strategist. Head of Digital at PPP TV, 
-              founder of Roylandz Media, and host of Urban News, Campus Xposure, and The Nairobi Podcast.
-            </p>
-            <p className="text-gray-400 mb-8">
-              Born in Kisumu, raised in Lugari. TIBS College Valedictorian 2024. Building platforms that amplify African voices.
-            </p>
-            <Link href="/about" className="px-6 py-3 gradient-bg rounded-full font-semibold inline-block hover:opacity-90 transition">
-              Read Full Story
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Shows */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-4">Featured <span className="gradient-text">Shows</span></h2>
-          <p className="text-gray-400 text-center mb-12">Watch the latest episodes from my YouTube channel</p>
-          <div className="grid md:grid-cols-2 gap-8">
-            {shows.map((show, i) => (
-              <div key={i} className="glass-card overflow-hidden group">
-                <div className="video-container">
-                  <iframe
-                    src={`https://www.youtube.com/embed/videoseries?list=${show.id}&autoplay=0`}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-red-500 transition">{show.title}</h3>
-                  <p className="text-gray-400">{show.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <Link href="/shows" className="px-8 py-4 glass-card font-semibold hover:bg-white/10 transition inline-block">
-              View All Shows →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Quote Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-red-950/30 to-orange-950/30">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-3xl md:text-4xl italic text-gray-200 leading-relaxed">
-            "Media is my language. I build platforms that amplify voices often ignored. 
-            I tell stories that connect youth to their culture and the world around them."
-          </p>
-          <p className="mt-8 text-red-500 font-semibold">— Eugine Micah</p>
-        </div>
-      </section>
-
-      {/* Contact CTA */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto glass-card p-12 text-center glow-red">
-          <h2 className="text-4xl font-bold mb-4">Let&apos;s Work Together</h2>
-          <p className="text-gray-400 mb-8">Available for hosting, interviews, speaking engagements, and media collaborations.</p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <a href="mailto:eugine.micah@outlook.com" className="px-8 py-4 gradient-bg rounded-full font-semibold hover:opacity-90 transition">
-              Get In Touch
-            </a>
-            <a href="tel:+254799886247" className="px-8 py-4 glass-card font-semibold hover:bg-white/10 transition">
-              +254 799 886247
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-12 px-4 border-t border-white/10">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">EM</span>
-            </div>
-            <span className="font-bold">Eugine Micah</span>
-          </div>
-          <div className="flex gap-6">
-            <a href="https://www.youtube.com/@euginemicah" target="_blank" className="text-gray-400 hover:text-red-500 transition">YouTube</a>
-            <a href="https://www.instagram.com/eugine.micah" target="_blank" className="text-gray-400 hover:text-red-500 transition">Instagram</a>
-            <a href="https://www.tiktok.com/@eugine.micah" target="_blank" className="text-gray-400 hover:text-red-500 transition">TikTok</a>
-            <a href="https://www.linkedin.com/in/euginemicah" target="_blank" className="text-gray-400 hover:text-red-500 transition">LinkedIn</a>
-            <a href="https://x.com/eugineroylandz" target="_blank" className="text-gray-400 hover:text-red-500 transition">X</a>
-          </div>
-          <p className="text-gray-500 text-sm">© 2025 Eugine Micah. All rights reserved.</p>
-        </div>
-      </footer>
-    </div>
-  );
-}
+    return (
+          <div className="min-h-screen bg-[#0a0a0a] text-white">
+            {/* Navigation */}
+                <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/10">
+                        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+                                  <Link href="/" className="flex items-center gap-3">
+                                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#009245] to-[#FCEE21] flex items-center justify-center">
+                                                            <span className="text-black font-bold text-sm">EM</span>span>
+                                              </div>div>
+                                              <span className="font-bold text-xl tracking-tight">EUGINE MICAH</span>span>
+                                  </Link>Link>
+                                  <div className="hidden md:flex items-center gap-8">
+                                              <Link href="/about" className="text-white/70 hover:text-white transition-colors">About</Link>Link>
+                                              <Link href="/career" className="text-white/70 hover:text-white transition-colors">Career</Link>Link>
+                                              <Link href="/shows" className="text-white/70 hover:text-white transition-colors">Shows</Link>Link>
+                                              <Link href="/gallery" className="text-white/70 hover:text-white transition-colors">Gallery</Link>Link>
+                                              <Link href="/press" className="text-white/70 hover:text-white transition-colors">Press</Link>Link>
+                                              <Link href="/contact" className="px-5 py-2 bg-gradient-to-r from-[#009245] to-[#00b359] rounded-full text-white font-medium hover:opacity-90 transition-opacity">Contact</Link>Link>
+                                  </div>div>
+                        </div>div>
+                </nav>nav>
+          
+            {/* Hero Section - Cinematic */}
+                <section className="relative min-h-screen flex items-center justify-center pt-20">
+                        <div className="absolute inset-0 bg-gradient-to-b from-[#009245]/20 via-transparent to-[#0a0a0a]"></div>div>
+                        <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+                                  <p className="text-[#FCEE21] font-medium tracking-widest uppercase mb-6">Journalist • TV Host • Media Personality</p>p>
+                                  <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight mb-8">
+                                              EUGINE<br />MICAH
+                                  </h1>h1>
+                                  <p className="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto mb-12">
+                                              Shaping African culture through storytelling, media, and conversation.
+                                  </p>p>
+                                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                              <Link href="/shows" className="px-8 py-4 bg-gradient-to-r from-[#009245] to-[#00b359] rounded-full text-white font-semibold text-lg hover:opacity-90 transition-opacity">
+                                                            Watch My Shows
+                                              </Link>Link>
+                                              <Link href="/about" className="px-8 py-4 border border-white/30 rounded-full text-white font-semibold text-lg hover:bg-white/10 transition-colors">
+                                                            Learn More
+                                              </Link>Link>
+                                  </div>div>
+                        </div>div>
+                </section>section>
+          
+            {/* Authority Stats */}
+                <section className="py-20 border-y border-white/10">
+                        <div className="max-w-6xl mx-auto px-6">
+                                  <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                                    {stats.map((stat, i) => (
+                          <div key={i} className="text-center">
+                                          <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#009245] to-[#FCEE21] bg-clip-text text-transparent">{stat.value}</div>div>
+                                          <div className="text-white/50 mt-2 uppercase tracking-wider text-sm">{stat.label}</div>div>
+                          </div>div>
+                        ))}
+                                  </div>div>
+                        </div>div>
+                </section>section>
+          
+            {/* Featured Shows - Netflix Style */}
+                <section className="py-24">
+                        <div className="max-w-7xl mx-auto px-6">
+                                  <div className="flex items-center justify-between mb-12">
+                                              <h2 className="text-3xl md:text-4xl font-bold">Featured Shows</h2>h2>
+                                              <Link href="/shows" className="text-[#009245] hover:text-[#00b359] transition-colors">View All →</Link>Link>
+                                  </div>div>
+                                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {shows.map((show) => (
+                          <a key={show.id} href={`https://www.youtube.com/playlist?list=${show.id}`} target="_blank" rel="noopener noreferrer" className="group relative aspect-video rounded-2xl overflow-hidden bg-white/5 hover:bg-white/10 transition-colors">
+                                          <img src={`https://i.ytimg.com/vi/${show.id.slice(0,11)}/maxresdefault.jpg`} alt={show.title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
+                                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>div>
+                                          <div className="absolute bottom-0 left-0 right-0 p-6">
+                                                            <h3 className="text-xl font-bold mb-2">{show.title}</h3>h3>
+                                                            <p className="text-white/70 text-sm">{show.desc}</p>p>
+                                          </div>div>
+                          </a>a>
+                        ))}
+                                  </div>div>
+                        </div>div>
+                </section>section>
+          
+            {/* About Snapshot */}
+                <section className="py-24 bg-gradient-to-b from-transparent via-[#009245]/5 to-transparent">
+                        <div className="max-w-6xl mx-auto px-6">
+                                  <div className="grid md:grid-cols-2 gap-16 items-center">
+                                              <div>
+                                                            <p className="text-[#FCEE21] font-medium tracking-widest uppercase mb-4">About</p>p>
+                                                            <h2 className="text-4xl md:text-5xl font-bold mb-6">Born Broke,<br />Built Loud</h2>h2>
+                                                            <p className="text-white/70 text-lg leading-relaxed mb-8">
+                                                                            From Kisumu to national television, Eugine Micah has become one of Kenya's most influential young journalists. As Head of Digital at PPP TV and founder of Roylandz Media, he shapes how millions experience news and culture.
+                                                            </p>p>
+                                                            <Link href="/about" className="inline-flex items-center gap-2 text-[#009245] font-semibold hover:gap-4 transition-all">
+                                                                            Read Full Story <span>→</span>span>
+                                                            </Link>Link>
+                                              </div>div>
+                                              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-white/5">
+                                                            <div className="absolute inset-0 bg-gradient-to-br from-[#009245]/30 to-[#FCEE21]/20"></div>div>
+                                              </div>div>
+                                  </div>div>
+                        </div>div>
+                </section>section>
+          
+            {/* Philosophy Quote */}
+                <section className="py-32">
+                        <div className="max-w-4xl mx-auto px-6 text-center">
+                                  <blockquote className="text-3xl md:text-4xl lg:text-5xl font-light italic leading-relaxed">
+                                              "Storytelling is how culture remembers itself."
+                                  </blockquote>blockquote>
+                                  <p className="mt-8 text-white/50">— Eugine Micah</p>p>
+                        </div>div>
+                </section>section>
+          
+            {/* Final CTA */}
+                <section className="py-24 bg-gradient-to-t from-[#009245]/20 to-transparent">
+                        <div className="max-w-4xl mx-auto px-6 text-center">
+                                  <h2 className="text-4xl md:text-5xl font-bold mb-6">Let's Create Together</h2>h2>
+                                  <p className="text-white/70 text-xl mb-10">Available for bookings, media inquiries, and collaborations.</p>p>
+                                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                              <Link href="/contact" className="px-8 py-4 bg-gradient-to-r from-[#009245] to-[#00b359] rounded-full text-white font-semibold text-lg hover:opacity-90 transition-opacity">
+                                                            Book Me
+                                              </Link>Link>
+                                              <Link href="/press" className="px-8 py-4 border border-white/30 rounded-full text-white font-semibold text-lg hover:bg-white/10 transition-colors">
+                                                            Media Inquiries
+                                              </Link>Link>
+                                  </div>div>
+                        </div>div>
+                </section>section>
+          
+            {/* Footer */}
+                <footer className="py-12 border-t border-white/10">
+                        <div className="max-w-7xl mx-auto px-6">
+                                  <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                                              <div className="flex items-center gap-3">
+                                                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#009245] to-[#FCEE21] flex items-center justify-center">
+                                                                            <span className="text-black font-bold text-xs">EM</span>span>
+                                                            </div>div>
+                                                            <span className="font-bold">EUGINE MICAH</span>span>
+                                              </div>div>
+                                              <div className="flex items-center gap-6 text-white/50">
+                                                            <a href="https://youtube.com/@euginemicah" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">YouTube</a>a>
+                                                            <a href="https://instagram.com/eugine.micah" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>a>
+                                                            <a href="https://tiktok.com/@eugine.micah" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">TikTok</a>a>
+                                                            <a href="https://x.com/eugineroylandz" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">X</a>a>
+                                              </div>div>
+                                              <p className="text-white/30 text-sm">© 2026 Eugine Micah. All rights reserved.</p>p>
+                                  </div>div>
+                        </div>div>
+                </footer>footer>
+          </div>div>
+        );
+}</div>
