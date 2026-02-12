@@ -4,9 +4,9 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ffffff;
-  --primary:H #009245;
+  --primary: #009245;
   --primary-light: #FCEE21;
-  --accent: #FF5F6D;
+  --accent: #009245;
 }
 
 * {
@@ -31,18 +31,18 @@ html, body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #009245, #FF5F6D, #fbbf24);
+  background: linear-gradient(135deg, #009245, #FCEE21);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-bg {
-  background: linear-gradient(135deg, #009245, #FF5F6D);
+  background: linear-gradient(135deg, #009245, #FCEE21);
 }
 
-.glow-red {
-  box-shadow: 0 0 40px rgba(220, 38, 38, 0.3);
+.glow-green {
+  box-shadow: 0 0 40px rgba(0, 146, 69, 0.3);
 }
 
 .animate-float {
@@ -59,8 +59,8 @@ html, body {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(220, 38, 38, 0.6); }
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 146, 69, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(0, 146, 69, 0.6); }
 }
 
 .video-container {
@@ -97,7 +97,7 @@ html, body {
 }
 
 .hero-gradient {
-  background: linear-gradient(180deg, rgba(220, 38, 38, 0.2) 0%, rgba(10, 10, 10, 1) 100%);
+  background: linear-gradient(180deg, rgba(0, 146, 69, 0.2) 0%, rgba(10, 10, 10, 1) 100%);
 }
 
 .stat-card {
@@ -106,7 +106,7 @@ html, body {
 
 .stat-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 146, 69, 0.2);
 }
 
 ::-webkit-scrollbar {
@@ -118,6 +118,6 @@ html, body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #009245, #FF5F6D);
+  background: linear-gradient(180deg, #009245, #FCEE21);
   border-radius: 4px;
 }
