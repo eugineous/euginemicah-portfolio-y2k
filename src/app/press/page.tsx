@@ -3,166 +3,143 @@
 import Link from "next/link";
 
 export default function PressPage() {
+    const pressResources = [
+      { label: "Official Press Photos (2025)", size: "48MB", type: "ZIP" },
+      { label: "Bio & Brand Story (PDF)", size: "2MB", type: "PDF" },
+      { label: "Roylandz Media Logos (SVG)", size: "1MB", type: "ZIP" },
+      { label: "Speaker One-Sheet (PDF)", size: "5MB", type: "PDF" },
+        ];
+
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center">
-              <span className="text-white font-bold text-lg">EM</span>
-            </div>
-            <span className="font-bold text-xl">EM TV HUB</span>
-          </Link>
-          <div className="hidden md:flex items-center gap-8">
-            <Link href="/" className="hover:text-red-400 transition-colors">Home</Link>
-            <Link href="/about" className="hover:text-red-400 transition-colors">About</Link>
-            <Link href="/career" className="hover:text-red-400 transition-colors">Career</Link>
-            <Link href="/shows" className="hover:text-red-400 transition-colors">Shows</Link>
-            <Link href="/gallery" className="hover:text-red-400 transition-colors">Gallery</Link>
-            <Link href="/press" className="text-red-400">Press Kit</Link>
-            <Link href="/contact" className="hover:text-red-400 transition-colors">Contact</Link>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero */}
-      <section className="pt-32 pb-16 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-red-400 font-medium mb-4">PRESS KIT</p>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="gradient-text">Media Resources</span>
-          </h1>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Everything you need for press coverage, interviews, and media features.
-          </p>
-        </div>
-      </section>
-
-      {/* Bio Sections */}
-      <section className="py-12 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
-          {/* Short Bio */}
-          <div className="glass-card p-8 rounded-3xl">
-            <h2 className="text-2xl font-bold mb-4 gradient-text">Short Bio (50 words)</h2>
-            <p className="text-gray-300 leading-relaxed mb-6">
-              Eugine Micah is a Kenyan journalist, TV presenter, and digital media strategist. 
-              Head of Digital at PPP TV, founder of Roylandz Media, and host of Urban News, 
-              Campus Xposure, and The Nairobi Podcast. TIBS College valedictorian 2024.
-            </p>
-            <button className="px-6 py-2 glass-card rounded-full text-sm hover:bg-white/10 transition-colors">
-              Copy Bio
-            </button>
-          </div>
-
-          {/* Long Bio */}
-          <div className="glass-card p-8 rounded-3xl">
-            <h2 className="text-2xl font-bold mb-4 gradient-text">Long Bio (150 words)</h2>
-            <p className="text-gray-300 leading-relaxed text-sm mb-6">
-              Eugine Micah is a Kenyan journalist, digital content creator, TV presenter, and media entrepreneur. 
-              He serves as Head of Digital Strategy and hosts youth-centered shows including Urban News and 
-              Campus Xposure on PPP TV, reaching 3 million weekly viewers. Founder and CEO of Roylandz Media. 
-              Born in Kisumu and raised in Kakamega County, Eugine earned a Diploma in Journalism and Mass 
-              Communication from TIBS, graduating as valedictorian in 2024. He began at Citizen TV and has 
-              grown into a strong voice in broadcast journalism and digital media. He combines journalism, 
-              technology, and youth engagement to reach millions monthly. Author of "Born Broke, Built Loud."
-            </p>
-            <button className="px-6 py-2 glass-card rounded-full text-sm hover:bg-white/10 transition-colors">
-              Copy Bio
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Fast Facts */}
-      <section className="py-12 px-6">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8"><span className="gradient-text">Fast Facts</span></h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { label: "Full Name", value: "Eugine Micah" },
-              { label: "Born", value: "December 24, 2001" },
-              { label: "Birthplace", value: "Kisumu, Kenya" },
-              { label: "Raised", value: "Lugari, Kakamega County" },
-              { label: "Current Role", value: "Head of Digital & TV Presenter, PPP TV" },
-              { label: "Company", value: "Roylandz Media (Founder & CEO)" },
-              { label: "Education", value: "TIBS College - Valedictorian 2024" },
-              { label: "Weekly Viewers", value: "3M+" },
-              { label: "Subscribers", value: "3K+" },
-              { label: "Shows", value: "Urban News, Campus Xposure, The Nairobi Podcast" },
-              { label: "Book", value: "Born Broke, Built Loud" },
-              { label: "Email", value: "eugine.micah@outlook.com" },
-            ].map((fact, index) => (
-              <div key={index} className="glass-card p-4 rounded-xl">
-                <p className="text-red-400 text-sm">{fact.label}</p>
-                <p className="text-white font-medium">{fact.value}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Quotes */}
-      <section className="py-12 px-6 bg-gradient-to-b from-transparent to-red-950/20">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8"><span className="gradient-text">Pull Quotes</span></h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              "Media is my language. I build platforms that amplify voices often ignored.",
-              "I tell stories that connect youth to their culture and the world around them.",
-              "Born broke taught me resilience. Built loud taught me voice. The combination changed my life.",
-              "Your voice is your weapon. Learn to use it before life forces you to."
-            ].map((quote, index) => (
-              <div key={index} className="glass-card p-6 rounded-2xl">
-                <p className="text-xl italic text-gray-300">"{quote}"</p>
-                <p className="text-red-400 mt-4">— Eugine Micah</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Downloads */}
-      <section className="py-12 px-6">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8"><span className="gradient-text">Downloads</span></h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { title: "Press Kit PDF", description: "Complete press kit with bios, facts, and quotes", icon: "📄" },
-              { title: "High-Res Photos", description: "Professional headshots and action shots", icon: "📸" },
-              { title: "Logos & Branding", description: "Roylandz Media and EM TV Hub logos", icon: "🎨" },
-            ].map((item, index) => (
-              <div key={index} className="glass-card p-6 rounded-2xl text-center hover:scale-105 transition-transform cursor-pointer">
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                <p className="text-gray-400 text-sm mb-4">{item.description}</p>
-                <button className="px-6 py-2 bg-gradient-to-r from-red-600 to-orange-500 rounded-full text-sm font-medium">
-                  Download
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact for Press */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center glass-card p-12 rounded-3xl">
-          <h2 className="text-3xl font-bold mb-4"><span className="gradient-text">Press Inquiries</span></h2>
-          <p className="text-gray-400 mb-6">For interviews, features, and media inquiries:</p>
-          <a href="mailto:eugine.micah@outlook.com" className="text-2xl font-bold text-red-400 hover:text-red-300 transition-colors">
-            eugine.micah@outlook.com
-          </a>
-          <p className="text-gray-400 mt-4">+254 799 886247</p>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-12 px-6 border-t border-white/10">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-gray-500">© 2025 Eugine Micah. All rights reserved.</p>
-        </div>
-      </footer>
-    </div>
-  );
-}
+        <div className="min-h-screen bg-black text-white">
+          {/* Navigation */}
+              <nav className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10">
+                      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+                                <Link href="/" className="flex items-center gap-2">
+                                            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#009245] to-[#FCEE21] flex items-center justify-center">
+                                                          <span className="text-black font-bold text-lg">EM</span>span>
+                                            </div>div>
+                                            <span className="font-bold text-xl">EUGINE MICAH</span>span>
+                                </Link>Link>
+                                <div className="hidden md:flex items-center gap-8">
+                                            <Link href="/" className="hover:text-[#009245] transition-colors">Home</Link>Link>
+                                            <Link href="/about" className="hover:text-[#009245] transition-colors">About</Link>Link>
+                                            <Link href="/career" className="hover:text-[#009245] transition-colors">Career</Link>Link>
+                                            <Link href="/shows" className="hover:text-[#009245] transition-colors">Shows</Link>Link>
+                                            <Link href="/gallery" className="hover:text-[#009245] transition-colors">Gallery</Link>Link>
+                                            <Link href="/press" className="text-[#009245]">Press Kit</Link>Link>
+                                            <Link href="/contact" className="hover:text-[#009245] transition-colors">Contact</Link>Link>
+                                </div>div>
+                      </div>div>
+              </nav>nav>
+        
+          {/* Hero */}
+              <section className="pt-32 pb-16 px-6">
+                      <div className="max-w-7xl mx-auto text-center">
+                                <p className="text-[#009245] font-medium mb-4">RESOURCES</p>p>
+                                <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                                            <span className="bg-gradient-to-r from-[#009245] to-[#FCEE21] bg-clip-text text-transparent">PRESS KIT</span>span>
+                                </h1>h1>
+                                <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                                            Download high-resolution assets, official biographies, and media logos for coverage and business collaborations.
+                                </p>p>
+                      </div>div>
+              </section>section>
+        
+          {/* Content */}
+              <section className="py-16 px-6">
+                      <div className="max-w-7xl mx-auto">
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                                  {/* Downloads */}
+                                            <div>
+                                                          <h2 className="text-3xl font-bold mb-8">
+                                                                          <span className="bg-gradient-to-r from-[#009245] to-[#FCEE21] bg-clip-text text-transparent">Download Assets</span>span>
+                                                          </h2>h2>
+                                                          <div className="space-y-4">
+                                                            {pressResources.map((item, idx) => (
+                            <button key={idx} className="w-full p-6 glass-card rounded-2xl flex items-center justify-between group hover:border-[#009245]/50 transition-all border border-[#009245]/20">
+                                                <div className="flex items-center gap-4">
+                                                                      <span className="text-[#009245] font-bold text-sm">{item.type}</span>span>
+                                                                      <h5 className="font-bold text-white">{item.label}</h5>h5>
+                                                </div>div>
+                                                <span className="text-xs text-gray-500 font-bold uppercase">{item.size} • DOWNLOAD</span>span>
+                            </button>button>
+                          ))}
+                                                          </div>div>
+                                            </div>div>
+                                
+                                  {/* Bio */}
+                                            <div className="glass-card p-12 rounded-3xl border border-[#009245]/20">
+                                                          <h4 className="text-2xl font-display font-bold text-[#009245] mb-6">QUICK BIO</h4>h4>
+                                                          <div className="text-gray-300 leading-relaxed space-y-4 font-light text-sm italic">
+                                                                          <p>
+                                                                                            "Eugine Micah is an award-winning Kenyan journalist, TV presenter, and digital media strategist. As Head of Digital at PPP TV and host of Urban News, Campus Xposure, and The Nairobi Podcast, he has built a reputation for authentic storytelling that resonates with Kenya's youth culture."
+                                                                          </p>p>
+                                                                          <p>
+                                                                                            "With over 20 million monthly reach across platforms and 700K+ YouTube subscribers, Eugine has interviewed hundreds of influential figures while pioneering innovative content strategies that bridge traditional media and digital innovation."
+                                                                          </p>p>
+                                                          </div>div>
+                                                          <button className="mt-8 px-6 py-2 border border-[#009245] text-[#009245] font-bold text-xs rounded-lg hover:bg-[#009245] hover:text-black transition-all">
+                                                                          COPY FULL BIO
+                                                          </button>button>
+                                            </div>div>
+                                </div>div>
+                      </div>div>
+              </section>section>
+        
+          {/* Stats */}
+              <section className="py-16 px-6 bg-gradient-to-b from-transparent to-[#009245]/10">
+                      <div className="max-w-7xl mx-auto">
+                                <h2 className="text-3xl font-bold mb-12 text-center">
+                                            <span className="bg-gradient-to-r from-[#009245] to-[#FCEE21] bg-clip-text text-transparent">Media Impact</span>span>
+                                </h2>h2>
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                  {[
+          { value: "20M+", label: "Monthly Reach" },
+          { value: "700K+", label: "YouTube Subscribers" },
+          { value: "500+", label: "Interviews Conducted" },
+          { value: "3M+", label: "Weekly TV Viewers" },
+                      ].map((stat, index) => (
+                                      <div key={index} className="glass-card p-6 rounded-2xl text-center border border-[#009245]/20">
+                                                      <p className="text-3xl font-bold bg-gradient-to-r from-[#009245] to-[#FCEE21] bg-clip-text text-transparent">{stat.value}</p>p>
+                                                      <p className="text-gray-400">{stat.label}</p>p>
+                                      </div>div>
+                                    ))}
+                                </div>div>
+                      </div>div>
+              </section>section>
+        
+          {/* CTA */}
+              <section className="py-20 px-6">
+                      <div className="max-w-4xl mx-auto text-center glass-card p-12 rounded-3xl border border-[#009245]/20">
+                                <h2 className="text-3xl font-bold mb-4">
+                                            <span className="bg-gradient-to-r from-[#009245] to-[#FCEE21] bg-clip-text text-transparent">Media Inquiries</span>span>
+                                </h2>h2>
+                                <p className="text-gray-400 mb-8">For interviews, features, or collaboration requests.</p>p>
+                                <div className="flex flex-wrap justify-center gap-4">
+                                            <Link href="/contact" className="px-8 py-3 bg-gradient-to-r from-[#009245] to-[#009245]/80 rounded-full font-semibold hover:opacity-90 transition-opacity">Contact Us</Link>Link>
+                                            <a href="mailto:eugine.micah@outlook.com" className="px-8 py-3 glass-card rounded-full font-semibold border border-white/20 hover:bg-white/5 transition-colors">Email Direct</a>a>
+                                </div>div>
+                      </div>div>
+              </section>section>
+        
+          {/* Footer */}
+              <footer className="py-12 px-6 border-t border-white/10">
+                      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+                                <div className="flex items-center gap-2">
+                                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#009245] to-[#FCEE21] flex items-center justify-center">
+                                                          <span className="text-black font-bold text-sm">EM</span>span>
+                                            </div>div>
+                                            <span className="font-bold">EUGINE MICAH</span>span>
+                                </div>div>
+                                <p className="text-gray-500 text-sm">© 2025 Eugine Micah. All rights reserved.</p>p>
+                                <div className="flex gap-6">
+                                            <a href="https://youtube.com/@euginemicah" target="_blank" className="text-gray-400 hover:text-[#009245] transition-colors">YouTube</a>a>
+                                            <a href="https://instagram.com/eugine.micah" target="_blank" className="text-gray-400 hover:text-[#009245] transition-colors">Instagram</a>a>
+                                            <a href="https://tiktok.com/@eugine.micah" target="_blank" className="text-gray-400 hover:text-[#009245] transition-colors">TikTok</a>a>
+                                </div>div>
+                      </div>div>
+              </footer>footer>
+        </div>div>
+      );
+}</div>
