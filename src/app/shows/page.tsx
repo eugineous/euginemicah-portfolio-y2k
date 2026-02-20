@@ -168,4 +168,4 @@ export default function ShowsPage() {
                 </footer>
           </div>
         );
-}</div>
+}
