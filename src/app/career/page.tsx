@@ -146,4 +146,4 @@ export default function CareerPage() {
               </footer>
         </div>
       );
-}</div>
+}
