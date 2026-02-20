@@ -131,4 +131,4 @@ export default function GalleryPage() {
               </footer>
         </div>
       );
-}</div>
+}
