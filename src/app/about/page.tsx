@@ -195,4 +195,4 @@ export default function AboutPage() {
                 </footer>
           </div>
         );
-}</div>
+}
