@@ -142,4 +142,4 @@ export default function PressPage() {
               </footer>
         </div>
       );
-}</div>
+}
