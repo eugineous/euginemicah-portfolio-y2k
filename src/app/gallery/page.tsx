@@ -28,34 +28,34 @@ export default function GalleryPage() {
                       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
                                 <Link href="/" className="flex items-center gap-2">
                                             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#009245] to-[#FCEE21] flex items-center justify-center">
-                                                          <span className="text-black font-bold text-lg">EM</span>span>
-                                            </div>div>
-                                            <span className="font-bold text-xl">EUGINE MICAH</span>span>
-                                </Link>Link>
+                                                          <span className="text-black font-bold text-lg">EM</span>
+                                            </div>
+                                            <span className="font-bold text-xl">EUGINE MICAH</span>
+                                </Link>
                                 <div className="hidden md:flex items-center gap-8">
-                                            <Link href="/" className="hover:text-[#009245] transition-colors">Home</Link>Link>
-                                            <Link href="/about" className="hover:text-[#009245] transition-colors">About</Link>Link>
-                                            <Link href="/career" className="hover:text-[#009245] transition-colors">Career</Link>Link>
-                                            <Link href="/shows" className="hover:text-[#009245] transition-colors">Shows</Link>Link>
-                                            <Link href="/gallery" className="text-[#009245]">Gallery</Link>Link>
-                                            <Link href="/press" className="hover:text-[#009245] transition-colors">Press Kit</Link>Link>
-                                            <Link href="/contact" className="hover:text-[#009245] transition-colors">Contact</Link>Link>
-                                </div>div>
-                      </div>div>
-              </nav>nav>
+                                            <Link href="/" className="hover:text-[#009245] transition-colors">Home</Link>
+                                            <Link href="/about" className="hover:text-[#009245] transition-colors">About</Link>
+                                            <Link href="/career" className="hover:text-[#009245] transition-colors">Career</Link>
+                                            <Link href="/shows" className="hover:text-[#009245] transition-colors">Shows</Link>
+                                            <Link href="/gallery" className="text-[#009245]">Gallery</Link>
+                                            <Link href="/press" className="hover:text-[#009245] transition-colors">Press Kit</Link>
+                                            <Link href="/contact" className="hover:text-[#009245] transition-colors">Contact</Link>
+                                </div>
+                      </div>
+              </nav>
         
           {/* Hero */}
               <section className="pt-32 pb-16 px-6">
                       <div className="max-w-7xl mx-auto text-center">
-                                <p className="text-[#009245] font-medium mb-4">MOMENTS</p>p>
+                                <p className="text-[#009245] font-medium mb-4">MOMENTS</p>
                                 <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                                            <span className="bg-gradient-to-r from-[#009245] to-[#FCEE21] bg-clip-text text-transparent">CELEBRITY AURA</span>span>
-                                </h1>h1>
+                                            <span className="bg-gradient-to-r from-[#009245] to-[#FCEE21] bg-clip-text text-transparent">CELEBRITY AURA</span>
+                                </h1>
                                 <p className="text-xl text-gray-400 max-w-3xl mx-auto">
                                             Behind the scenes, on the stage, and everywhere in between.
-                                </p>p>
-                      </div>div>
-              </section>section>
+                                </p>
+                      </div>
+              </section>
         
           {/* Filter */}
               <section className="py-8 px-6">
@@ -70,11 +70,11 @@ export default function GalleryPage() {
                                           }`}
                                         >
                           {cat}
-                        </button>button>
+                        </button>
                       ))}
-                                </div>div>
-                      </div>div>
-              </section>section>
+                                </div>
+                      </div>
+              </section>
         
           {/* Gallery Grid */}
               <section className="py-12 px-6">
@@ -91,44 +91,44 @@ export default function GalleryPage() {
                                           className="w-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1" 
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-                                                          <span className="text-[#009245] text-[10px] font-bold uppercase tracking-widest mb-2">{item.category}</span>span>
-                                                          <h4 className="text-xl font-display font-bold">{item.title}</h4>h4>
-                                        </div>div>
-                        </div>div>
+                                                          <span className="text-[#009245] text-[10px] font-bold uppercase tracking-widest mb-2">{item.category}</span>
+                                                          <h4 className="text-xl font-display font-bold">{item.title}</h4>
+                                        </div>
+                        </div>
                       ))}
-                                </div>div>
-                      </div>div>
-              </section>section>
+                                </div>
+                      </div>
+              </section>
         
           {/* CTA */}
               <section className="py-20 px-6">
                       <div className="max-w-4xl mx-auto text-center glass-card p-12 rounded-3xl border border-[#009245]/20">
-                                <h2 className="text-3xl font-bold mb-4"><span className="bg-gradient-to-r from-[#009245] to-[#FCEE21] bg-clip-text text-transparent">Need Professional Photos?</span>span></h2>h2>
-                                <p className="text-gray-400 mb-8">Download high-resolution press photos and media assets.</p>p>
+                                <h2 className="text-3xl font-bold mb-4"><span className="bg-gradient-to-r from-[#009245] to-[#FCEE21] bg-clip-text text-transparent">Need Professional Photos?</span></h2>
+                                <p className="text-gray-400 mb-8">Download high-resolution press photos and media assets.</p>
                                 <div className="flex flex-wrap justify-center gap-4">
-                                            <Link href="/press" className="px-8 py-3 bg-gradient-to-r from-[#009245] to-[#009245]/80 rounded-full font-semibold hover:opacity-90 transition-opacity">View Press Kit</Link>Link>
-                                            <Link href="/contact" className="px-8 py-3 glass-card rounded-full font-semibold border border-white/20 hover:bg-white/5 transition-colors">Get in Touch</Link>Link>
-                                </div>div>
-                      </div>div>
-              </section>section>
+                                            <Link href="/press" className="px-8 py-3 bg-gradient-to-r from-[#009245] to-[#009245]/80 rounded-full font-semibold hover:opacity-90 transition-opacity">View Press Kit</Link>
+                                            <Link href="/contact" className="px-8 py-3 glass-card rounded-full font-semibold border border-white/20 hover:bg-white/5 transition-colors">Get in Touch</Link>
+                                </div>
+                      </div>
+              </section>
         
           {/* Footer */}
               <footer className="py-12 px-6 border-t border-white/10">
                       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
                                 <div className="flex items-center gap-2">
                                             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#009245] to-[#FCEE21] flex items-center justify-center">
-                                                          <span className="text-black font-bold text-sm">EM</span>span>
-                                            </div>div>
-                                            <span className="font-bold">EUGINE MICAH</span>span>
-                                </div>div>
-                                <p className="text-gray-500 text-sm">© 2025 Eugine Micah. All rights reserved.</p>p>
+                                                          <span className="text-black font-bold text-sm">EM</span>
+                                            </div>
+                                            <span className="font-bold">EUGINE MICAH</span>
+                                </div>
+                                <p className="text-gray-500 text-sm">© 2025 Eugine Micah. All rights reserved.</p>
                                 <div className="flex gap-6">
-                                            <a href="https://youtube.com/@euginemicah" target="_blank" className="text-gray-400 hover:text-[#009245] transition-colors">YouTube</a>a>
-                                            <a href="https://instagram.com/eugine.micah" target="_blank" className="text-gray-400 hover:text-[#009245] transition-colors">Instagram</a>a>
-                                            <a href="https://tiktok.com/@eugine.micah" target="_blank" className="text-gray-400 hover:text-[#009245] transition-colors">TikTok</a>a>
-                                </div>div>
-                      </div>div>
-              </footer>footer>
-        </div>div>
+                                            <a href="https://youtube.com/@euginemicah" target="_blank" className="text-gray-400 hover:text-[#009245] transition-colors">YouTube</a>
+                                            <a href="https://instagram.com/eugine.micah" target="_blank" className="text-gray-400 hover:text-[#009245] transition-colors">Instagram</a>
+                                            <a href="https://tiktok.com/@eugine.micah" target="_blank" className="text-gray-400 hover:text-[#009245] transition-colors">TikTok</a>
+                                </div>
+                      </div>
+              </footer>
+        </div>
       );
 }</div>
