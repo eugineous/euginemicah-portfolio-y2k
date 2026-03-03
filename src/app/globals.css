@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #000;
+  --fg: #fff;
+  --red: #FF2D2D;
+  --orange: #FF6B35;
+  --gold: #FFB800;
+  --green: #00E5A0;
+  --blue: #00B4FF;
+  --purple: #A855F7;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: #000; color: #fff; font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+::selection { background: #FF2D2D; color: #000; }
+a { text-decoration: none; color: inherit; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(60px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes roleSlide { 0%{opacity:0;transform:translateY(20px)} 10%{opacity:1;transform:translateY(0)} 90%{opacity:1;transform:translateY(0)} 100%{opacity:0;transform:translateY(-20px)} }
+@keyframes glow { 0%,100%{box-shadow:0 0 20px rgba(255,45,45,0.3)} 50%{box-shadow:0 0 40px rgba(255,45,45,0.6)} }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+.fu { animation: fadeUp 1s cubic-bezier(.16,1,.3,1) forwards; opacity: 0; }
+.fu1 { animation-delay:.1s } .fu2 { animation-delay:.2s } .fu3 { animation-delay:.3s }
+.fu4 { animation-delay:.4s } .fu5 { animation-delay:.5s } .fu6 { animation-delay:.6s }
+.fu7 { animation-delay:.7s } .fu8 { animation-delay:.8s }
+
+.show-card { transition: all .4s cubic-bezier(.16,1,.3,1); }
+.show-card:hover { transform: translateY(-4px) scale(1.01); border-color: rgba(255,255,255,.15) !important; }
+.nav-item { transition: color .3s; }
+.nav-item:hover { color: #FF2D2D !important; }
+.cta-btn { transition: all .3s; }
+.cta-btn:hover { background: #FF2D2D !important; color: #000 !important; border-color: #FF2D2D !important; }
+.cta-outline:hover { background: rgba(255,255,255,.08) !important; }
+.social-pill { transition: all .3s; }
+.social-pill:hover { background: rgba(255,255,255,.1) !important; border-color: rgba(255,255,255,.2) !important; }
+.tl-dot { transition: all .3s; }
+.tl-entry:hover .tl-dot { transform: scale(1.5); box-shadow: 0 0 12px currentColor; }
+.tl-entry:hover { background: rgba(255,255,255,.02) !important; }
+.info-card { transition: all .3s; }
+.info-card:hover { border-color: rgba(255,255,255,.12) !important; background: rgba(255,255,255,.03) !important; }
+.gallery-item { transition: all .6s cubic-bezier(.16,1,.3,1); overflow: hidden; }
+.gallery-item:hover { transform: scale(1.02); border-color: rgba(255,45,45,.25) !important; }
+.gallery-item:hover img { transform: scale(1.08); }
+.gallery-item img { transition: transform .8s cubic-bezier(.16,1,.3,1); }
+.filter-btn { transition: all .3s; cursor: pointer; }
+.filter-btn:hover { color: #FF2D2D !important; border-color: rgba(255,45,45,.3) !important; }
+.download-row { transition: all .3s; }
+.download-row:hover { background: rgba(255,255,255,.04) !important; border-color: rgba(255,255,255,.12) !important; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: rgba(255,45,45,.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #FF2D2D; }
+
+@media(max-width:768px) {
+  .hero-name { font-size: 3.5rem !important; }
+  .hero-tagline { font-size: 1.5rem !important; }
+  .stat-grid { grid-template-columns: 1fr 1fr !important; }
+  .show-grid { grid-template-columns: 1fr !important; }
+  .about-cols { flex-direction: column !important; }
+  .cta-group { flex-direction: column !important; }
+  .contact-cols { grid-template-columns: 1fr !important; }
+  .nav-desk { display: none !important; }
+  .ham { display: flex !important; }
+  .sect-pad { padding: 80px 20px !important; }
+  .networks-row { flex-wrap: wrap !important; justify-content: center !important; }
+  .page-title { font-size: 3rem !important; }
+  .grid-2 { grid-template-columns: 1fr !important; }
+  .grid-3 { grid-template-columns: 1fr !important; }
+  .grid-4 { grid-template-columns: 1fr 1fr !important; }
+  .press-cols { flex-direction: column !important; }
+}
+@media(min-width:769px) { .ham{display:none !important;} .mob-menu{display:none !important;} }
