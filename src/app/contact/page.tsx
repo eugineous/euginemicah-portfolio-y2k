@@ -1,83 +1,156 @@
-"use client";
+'use client'
 
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import PageHeader from "@/components/PageHeader";
-
-const SOCIALS = [
-  { name: "YouTube", url: "https://youtube.com/@euginemicah", handle: "@euginemicah" },
-  { name: "Instagram", url: "https://instagram.com/eugine.micah", handle: "@eugine.micah" },
-  { name: "TikTok", url: "https://tiktok.com/@eugine.micah", handle: "@eugine.micah" },
-  { name: "X", url: "https://x.com/eugineroylandz", handle: "@eugineroylandz" },
-  { name: "LinkedIn", url: "https://linkedin.com/in/euginemicah", handle: "/in/euginemicah" },
-  { name: "Muck Rack", url: "https://muckrack.com/eugine-micah/portfolio", handle: "Portfolio" },
-];
+import { motion } from 'framer-motion'
+import { RadioWave } from '@/components/contact/RadioWave'
+import { ContactForm } from '@/components/contact/ContactForm'
+import { SocialLinks } from '@/components/contact/SocialLinks'
+import { ScrambleText } from '@/components/global/ScrambleText'
+import { EUGINE } from '@/lib/constants'
+import { useState } from 'react'
 
 export default function ContactPage() {
+  const [copied, setCopied] = useState(false)
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText(EUGINE.email)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
   return (
-    <div style={{ minHeight: "100vh" }}>
-      <Nav />
-      <PageHeader
-        label="CONTACT"
-        title="Let's build something together."
-        subtitle="Bookings, interviews, collaborations, and media inquiries."
-      />
-
-      <section className="sect-pad" style={{ padding: "40px 40px 120px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div className="contact-cols" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64 }}>
-            {/* LEFT: INFO */}
-            <div>
-              {[
-                { label: "BOOKING & SPEAKING", value: "euginemicah@gmail.com", href: "mailto:euginemicah@gmail.com" },
-                { label: "PORTFOLIO", value: "muckrack.com/eugine-micah", href: "https://muckrack.com/eugine-micah/portfolio" },
-                { label: "WEBSITE", value: "euginemicah.tech", href: "https://www.euginemicah.tech/" },
-                { label: "LOCATION", value: "Nairobi, Kenya", href: "" },
-              ].map((c, i) => (
-                <div key={i} style={{ marginBottom: 32 }}>
-                  <div style={{ fontFamily: "'JetBrains Mono'", fontSize: 9, fontWeight: 600, letterSpacing: 3, color: "rgba(255,255,255,.25)", textTransform: "uppercase", marginBottom: 8 }}>{c.label}</div>
-                  {c.href ? (
-                    <a href={c.href} target="_blank" rel="noopener noreferrer" style={{ fontSize: "1.05rem", color: "#fff", borderBottom: "1px solid rgba(255,255,255,.15)", paddingBottom: 2, transition: "border-color .3s" }}>{c.value}</a>
-                  ) : (
-                    <div style={{ fontSize: "1.05rem" }}>{c.value}</div>
-                  )}
-                </div>
-              ))}
-
-              <div style={{ padding: "24px 28px", background: "rgba(0,229,160,.04)", border: "1px solid rgba(0,229,160,.12)", marginBottom: 32 }}>
-                <div style={{ fontFamily: "'JetBrains Mono'", fontSize: 9, fontWeight: 600, letterSpacing: 3, color: "#00E5A0", textTransform: "uppercase", marginBottom: 10 }}>AVAILABLE FOR</div>
-                <p style={{ fontSize: ".88rem", lineHeight: 1.7, color: "rgba(255,255,255,.45)" }}>
-                  TV Hosting · Brand Collaborations · Speaking Engagements · Media Appearances · Podcast Interviews · Charity Partnerships · Digital Strategy Consulting
-                </p>
-              </div>
-            </div>
-
-            {/* RIGHT: SOCIALS + CTA */}
-            <div>
-              <div style={{ fontFamily: "'JetBrains Mono'", fontSize: 9, fontWeight: 600, letterSpacing: 3, color: "rgba(255,255,255,.25)", textTransform: "uppercase", marginBottom: 16 }}>CONNECT</div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                {SOCIALS.map((s, i) => (
-                  <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" className="social-pill" style={{
-                    display: "flex", justifyContent: "space-between", alignItems: "center",
-                    padding: "16px 20px", border: "1px solid rgba(255,255,255,.06)",
-                  }}>
-                    <span style={{ fontWeight: 600, fontSize: ".95rem" }}>{s.name}</span>
-                    <span style={{ fontFamily: "'JetBrains Mono'", fontSize: 11, color: "rgba(255,255,255,.3)" }}>{s.handle}</span>
-                  </a>
-                ))}
-              </div>
-
-              <a href="mailto:euginemicah@gmail.com?subject=Booking%20Inquiry" className="cta-btn" style={{
-                display: "block", textAlign: "center", marginTop: 24,
-                padding: "16px 32px", background: "#FF2D2D", color: "#000", border: "1px solid #FF2D2D",
-                fontFamily: "'JetBrains Mono'", fontSize: 10, fontWeight: 600, letterSpacing: 3, textTransform: "uppercase",
-              }}>SEND BOOKING INQUIRY →</a>
-            </div>
-          </div>
+    <main
+      className="relative min-h-screen overflow-hidden"
+      style={{ background: 'var(--gradient-hero)' }}
+    >
+      {/* Radio wave background */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+        <div className="w-full h-full" style={{ maxWidth: 800 }}>
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <div
+              key={i}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border"
+              style={{
+                width: `${i * 150}px`,
+                height: `${i * 150}px`,
+                borderColor: 'rgba(212,160,23,0.15)',
+                animation: `pulse-ring 4s ease-out infinite`,
+                animationDelay: `${(i - 1) * 0.6}s`,
+              }}
+            />
+          ))}
         </div>
-      </section>
+      </div>
 
-      <Footer />
-    </div>
-  );
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Hero */}
+        <section className="px-6 lg:px-16 pt-32 pb-12 text-center">
+          <div className="max-w-3xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+            >
+              <p className="font-mono text-xs text-gold tracking-[0.3em] uppercase mb-4">THE SIGNAL</p>
+              <h1 className="font-display text-5xl lg:text-7xl font-bold text-text-primary mb-4">
+                <ScrambleText text="SEND YOUR SIGNAL" />
+              </h1>
+              <p className="font-body text-text-secondary text-lg italic">
+                "If you've made it this far, you're not here by accident."
+              </p>
+            </motion.div>
+
+            {/* Radio wave visualization */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <RadioWave />
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Main content */}
+        <section className="px-6 lg:px-16 py-12">
+          <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-start">
+            {/* Contact form */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="glass rounded-2xl p-8 border border-white/10"
+            >
+              <ContactForm />
+            </motion.div>
+
+            {/* Right side info */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="space-y-10"
+            >
+              {/* Direct contact */}
+              <div>
+                <p className="font-mono text-xs text-gold tracking-[0.3em] uppercase mb-4">DIRECT SIGNAL</p>
+                <button
+                  onClick={copyEmail}
+                  className="flex items-center gap-3 glass rounded-xl px-6 py-4 border border-white/10 hover:border-gold/30 transition-all group w-full"
+                >
+                  <span className="font-mono text-text-primary group-hover:text-gold transition-colors">{EUGINE.email}</span>
+                  <span className="ml-auto font-mono text-xs text-text-tertiary group-hover:text-gold transition-colors">
+                    {copied ? '✓ COPIED' : 'COPY'}
+                  </span>
+                </button>
+              </div>
+
+              {/* Availability */}
+              <div>
+                <p className="font-mono text-xs text-gold tracking-[0.3em] uppercase mb-4">AVAILABILITY</p>
+                <div className="glass rounded-xl p-6 border border-white/10">
+                  <div className="flex items-center gap-2 mb-4">
+                    <span
+                      className="w-2 h-2 rounded-full bg-green-400"
+                      style={{ animation: 'pulse-ring 2s ease-out infinite', boxShadow: '0 0 6px #4CAF50' }}
+                    />
+                    <span className="font-mono text-xs text-green-400 tracking-widest">OPEN TO SIGNALS</span>
+                  </div>
+                  <div className="space-y-2">
+                    {['Hosting / Speaking', 'Digital Strategy Consulting', 'Collaborations', 'Interviews'].map((item) => (
+                      <div key={item} className="flex items-center gap-2">
+                        <span className="w-1 h-1 rounded-full bg-gold/60" />
+                        <span className="font-body text-text-secondary text-sm">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Social links */}
+              <div>
+                <p className="font-mono text-xs text-gold tracking-[0.3em] uppercase mb-6">FIND THE SIGNAL</p>
+                <SocialLinks />
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Bottom quotes */}
+        <section className="px-6 lg:px-16 py-16 text-center">
+          <div className="max-w-3xl mx-auto space-y-4">
+            <p className="font-display text-xl text-text-secondary italic">
+              "{EUGINE.quote}"
+            </p>
+            <p className="font-mono text-xs text-gold tracking-widest">— {EUGINE.quoteAuthor}</p>
+            <p className="font-body text-text-tertiary mt-4">
+              "This is how we act in concert. Start here." — Eugine Micah
+            </p>
+          </div>
+        </section>
+
+        <div className="h-24" />
+      </div>
+    </main>
+  )
 }

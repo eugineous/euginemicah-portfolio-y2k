@@ -1,0 +1,115 @@
+/* ============================================================
+   THE ROYLANDZ UNIVERSE — Keyframe Animations
+   src/styles/animations.css
+   ============================================================ */
+
+/* ── MARQUEE — horizontal ticker scroll ── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── PULSE RING — expanding ring for LIVE badge / radio waves ── */
+@keyframes pulse-ring {
+  0%   { transform: scale(0.8); opacity: 1; }
+  80%  { transform: scale(2.4); opacity: 0; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* ── GLITCH — text glitch effect ── */
+@keyframes glitch {
+  0%   { clip-path: inset(0 0 98% 0); transform: translate(-2px, 0); }
+  5%   { clip-path: inset(30% 0 50% 0); transform: translate(2px, 0); }
+  10%  { clip-path: inset(60% 0 20% 0); transform: translate(-1px, 0); }
+  15%  { clip-path: inset(80% 0 5%  0); transform: translate(1px, 0); }
+  20%  { clip-path: inset(10% 0 70% 0); transform: translate(-2px, 0); }
+  25%  { clip-path: inset(45% 0 40% 0); transform: translate(0, 0); }
+  30%  { clip-path: inset(0 0 98% 0); transform: translate(2px, 0); }
+  35%  { clip-path: inset(0 0 0   0); transform: translate(0, 0); }
+  100% { clip-path: inset(0 0 0   0); transform: translate(0, 0); }
+}
+
+/* ── SCAN LINE — vertical scan line sweep ── */
+@keyframes scan-line {
+  0%   { top: -4px; opacity: 0.6; }
+  50%  { opacity: 0.3; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* ── WAX SEAL CRACK — SVG stroke-dashoffset reveal ── */
+@keyframes wax-seal-crack {
+  0%   { stroke-dashoffset: 1000; opacity: 0; }
+  10%  { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
+
+/* ── FLOAT — gentle floating up/down ── */
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ── SHIMMER — gold shimmer sweep ── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* ── TYPEWRITER — cursor blink ── */
+@keyframes typewriter {
+  0%, 100% { border-right-color: var(--color-gold); }
+  50%       { border-right-color: transparent; }
+}
+
+/* ── COUNT UP — stat counter reveal ── */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── VU BAR — VU meter bar animation ── */
+@keyframes vu-bar {
+  0%   { transform: scaleY(0.15); }
+  20%  { transform: scaleY(0.85); }
+  40%  { transform: scaleY(0.35); }
+  60%  { transform: scaleY(1.00); }
+  80%  { transform: scaleY(0.55); }
+  100% { transform: scaleY(0.20); }
+}
+
+/* ── DATA RAIN — matrix rain drop ── */
+@keyframes data-rain {
+  0%   { transform: translateY(-100%); opacity: 1; }
+  80%  { opacity: 0.6; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* ── HOLOGRAM FLICKER — holographic flicker ── */
+@keyframes hologram-flicker {
+  0%   { opacity: 1;    filter: brightness(1)   hue-rotate(0deg); }
+  5%   { opacity: 0.85; filter: brightness(1.4) hue-rotate(5deg); }
+  10%  { opacity: 1;    filter: brightness(0.9) hue-rotate(0deg); }
+  15%  { opacity: 0.7;  filter: brightness(1.6) hue-rotate(-5deg); }
+  20%  { opacity: 1;    filter: brightness(1)   hue-rotate(0deg); }
+  85%  { opacity: 1;    filter: brightness(1)   hue-rotate(0deg); }
+  90%  { opacity: 0.9;  filter: brightness(1.2) hue-rotate(3deg); }
+  95%  { opacity: 0.75; filter: brightness(1.5) hue-rotate(-3deg); }
+  100% { opacity: 1;    filter: brightness(1)   hue-rotate(0deg); }
+}
+
+/* ── BORDER GLITCH — glitching border effect ── */
+@keyframes border-glitch {
+  0%   { border-color: var(--color-gold);       box-shadow: 0 0 0 0 transparent; }
+  10%  { border-color: var(--color-cyber-cyan); box-shadow: 2px 0 8px var(--color-cyber-cyan); }
+  20%  { border-color: var(--color-signal-red); box-shadow: -2px 0 8px var(--color-signal-red); }
+  30%  { border-color: var(--color-gold);       box-shadow: 0 0 0 0 transparent; }
+  100% { border-color: var(--color-gold);       box-shadow: 0 0 0 0 transparent; }
+}
+
+/* ── BREATHE — breathing scale for scroll indicator ── */
+@keyframes breathe {
+  0%   { transform: scale(1);    opacity: 0.6; }
+  50%  { transform: scale(1.18); opacity: 1; }
+  100% { transform: scale(1);    opacity: 0.6; }
+}

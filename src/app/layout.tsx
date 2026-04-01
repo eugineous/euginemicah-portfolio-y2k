@@ -1,52 +1,87 @@
-import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/next";
-import "./globals.css";
+import type { Metadata } from 'next'
+import { Playfair_Display, Space_Grotesk, DM_Mono, Lora, Inter } from 'next/font/google'
+import './globals.css'
+import { LenisProvider } from '@/components/global/LenisProvider'
+import { CurtainTransition } from '@/components/global/CurtainTransition'
+import { GoldCursor } from '@/components/global/GoldCursor'
+import { Nav } from '@/components/global/Nav'
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-headline',
+  display: 'swap',
+})
+
+const dmMono = DM_Mono({
+  subsets: ['latin'],
+  weight: ['300', '400', '500'],
+  variable: '--font-mono',
+  display: 'swap',
+})
+
+const lora = Lora({
+  subsets: ['latin'],
+  variable: '--font-body',
+  display: 'swap',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-ui',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: {
-    default: "Eugine Micah — TV Host, Journalist & Digital Strategist",
-    template: "%s — Eugine Micah",
-  },
-  description: "Eugine Micah is a Kenyan TV host, journalist, and digital strategist. Host of Urban News on PPP TV. Head of Digital Operations reaching 20M+ monthly viewers.",
-  keywords: ["Eugine Micah", "Urban News", "PPP TV", "Kenyan journalist", "TV host", "digital strategist", "Born Broke Built Loud"],
-  authors: [{ name: "Eugine Micah" }],
-  icons: {
-    icon: "/eugine_micah_favicon.ico",
-  },
+  title: 'Eugine Micah — The Roylandz Universe',
+  description: 'Media Entrepreneur & Storytelling Strategist. Head of Digital @ PPP TV Kenya. Born Broke. Built Loud.',
+  keywords: ['Eugine Micah', 'Roylandz', 'PPP TV', 'Urban News', 'ProPost', 'Nairobi', 'Media Entrepreneur'],
+  authors: [{ name: 'Eugine Micah' }],
+  creator: 'Eugine Micah',
   openGraph: {
-    title: "Eugine Micah — TV Host, Journalist & Digital Strategist",
-    description: "Host of Urban News on PPP TV. Head of Digital Operations. 20M+ monthly views.",
-    url: "https://euginemicah.tech",
-    siteName: "Eugine Micah",
-    type: "website",
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://euginemicah.com',
+    title: 'Eugine Micah — The Roylandz Universe',
+    description: 'Media Entrepreneur & Storytelling Strategist. Born Broke. Built Loud.',
+    siteName: 'The Roylandz Universe',
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Eugine Micah — TV Host & Digital Strategist",
-    description: "Host of Urban News on PPP TV. 20M+ monthly views.",
-    creator: "@eugineroylandz",
+    card: 'summary_large_image',
+    title: 'Eugine Micah — The Roylandz Universe',
+    description: 'Media Entrepreneur & Storytelling Strategist. Born Broke. Built Loud.',
+    creator: '@euginemicah',
   },
-};
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-      </head>
-      <body style={{ fontFamily: "'DM Sans', sans-serif", background: "#000", color: "#fff" }}>
-        {/* Scanline overlay */}
-        <div style={{
-          position: "fixed", top: 0, left: 0, right: 0, bottom: 0, zIndex: 9999, pointerEvents: "none",
-          background: "repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px)",
-        }}/>
-        {children}
-        <Analytics />
+    <html
+      lang="en"
+      className={`${playfair.variable} ${spaceGrotesk.variable} ${dmMono.variable} ${lora.variable} ${inter.variable}`}
+    >
+      <body>
+        <LenisProvider>
+          <GoldCursor />
+          <Nav />
+          <CurtainTransition>
+            {children}
+          </CurtainTransition>
+        </LenisProvider>
       </body>
     </html>
-  );
+  )
 }
