@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eugine Micah — TV Host · AI Builder · Storyteller</title>
+<meta name="description" content="Eugine Micah — TV Host, Head of Digital at PPP TV Kenya, AI Content Systems Builder, Journalist & Storyteller. 2M+ weekly viewers. Based in Nairobi, Kenya.">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#0a1f44;--navy-deep:#060f22;--navy-mid:#122a5e;
+    --gold:#c9a84c;--gold-light:#e2c97a;--gold-dark:#9a7a2e;
+    --white:#ffffff;--off-white:#f4f2ed;--text:#e8e6e0;--muted:#8a8880;
+    --card:#0f2550;--card-border:#1e3a6e;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--navy-deep);color:var(--text);
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    font-size:16px;line-height:1.7;overflow-x:hidden;
+  }
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:1rem 2rem;
+    background:rgba(6,15,34,0.92);backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(201,168,76,0.15);
+  }
+  .nav-logo{
+    font-size:1.3rem;font-weight:700;color:var(--gold);
+    letter-spacing:0.05em;text-decoration:none;
+  }
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{
+    color:var(--muted);text-decoration:none;font-size:0.9rem;
+    letter-spacing:0.03em;transition:color 0.2s;
+  }
+  .nav-links a:hover{color:var(--gold)}
+  .nav-cta{
+    background:var(--gold);color:var(--navy-deep);
+    padding:0.5rem 1.25rem;border-radius:4px;
+    text-decoration:none;font-size:0.85rem;font-weight:600;
+    letter-spacing:0.04em;transition:background 0.2s;
+  }
+  .nav-cta:hover{background:var(--gold-light)}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;display:flex;flex-direction:column;
+    justify-content:center;padding:8rem 2rem 4rem;
+    max-width:1200px;margin:0 auto;
+  }
+  .hero-eyebrow{
+    font-size:0.8rem;letter-spacing:0.2em;color:var(--gold);
+    text-transform:uppercase;margin-bottom:1.5rem;
+    display:flex;align-items:center;gap:0.75rem;
+  }
+  .hero-eyebrow::before{
+    content:'';display:block;width:32px;height:1px;background:var(--gold);
+  }
+  .hero-name{
+    font-size:clamp(3rem,8vw,6.5rem);font-weight:800;
+    color:var(--white);line-height:1;letter-spacing:-0.02em;
+    margin-bottom:1rem;
+  }
+  .hero-title{
+    font-size:clamp(1rem,2.5vw,1.5rem);color:var(--gold);
+    font-weight:400;margin-bottom:1.5rem;min-height:2em;
+  }
+  .hero-desc{
+    font-size:1.1rem;color:var(--muted);max-width:580px;
+    line-height:1.8;margin-bottom:2.5rem;
+  }
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn-primary{
+    background:var(--gold);color:var(--navy-deep);
+    padding:0.85rem 2rem;border-radius:4px;
+    text-decoration:none;font-weight:700;font-size:0.9rem;
+    letter-spacing:0.04em;transition:all 0.2s;
+  }
+  .btn-primary:hover{background:var(--gold-light);transform:translateY(-1px)}
+  .btn-outline{
+    border:1px solid var(--card-border);color:var(--text);
+    padding:0.85rem 2rem;border-radius:4px;
+    text-decoration:none;font-size:0.9rem;
+    transition:all 0.2s;
+  }
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+
+  /* STATS BAR */
+  .stats-bar{
+    background:var(--card);border-top:1px solid var(--card-border);
+    border-bottom:1px solid var(--card-border);
+    padding:2.5rem 2rem;
+  }
+  .stats-inner{
+    max-width:1200px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:2rem;
+  }
+  .stat{text-align:center}
+  .stat-num{
+    font-size:2.2rem;font-weight:800;color:var(--gold);
+    line-height:1;display:block;margin-bottom:0.4rem;
+  }
+  .stat-label{font-size:0.8rem;color:var(--muted);letter-spacing:0.05em;text-transform:uppercase}
+
+  /* SECTIONS */
+  section{padding:6rem 2rem}
+  .container{max-width:1200px;margin:0 auto}
+  .section-tag{
+    font-size:0.75rem;letter-spacing:0.2em;color:var(--gold);
+    text-transform:uppercase;margin-bottom:1rem;
+    display:flex;align-items:center;gap:0.75rem;
+  }
+  .section-tag::before{content:'';display:block;width:24px;height:1px;background:var(--gold)}
+  h2.section-title{
+    font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;
+    color:var(--white);line-height:1.2;margin-bottom:1rem;
+  }
+  .section-sub{font-size:1rem;color:var(--muted);max-width:520px;line-height:1.8;margin-bottom:3rem}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+  .about-text p{color:var(--muted);line-height:1.9;margin-bottom:1.2rem}
+  .about-text strong{color:var(--text)}
+  .about-photo{
+    background:var(--card);border:1px solid var(--card-border);
+    border-radius:8px;overflow:hidden;aspect-ratio:4/5;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .photo-placeholder{
+    text-align:center;color:var(--muted);font-size:0.85rem;
+    padding:2rem;
+  }
+  .photo-placeholder .initials{
+    font-size:5rem;font-weight:800;color:var(--gold);
+    line-height:1;display:block;margin-bottom:1rem;
+  }
+  .about-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem}
+  .tag{
+    font-size:0.75rem;padding:0.35rem 0.85rem;
+    border:1px solid var(--card-border);border-radius:3px;
+    color:var(--muted);letter-spacing:0.03em;
+  }
+
+  /* SHOWS */
+  .shows-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+  .show-card{
+    background:var(--card);border:1px solid var(--card-border);
+    border-radius:8px;padding:2rem;
+    border-top:3px solid var(--gold);
+    transition:transform 0.2s,border-color 0.2s;
+  }
+  .show-card:hover{transform:translateY(-4px);border-color:var(--gold-light)}
+  .show-icon{
+    width:44px;height:44px;background:rgba(201,168,76,0.1);
+    border:1px solid rgba(201,168,76,0.3);border-radius:6px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.2rem;margin-bottom:1.2rem;
+  }
+  .show-badge{
+    display:inline-block;font-size:0.7rem;letter-spacing:0.08em;
+    text-transform:uppercase;padding:0.25rem 0.6rem;
+    background:rgba(201,168,76,0.12);color:var(--gold);
+    border-radius:3px;margin-bottom:0.8rem;
+  }
+  .show-title{font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:0.6rem}
+  .show-meta{font-size:0.8rem;color:var(--gold);margin-bottom:0.8rem;letter-spacing:0.03em}
+  .show-desc{font-size:0.9rem;color:var(--muted);line-height:1.7}
+
+  /* PROJECTS */
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+  .project-card{
+    background:var(--card);border:1px solid var(--card-border);
+    border-radius:8px;padding:2rem;
+    transition:transform 0.2s;
+  }
+  .project-card:hover{transform:translateY(-3px)}
+  .project-stack{
+    display:flex;flex-wrap:wrap;gap:0.4rem;margin:1rem 0;
+  }
+  .stack-tag{
+    font-size:0.7rem;padding:0.2rem 0.6rem;
+    background:rgba(30,58,110,0.8);border:1px solid var(--card-border);
+    color:var(--muted);border-radius:3px;letter-spacing:0.03em;
+  }
+  .project-title{font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:0.5rem}
+  .project-desc{font-size:0.9rem;color:var(--muted);line-height:1.7;margin-bottom:1rem}
+  .project-link{
+    font-size:0.8rem;color:var(--gold);text-decoration:none;
+    letter-spacing:0.03em;display:flex;align-items:center;gap:0.4rem;
+  }
+  .project-link:hover{color:var(--gold-light)}
+
+  /* BRANDS */
+  .brands-section{background:var(--card);border-top:1px solid var(--card-border);border-bottom:1px solid var(--card-border)}
+  .brands-list{
+    display:flex;flex-wrap:wrap;justify-content:center;
+    gap:3rem;align-items:center;padding:1rem 0;
+  }
+  .brand-item{
+    font-size:1.2rem;font-weight:700;color:var(--card-border);
+    letter-spacing:0.06em;text-transform:uppercase;
+    transition:color 0.2s;
+  }
+  .brand-item:hover{color:var(--gold)}
+
+  /* EXPERIENCE TIMELINE */
+  .timeline{position:relative;padding-left:2rem}
+  .timeline::before{
+    content:'';position:absolute;left:0;top:0;bottom:0;
+    width:1px;background:var(--card-border);
+  }
+  .timeline-item{position:relative;margin-bottom:2.5rem}
+  .timeline-item::before{
+    content:'';position:absolute;left:-2.4rem;top:0.4rem;
+    width:8px;height:8px;border-radius:50%;
+    background:var(--gold);border:2px solid var(--navy-deep);
+  }
+  .timeline-date{font-size:0.75rem;color:var(--gold);letter-spacing:0.06em;margin-bottom:0.3rem;text-transform:uppercase}
+  .timeline-role{font-size:1rem;font-weight:600;color:var(--white);margin-bottom:0.2rem}
+  .timeline-company{font-size:0.85rem;color:var(--muted)}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem}
+  .skill-group h3{font-size:0.85rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem}
+  .skill-list{list-style:none}
+  .skill-list li{
+    font-size:0.9rem;color:var(--muted);padding:0.4rem 0;
+    border-bottom:1px solid rgba(30,58,110,0.5);
+    display:flex;align-items:center;gap:0.5rem;
+  }
+  .skill-list li::before{content:'—';color:var(--gold);font-size:0.75rem}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+  .contact-text p{color:var(--muted);line-height:1.9;margin-bottom:1.5rem}
+  .contact-links{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+  .contact-link{
+    display:flex;align-items:center;gap:1rem;
+    text-decoration:none;color:var(--text);
+    padding:1rem 1.25rem;
+    background:var(--card);border:1px solid var(--card-border);
+    border-radius:6px;transition:all 0.2s;font-size:0.9rem;
+  }
+  .contact-link:hover{border-color:var(--gold);color:var(--gold)}
+  .contact-link-icon{color:var(--gold);font-size:1rem;min-width:20px}
+  .contact-form{display:flex;flex-direction:column;gap:1rem}
+  .contact-form input,.contact-form textarea{
+    background:var(--card);border:1px solid var(--card-border);
+    color:var(--text);padding:0.85rem 1rem;border-radius:4px;
+    font-size:0.9rem;font-family:inherit;
+    transition:border-color 0.2s;resize:vertical;
+  }
+  .contact-form input:focus,.contact-form textarea:focus{
+    outline:none;border-color:var(--gold);
+  }
+  .contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--muted)}
+  .contact-form textarea{min-height:140px}
+  .contact-form button{
+    background:var(--gold);color:var(--navy-deep);
+    padding:0.9rem;border:none;border-radius:4px;
+    font-weight:700;font-size:0.9rem;letter-spacing:0.04em;
+    cursor:pointer;transition:background 0.2s;
+  }
+  .contact-form button:hover{background:var(--gold-light)}
+
+  /* FOOTER */
+  footer{
+    background:var(--navy-deep);border-top:1px solid var(--card-border);
+    padding:3rem 2rem;text-align:center;
+  }
+  .footer-inner{max-width:1200px;margin:0 auto}
+  .footer-logo{font-size:1.5rem;font-weight:800;color:var(--gold);margin-bottom:1rem}
+  .footer-tagline{font-size:0.85rem;color:var(--muted);margin-bottom:1.5rem}
+  .footer-links{display:flex;justify-content:center;flex-wrap:wrap;gap:2rem;margin-bottom:2rem}
+  .footer-links a{font-size:0.85rem;color:var(--muted);text-decoration:none;transition:color 0.2s}
+  .footer-links a:hover{color:var(--gold)}
+  .footer-copy{font-size:0.8rem;color:rgba(138,136,128,0.5)}
+
+  /* DIVIDER */
+  .gold-rule{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0}
+
+  /* FADE IN */
+  .fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+  .fade-in.visible{opacity:1;transform:none}
+
+  /* TYPEWRITER */
+  .cursor{display:inline-block;width:2px;height:1em;background:var(--gold);margin-left:2px;animation:blink 1s infinite}
+  @keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
+
+  /* RESPONSIVE */
+  @media(max-width:768px){
+    nav .nav-links{display:none}
+    .about-grid,.contact-grid{grid-template-columns:1fr}
+    .about-photo{aspect-ratio:1/1;max-height:300px}
+  }
+  @media(max-width:480px){
+    section{padding:4rem 1.25rem}
+    .hero{padding:6rem 1.25rem 3rem}
+    nav{padding:1rem 1.25rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">EM</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#shows">Shows</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:euginemicah@gmail.com">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Nairobi, Kenya</div>
+  <h1 class="hero-name">Eugine<br>Micah</h1>
+  <div class="hero-title" id="hero-title"><span id="typed"></span><span class="cursor"></span></div>
+  <p class="hero-desc">TV host, digital media strategist, and AI content systems builder with 2M+ weekly viewers. I work in front of cameras and behind terminals — sometimes on the same day.</p>
+  <div class="hero-btns">
+    <a class="btn-primary" href="#contact">Get in Touch</a>
+    <a class="btn-outline" href="#projects">See My Builds</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-num">2M+</span><span class="stat-label">Weekly TV Viewers</span></div>
+    <div class="stat"><span class="stat-num">3M+</span><span class="stat-label">Monthly Reach</span></div>
+    <div class="stat"><span class="stat-num">700K+</span><span class="stat-label">YouTube Subs (PPP TV)</span></div>
+    <div class="stat"><span class="stat-num">5+</span><span class="stat-label">Live Products Built</span></div>
+    <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Years in Media</span></div>
+  </div>
+</div>
+
+<!-- BRANDS -->
+<div class="brands-section">
+  <div class="container" style="padding:3rem 2rem">
+    <p style="text-align:center;font-size:0.75rem;letter-spacing:0.15em;color:var(--muted);text-transform:uppercase;margin-bottom:2rem">Brands I've Worked With</p>
+    <div class="brands-list">
+      <span class="brand-item">L'Oréal</span>
+      <span class="brand-item">Tecno</span>
+      <span class="brand-item">Infinix</span>
+      <span class="brand-item">PPP TV</span>
+      <span class="brand-item">StarTimes</span>
+      <span class="brand-item">Global Cyber Alliance</span>
+      <span class="brand-item">Tushinde</span>
+      <span class="brand-item">eBet Kenya</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <div class="section-tag">About Me</div>
+        <h2 class="section-title">Built for both sides of the camera</h2>
+        <p>I've spent the last five years doing two things simultaneously that most people treat as separate careers — working as a <strong>broadcast journalist and TV host</strong>, and <strong>building AI-powered digital products</strong>.</p>
+        <p>Right now I co-host <strong>Urban News</strong> on StarTimes Channel 430 to 2M+ weekly viewers while running all digital strategy for PPP TV Kenya. Outside of broadcasting, I'm shipping real products from my GitHub — including an autonomous news station that publishes to Instagram and Facebook daily with no human input.</p>
+        <p>I grew up in Kakamega, Western Kenya. I graduated as Valedictorian from TIBS. I was trained at Citizen TV. I've reported in the field, sub-edited a magazine, hosted drive-time radio, emceed university concerts, and built SaaS tools — often in the same month.</p>
+        <p>I'm the founder of <strong>Urban Tour</strong>, co-host of <strong>The Nairobi Podcast</strong>, and author of the memoir <em>Born Broke, Built Loud</em>.</p>
+        <div class="about-tags">
+          <span class="tag">TV Hosting</span><span class="tag">AI Builder</span><span class="tag">Journalist</span>
+          <span class="tag">Storyteller</span><span class="tag">Event Producer</span><span class="tag">Podcaster</span>
+          <span class="tag">Memoirist</span><span class="tag">Campaign Strategist</span>
+        </div>
+      </div>
+      <div class="about-photo fade-in">
+        <div class="photo-placeholder">
+          <span class="initials">EM</span>
+          <p>Replace with your professional headshot</p>
+          <p style="font-size:0.75rem;margin-top:0.5rem;color:rgba(138,136,128,0.5)">Recommended: shoulders-up, plain background, 800×1000px</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- SHOWS & MEDIA -->
+<section id="shows">
+  <div class="container">
+    <div class="section-tag">On Air</div>
+    <h2 class="section-title">Shows & Media</h2>
+    <p class="section-sub">Television, podcast, and live event productions I host or have built.</p>
+    <div class="shows-grid">
+
+      <div class="show-card fade-in">
+        <div class="show-icon">📺</div>
+        <span class="show-badge">Live · Weekdays</span>
+        <div class="show-title">Urban News</div>
+        <div class="show-meta">StarTimes Channel 430 · with Lucy Ogunde</div>
+        <p class="show-desc">Kenya's leading urban culture and news show. Co-hosting alongside Lucy Ogunde, we cover tech, entrepreneurship, entertainment, and the conversations that matter to Gen Z and millennial Kenya — reaching 2M+ viewers every week.</p>
+      </div>
+
+      <div class="show-card fade-in">
+        <div class="show-icon">🎙</div>
+        <span class="show-badge">Podcast</span>
+        <div class="show-title">The Nairobi Podcast</div>
+        <div class="show-meta">Co-host · with Lucy Ogunde, Mary Maina & Rania Biketi</div>
+        <p class="show-desc">Long-form conversations about Nairobi culture, money, careers, relationships, and life in Kenya's capital. Four hosts. No filter. Real talk.</p>
+      </div>
+
+      <div class="show-card fade-in">
+        <div class="show-icon">❤️</div>
+        <span class="show-badge">Charity · Saturdays</span>
+        <div class="show-title">Tushinde Charity Show</div>
+        <div class="show-meta">Twende Tusaidie Tushinde · PPP TV / NTV / KBC</div>
+        <p class="show-desc">Kenya's favourite charity movement. Airing Saturdays across PPP TV, NTV, and KBC, this show raises funds and awareness for communities across the country. Ongoing, live, and moving.</p>
+      </div>
+
+      <div class="show-card fade-in">
+        <div class="show-icon">🎤</div>
+        <span class="show-badge">Events · Founder</span>
+        <div class="show-title">Urban Tour</div>
+        <div class="show-meta">High school & university concert series · Nairobi + Coast</div>
+        <p class="show-desc">A concert and talent search show I founded that tours Kenyan high schools and university campuses. I handle production, artist booking, sponsorship deals, and on-ground event management — start to finish.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-tag">Digital Builds</div>
+    <h2 class="section-title">Products I've built</h2>
+    <p class="section-sub">AI-powered platforms, apps, and tools — all live, all mine, all running.</p>
+    <div class="projects-grid">
+
+      <div class="project-card fade-in">
+        <div class="show-badge">Live · Autonomous</div>
+        <div class="project-title">Auto News Station</div>
+        <p class="project-desc">An autonomous AI news publishing platform that scrapes headlines, composes video news posts, and publishes to Instagram and Facebook daily with zero human input. It runs while I sleep.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Next.js</span><span class="stack-tag">Cloudflare Workers</span>
+          <span class="stack-tag">Supabase</span><span class="stack-tag">Meta Graph API</span>
+        </div>
+        <a class="project-link" href="https://github.com/eugineous/auto-news-station" target="_blank">github.com/eugineous/auto-news-station →</a>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="show-badge">Live · Daily Use</div>
+        <div class="project-title">Tawala — Personal Life OS</div>
+        <p class="project-desc">A personal life management app I built and use every day. Covers finance tracking, fitness, spirituality, goal setting, mental wellness, family, and gamification. A full operating system for life.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Next.js</span><span class="stack-tag">Vercel</span><span class="stack-tag">Supabase</span>
+        </div>
+        <a class="project-link" href="https://tawala.vercel.app" target="_blank">tawala.vercel.app →</a>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="show-badge">Live · AI Agents</div>
+        <div class="project-title">ProPost — AI Social Empire</div>
+        <p class="project-desc">A multi-agent social media system with 150+ AI agents operating across LinkedIn, Instagram, Facebook, and X. Each agent has a defined role, tone, and posting schedule. Built to run without a human touching it.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Gemini API</span><span class="stack-tag">Multi-agent</span>
+          <span class="stack-tag">Meta API</span><span class="stack-tag">Automation</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="show-badge">Live · News Site</div>
+        <div class="project-title">PPP TV News Website</div>
+        <p class="project-desc">Full news website for PPP TV Kenya. Integrates 500+ RSS sources, custom WordPress-style content scraping, X-trends data, and SEO optimisation. Targeting Kenyan entertainment and urban culture.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Next.js 14</span><span class="stack-tag">Vercel</span>
+          <span class="stack-tag">RSS</span><span class="stack-tag">SEO</span>
+        </div>
+        <a class="project-link" href="https://ppp-tv-site.vercel.app" target="_blank">ppp-tv-site.vercel.app →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem">
+      <div class="fade-in">
+        <div class="section-tag">Career</div>
+        <h2 class="section-title">Experience</h2>
+        <p class="section-sub">Key roles across media, digital, and communications.</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">2024 — Present</div>
+            <div class="timeline-role">Co-Host & Head of Digital Strategy</div>
+            <div class="timeline-company">PPP TV Kenya · Nairobi</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2025 — Present</div>
+            <div class="timeline-role">Brand Ambassador & Digital Strategy Lead</div>
+            <div class="timeline-company">Tushinde.com · Nairobi</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2024 — 2025</div>
+            <div class="timeline-role">Brand Ambassador & Youth Engagement Strategist</div>
+            <div class="timeline-company">Lottomoto / eBet Kenya</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2022 — 2024</div>
+            <div class="timeline-role">Marketing & Business Development Associate</div>
+            <div class="timeline-company">Africa Risk Management & Compliance Partners · Remote</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2022 — 2023</div>
+            <div class="timeline-role">News Reporter</div>
+            <div class="timeline-company">Citizen TV Kenya (Royal Media Services)</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2021 — 2022</div>
+            <div class="timeline-role">Radio & TV Host</div>
+            <div class="timeline-company">TIBS TV & TIBS FM · Thika</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2021</div>
+            <div class="timeline-role">Regional Communications Support</div>
+            <div class="timeline-company">Global Cyber Alliance · Remote / London</div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-in">
+        <div class="section-tag">Capabilities</div>
+        <h2 class="section-title">Skills</h2>
+        <p class="section-sub">&nbsp;</p>
+        <div class="skills-grid" style="grid-template-columns:1fr 1fr">
+          <div class="skill-group">
+            <h3>Media</h3>
+            <ul class="skill-list">
+              <li>TV Hosting</li>
+              <li>News Reporting</li>
+              <li>Radio Presenting</li>
+              <li>Live Broadcasting</li>
+              <li>Video Production</li>
+              <li>Script Writing</li>
+              <li>Event Hosting / MC</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Digital & Tech</h3>
+            <ul class="skill-list">
+              <li>AI Automation</li>
+              <li>Next.js</li>
+              <li>Cloudflare Workers</li>
+              <li>Supabase</li>
+              <li>Meta Graph API</li>
+              <li>SEO & WordPress</li>
+              <li>Prompt Engineering</li>
+            </ul>
+          </div>
+          <div class="skill-group" style="margin-top:1.5rem">
+            <h3>Strategy</h3>
+            <ul class="skill-list">
+              <li>Content Strategy</li>
+              <li>Brand Strategy</li>
+              <li>Social Media Mgmt</li>
+              <li>Campaign Planning</li>
+              <li>B2B Marketing</li>
+            </ul>
+          </div>
+          <div class="skill-group" style="margin-top:1.5rem">
+            <h3>Credentials</h3>
+            <ul class="skill-list">
+              <li>Meta Certified</li>
+              <li>Google Dig. Mktg</li>
+              <li>TIBS Valedictorian</li>
+              <li>Published Author</li>
+              <li>Published Researcher</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="fade-in">
+        <div class="section-tag">Let's Talk</div>
+        <h2 class="section-title">Open to the right opportunities</h2>
+        <p class="contact-text">I'm actively exploring roles — remote or hybrid — in digital media, content strategy, AI content production, brand communications, and social media leadership.</p>
+        <p class="contact-text" style="color:var(--muted)">If your team needs someone who can both think and execute, we should talk.</p>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:euginemicah@gmail.com">
+            <span class="contact-link-icon">✉</span>
+            euginemicah@gmail.com
+          </a>
+          <a class="contact-link" href="https://linkedin.com/in/euginemicah" target="_blank">
+            <span class="contact-link-icon">in</span>
+            linkedin.com/in/euginemicah
+          </a>
+          <a class="contact-link" href="https://github.com/eugineous" target="_blank">
+            <span class="contact-link-icon">⌥</span>
+            github.com/eugineous
+          </a>
+          <a class="contact-link" href="https://www.euginemicah.tech" target="_blank">
+            <span class="contact-link-icon">◎</span>
+            euginemicah.tech
+          </a>
+        </div>
+      </div>
+      <div class="fade-in">
+        <div class="contact-form">
+          <input type="text" placeholder="Your Name">
+          <input type="email" placeholder="Your Email">
+          <input type="text" placeholder="Subject">
+          <textarea placeholder="Your message..."></textarea>
+          <button type="submit">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Eugine Micah</div>
+    <p class="footer-tagline">TV Host · AI Builder · Storyteller · Nairobi, Kenya</p>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#shows">Shows</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="mailto:euginemicah@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/euginemicah" target="_blank">LinkedIn</a>
+      <a href="https://github.com/eugineous" target="_blank">GitHub</a>
+    </div>
+    <p class="footer-copy">&copy; 2025 Eugine Micah. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Typewriter
+  const titles=['TV Host & Co-Host of Urban News','AI Content Systems Builder','Digital Media Strategist','Journalist & Storyteller','Founder · Urban Tour','Podcast Host · Author'];
+  let ti=0,ci=0,del=false,el=document.getElementById('typed');
+  function type(){
+    const t=titles[ti];
+    if(!del){
+      el.textContent=t.slice(0,++ci);
+      if(ci===t.length){del=true;setTimeout(type,2200);return}
+    } else {
+      el.textContent=t.slice(0,--ci);
+      if(ci===0){del=false;ti=(ti+1)%titles.length}
+    }
+    setTimeout(type,del?40:70);
+  }
+  type();
+
+  // Fade in on scroll
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+  },{threshold:0.1});
+  document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

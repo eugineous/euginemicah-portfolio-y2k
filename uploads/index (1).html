@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eugine Micah | Broadcast Journalist, TV Presenter, Digital Strategist</title>
+<meta name="description" content="Eugine Micah is a Kenyan broadcast journalist, TV presenter, and digital strategist. Head of Digital and presenter at PPP TV, host of Urban News and Campus Xposure, founder of Roylandz Media.">
+<meta name="author" content="Eugine Micah">
+<meta property="og:title" content="Eugine Micah | Journalist, TV Presenter, Digital Strategist">
+<meta property="og:description" content="Born in Kisumu. Raised in Lugari. Built loud. Host of Urban News on PPP TV, founder of Roylandz Media.">
+<meta property="og:type" content="profile">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Eugine Micah",
+  "alternateName": "Eugine Roylandz",
+  "jobTitle": "Broadcast Journalist, TV Presenter, Digital Strategist",
+  "worksFor": { "@type": "Organization", "name": "PPP TV" },
+  "founder": { "@type": "Organization", "name": "Roylandz Media" },
+  "birthPlace": "Kisumu, Kenya",
+  "address": { "@type": "PostalAddress", "addressLocality": "Nairobi", "addressCountry": "KE" },
+  "email": "eugine.micah@outlook.com",
+  "telephone": "+254799886247",
+  "url": "https://www.euginemicah.tech",
+  "sameAs": [
+    "https://www.instagram.com/eugine.micah/",
+    "https://www.linkedin.com/in/euginemicah/",
+    "https://www.youtube.com/@urbannewsgang"
+  ]
+}
+</script>
+<style>
+  :root{
+    --bg:#0a0b0a;
+    --bg-2:#101210;
+    --ink:#f4f5ef;
+    --muted:#9aa091;
+    --lime:#c8f135;
+    --lime-dim:#8fae26;
+    --line:rgba(244,245,239,.10);
+    --card:#13150f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Hanken Grotesk",sans-serif;
+    line-height:1.55;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* film grain + glow atmosphere */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  body::after{
+    content:"";position:fixed;top:-30%;left:-10%;width:60%;height:80%;z-index:0;pointer-events:none;
+    background:radial-gradient(closest-side,rgba(200,241,53,.10),transparent 70%);
+    filter:blur(20px);
+  }
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,.display{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;letter-spacing:-.02em;line-height:.98}
+  .lime{color:var(--lime)}
+  .eyebrow{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--lime);font-weight:600}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(10px);
+    background:rgba(10,11,10,.6);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:"Bricolage Grotesque";font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
+  .brand .dot{color:var(--lime)}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-size:.84rem;color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{border:1px solid var(--lime);color:var(--lime);padding:9px 18px;border-radius:100px;font-size:.8rem;font-weight:600;transition:.2s}
+  .nav-cta:hover{background:var(--lime);color:#0a0b0a}
+  .burger{display:none;background:none;border:0;color:var(--ink);font-size:1.5rem;cursor:pointer}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 70px;position:relative}
+  .live-badge{display:inline-flex;align-items:center;gap:9px;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+  .live-dot{width:9px;height:9px;border-radius:50%;background:#ff3b3b;box-shadow:0 0 0 0 rgba(255,59,59,.6);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,59,59,.55)}70%{box-shadow:0 0 0 10px rgba(255,59,59,0)}100%{box-shadow:0 0 0 0 rgba(255,59,59,0)}}
+  .hero h1{font-size:clamp(3.2rem,11vw,9.5rem);text-transform:uppercase}
+  .hero h1 span{display:block}
+  .hero .built{color:var(--lime);text-shadow:0 0 40px rgba(200,241,53,.25)}
+  .hero-sub{margin-top:26px;max-width:560px;font-size:1.12rem;color:var(--muted)}
+  .hero-sub b{color:var(--ink);font-weight:600}
+  .hero-meta{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px}
+  .pill{border:1px solid var(--line);border-radius:100px;padding:8px 16px;font-size:.8rem;color:var(--muted)}
+  .pill b{color:var(--ink)}
+  .hero-cta{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{padding:14px 28px;border-radius:100px;font-weight:600;font-size:.92rem;transition:.22s;cursor:pointer;border:1px solid transparent;display:inline-block}
+  .btn-primary{background:var(--lime);color:#0a0b0a}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(200,241,53,.25)}
+  .btn-ghost{border-color:var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--ink)}
+  .tagline-mark{position:absolute;right:0;bottom:60px;writing-mode:vertical-rl;font-family:"Bricolage Grotesque";font-weight:700;font-size:.8rem;letter-spacing:.3em;text-transform:uppercase;color:var(--lime-dim);opacity:.7}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  section{padding:96px 0;position:relative}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:52px;flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(2rem,5vw,3.6rem);text-transform:uppercase}
+  .sec-head p{color:var(--muted);max-width:420px;font-size:1rem}
+
+  /* MARQUEE */
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;overflow:hidden;white-space:nowrap}
+  .marquee-track{display:inline-block;animation:scroll 26s linear infinite;font-family:"Bricolage Grotesque";font-weight:700;font-size:1.5rem;text-transform:uppercase;letter-spacing:.02em}
+  .marquee-track span{margin:0 26px;color:var(--ink)}
+  .marquee-track .x{color:var(--lime)}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .stat{padding:40px 28px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat .num{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(2.4rem,5vw,3.4rem);color:var(--lime);line-height:1}
+  .stat .lbl{margin-top:10px;color:var(--muted);font-size:.9rem}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:center}
+  .about-grid p{color:var(--muted);font-size:1.08rem;margin-bottom:18px}
+  .about-grid p b{color:var(--ink);font-weight:600}
+  .about-quote{font-family:"Bricolage Grotesque";font-weight:700;font-size:1.5rem;line-height:1.25;border-left:3px solid var(--lime);padding-left:22px;margin:30px 0;color:var(--ink)}
+  .about-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:36px}
+  .about-card h3{font-size:1.3rem;margin-bottom:22px}
+  .fact{display:flex;justify-content:space-between;gap:20px;padding:13px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+  .fact:last-child{border-bottom:0}
+  .fact .k{color:var(--muted)}
+  .fact .v{color:var(--ink);font-weight:600;text-align:right}
+
+  /* SHOWS */
+  .shows{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .show{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px;position:relative;overflow:hidden;transition:.3s}
+  .show:hover{border-color:var(--lime-dim);transform:translateY(-4px)}
+  .show .tag{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);font-weight:600}
+  .show h3{font-size:1.8rem;margin:14px 0 12px;text-transform:uppercase}
+  .show p{color:var(--muted);font-size:.97rem}
+  .show .meta{margin-top:20px;font-size:.82rem;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap}
+  .show .meta b{color:var(--ink)}
+  .show .num-bg{position:absolute;top:-20px;right:14px;font-family:"Bricolage Grotesque";font-weight:800;font-size:7rem;color:rgba(244,245,239,.03);line-height:1}
+
+  /* JOURNEY */
+  .timeline{position:relative;margin-top:10px}
+  .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .tl{position:relative;padding:0 0 38px 44px}
+  .tl::before{content:"";position:absolute;left:0;top:5px;width:20px;height:20px;border-radius:50%;background:var(--bg);border:2px solid var(--lime)}
+  .tl .yr{font-family:"Bricolage Grotesque";font-weight:800;color:var(--lime);font-size:1rem}
+  .tl h3{font-size:1.25rem;margin:4px 0 6px}
+  .tl p{color:var(--muted);font-size:.96rem;max-width:640px}
+
+  /* SERVICES */
+  .svc{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .svc-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px;transition:.25s}
+  .svc-card:hover{border-color:var(--lime-dim)}
+  .svc-card h3{font-size:1.2rem;margin-bottom:8px}
+  .svc-card p{color:var(--muted);font-size:.92rem;min-height:48px}
+  .svc-card .rate{margin-top:16px;color:var(--lime);font-weight:600;font-family:"Bricolage Grotesque";font-size:1.05rem}
+
+  /* ROYLANDZ */
+  .roy{background:linear-gradient(135deg,#13150f,#0c0d0a);border:1px solid var(--line);border-radius:22px;padding:56px;text-align:center}
+  .roy .eyebrow{margin-bottom:18px;display:block}
+  .roy h2{font-size:clamp(2rem,5vw,3.4rem);text-transform:uppercase;margin-bottom:18px}
+  .roy p{color:var(--muted);max-width:620px;margin:0 auto 26px;font-size:1.06rem}
+
+  /* CONTACT */
+  .contact{text-align:center;padding-bottom:40px}
+  .contact h2{font-size:clamp(2.4rem,7vw,5.5rem);text-transform:uppercase;margin-bottom:18px}
+  .contact .mail{font-family:"Bricolage Grotesque";font-weight:700;font-size:clamp(1.3rem,4vw,2.4rem);color:var(--lime);display:inline-block;margin:12px 0;transition:.2s}
+  .contact .mail:hover{letter-spacing:.01em;text-shadow:0 0 30px rgba(200,241,53,.4)}
+  .contact .ph{color:var(--muted);font-size:1.1rem}
+
+  footer{border-top:1px solid var(--line);padding:40px 0;margin-top:30px}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  .socials{display:flex;gap:24px}
+  .socials a{color:var(--muted);font-size:.86rem;transition:.2s}
+  .socials a:hover{color:var(--lime)}
+  .copyright{color:var(--muted);font-size:.82rem}
+
+  @media(max-width:860px){
+    .nav-links{display:none}
+    .burger{display:block}
+    .about-grid{grid-template-columns:1fr;gap:36px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(2){border-right:0}
+    .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+    .shows{grid-template-columns:1fr}
+    .svc{grid-template-columns:1fr}
+    .roy{padding:36px 24px}
+    .tagline-mark{display:none}
+    section{padding:70px 0}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">EUGINE MICAH<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#shows">Shows</a>
+      <a href="#journey">Journey</a>
+      <a href="#book">Book Me</a>
+      <a href="#contact" class="nav-cta">Let's Talk</a>
+    </div>
+    <button class="burger" aria-label="menu" onclick="document.querySelector('.nav-links').style.display='flex';this.style.display='none'">&#9776;</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="live-badge"><span class="live-dot"></span> On air, weekdays, PPP TV</div>
+    <h1>
+      <span>Born</span>
+      <span>Broke<span class="lime">.</span></span>
+      <span class="built">Built Loud<span style="color:var(--ink)">.</span></span>
+    </h1>
+    <p class="hero-sub">I'm <b>Eugine Micah</b>, a Kenyan broadcast journalist, TV presenter, and digital strategist. I tell stories that move people and grow brands, from a mud floor in Lugari to a studio reaching millions.</p>
+    <div class="hero-meta">
+      <span class="pill"><b>Head of Digital</b> &amp; Presenter, PPP TV</span>
+      <span class="pill">Host, <b>Urban News</b></span>
+      <span class="pill">Founder, <b>Roylandz Media</b></span>
+    </div>
+    <div class="hero-cta">
+      <a href="#book" class="btn btn-primary">Book me for your event</a>
+      <a href="#shows" class="btn btn-ghost">Watch the shows</a>
+    </div>
+  </div>
+  <div class="tagline-mark">Build it. Brand it. Believe it.</div>
+</header>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Urban News</span><span class="x">&times;</span><span>Campus Xposure</span><span class="x">&times;</span><span>The Nairobi Podcast</span><span class="x">&times;</span><span>Roylandz Media</span><span class="x">&times;</span><span>PPP TV</span><span class="x">&times;</span>
+    <span>Urban News</span><span class="x">&times;</span><span>Campus Xposure</span><span class="x">&times;</span><span>The Nairobi Podcast</span><span class="x">&times;</span><span>Roylandz Media</span><span class="x">&times;</span><span>PPP TV</span><span class="x">&times;</span>
+  </div>
+</div>
+
+<section id="stats">
+  <div class="wrap reveal">
+    <div class="stats">
+      <div class="stat"><div class="num">700K+</div><div class="lbl">YouTube subscribers grown</div></div>
+      <div class="stat"><div class="num">20M+</div><div class="lbl">Monthly views</div></div>
+      <div class="stat"><div class="num">2M+</div><div class="lbl">Urban News weekly viewers</div></div>
+      <div class="stat"><div class="num">2024</div><div class="lbl">TIBS College valedictorian</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>The Story<br>So Far</h2>
+      <p>Not the highlight reel. The whole film. The mud, the laughter, the hunger, the hustle, the comeback.</p>
+    </div>
+    <div class="about-grid reveal">
+      <div>
+        <p>I was born in Kisumu on Christmas Eve and raised in Lugari, Kakamega County, in a home where a kerosene lamp did the work a streetlight does for other kids. I grew up answering to a name that sounded like a prophecy and a place, <b>Kemoview</b>, that my grandfather literally built and the village named after him.</p>
+        <p>That noise I carried as a boy became a brand before I knew what a brand was. It became <b>Roylandz</b>. Then it became Eugine Micah again, this time on national TV.</p>
+        <div class="about-quote">"The world listens louder when you speak from scars, not ego."</div>
+        <p>Today I co-host <b>Urban News</b> with Lucy Ogunde, run <b>Campus Xposure</b>, co-host <b>The Nairobi Podcast</b>, and lead digital strategy at PPP TV. I work where media, marketing, and technology meet, and I'm building the case for African storytelling in the age of AI.</p>
+      </div>
+      <div class="about-card">
+        <h3>Quick Facts</h3>
+        <div class="fact"><span class="k">Based in</span><span class="v">Nairobi, Kenya</span></div>
+        <div class="fact"><span class="k">From</span><span class="v">Lugari, Kakamega</span></div>
+        <div class="fact"><span class="k">Languages</span><span class="v">English &amp; Swahili</span></div>
+        <div class="fact"><span class="k">Role</span><span class="v">Head of Digital, PPP TV</span></div>
+        <div class="fact"><span class="k">Founder</span><span class="v">Roylandz Media</span></div>
+        <div class="fact"><span class="k">Available for</span><span class="v">East Africa &amp; global</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="shows">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Shows &amp;<br>Formats</h2>
+      <p>Fast, funny, and rooted in Kenyan culture. Built for the audience that actually watches.</p>
+    </div>
+    <div class="shows">
+      <div class="show reveal">
+        <div class="num-bg">01</div>
+        <div class="tag">PPP TV &middot; Flagship</div>
+        <h3>Urban News</h3>
+        <p>The youth news show I co-host with Lucy Ogunde. Entertainment, technology, and the conversations Kenya is actually having, weekdays.</p>
+        <div class="meta"><span><b>2M+</b> weekly viewers</span><span>Weekdays 2PM &amp; 7:30PM EAT</span></div>
+      </div>
+      <div class="show reveal">
+        <div class="num-bg">02</div>
+        <div class="tag">PPP TV &middot; On the road</div>
+        <h3>Campus Xposure</h3>
+        <p>A TV series spotlighting student culture and innovation across Kenyan universities and colleges. Field interviews, travel episodes, real campus energy.</p>
+        <div class="meta"><span>Campus tour format</span><span>Field &amp; studio</span></div>
+      </div>
+      <div class="show reveal">
+        <div class="num-bg">03</div>
+        <div class="tag">Podcast</div>
+        <h3>The Nairobi Podcast</h3>
+        <p>A youth-driven podcast on Nairobi's creative economy, mental health, lifestyle, and digital culture. I lead content planning, scripting, and the final cut.</p>
+        <div class="meta"><span>Spotify &amp; Amazon Music</span><span>PPP TV production</span></div>
+      </div>
+      <div class="show reveal">
+        <div class="num-bg">04</div>
+        <div class="tag">Where it started</div>
+        <h3>The Overview Show</h3>
+        <p>My first campus livestream concept, born at TIBS under the name Eugine Roylandz. A two-year weekly run that taught me how to build an audience from nothing.</p>
+        <div class="meta"><span>Founding format</span><span>Campus media</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>The Climb</h2>
+      <p>From a borrowed name and a borrowed mic to a national newsroom.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl"><div class="yr">2001</div><h3>A birth in Kisumu</h3><p>Born on Christmas Eve, wrapped in a jacket instead of a blanket, then raised in Lugari, Kakamega County, where the dust taught me to want more.</p></div>
+      <div class="tl"><div class="yr">2020 &ndash; 2022</div><h3>TIBS College, where the voice was found</h3><p>Hosted and produced Rhumba Jouissance, The Overview Show, and TIBS Got Talent on TIBS FM and TIBS TV. Edited the news magazine. Learned the craft by doing it live.</p></div>
+      <div class="tl"><div class="yr">2023</div><h3>Citizen TV, the newsroom test</h3><p>Reporting at Royal Media Services. Field assignments, live events, and the discipline of a real national newsroom.</p></div>
+      <div class="tl"><div class="yr">2024</div><h3>Valedictorian, then PPP TV</h3><p>Graduated top of my class and stepped into Urban News and Campus Xposure as Head of Digital, helping grow the channel to 700K-plus subscribers.</p></div>
+      <div class="tl"><div class="yr">Now</div><h3>Roylandz Media &amp; the AI era</h3><p>Building formats, mentoring young creators, and championing AI for African storytelling. Same DNA as my grandfather: he built shops, I build stories.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Book Me</h2>
+      <p>You're not just booking a host. You're booking a storyteller, a strategist, and a partner who amplifies your brand.</p>
+    </div>
+    <div class="svc">
+      <div class="svc-card reveal"><h3>Event Hosting &amp; MC</h3><p>Corporate events, launches, awards, weddings, pageants, and brand activations.</p><div class="rate">From 35,000 KSh</div></div>
+      <div class="svc-card reveal"><h3>Campus &amp; Youth Events</h3><p>Orientations, galas, student festivals, and the rooms where Gen Z actually shows up.</p><div class="rate">From 25,000 KSh</div></div>
+      <div class="svc-card reveal"><h3>Virtual &amp; Hybrid</h3><p>Webinars, live streams, and online summits hosted with broadcast polish.</p><div class="rate">From 20,000 KSh</div></div>
+      <div class="svc-card reveal"><h3>Content &amp; Digital Strategy</h3><p>Audience growth, social optimization, and brand content built to perform.</p><div class="rate">80,000 &ndash; 150,000 KSh</div></div>
+      <div class="svc-card reveal"><h3>Host Coaching &amp; Training</h3><p>Executive and student presenter development, on camera and on stage.</p><div class="rate">25,000 &ndash; 40,000 KSh / session</div></div>
+      <div class="svc-card reveal"><h3>Podcast &amp; Interview Production</h3><p>Setup, hosting, and direction for shows that sound and look professional.</p><div class="rate">50,000 &ndash; 100,000 KSh</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="roylandz">
+  <div class="wrap reveal">
+    <div class="roy">
+      <span class="eyebrow">The Company</span>
+      <h2>Roylandz Media</h2>
+      <p>The brand that grew out of a nickname. Roylandz Media helps businesses, events, and institutions tell their story with authenticity, strategy, and digital innovation. We produce TV and online content that puts African youth voices front and center.</p>
+      <a href="#contact" class="btn btn-primary">Work with us</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap reveal">
+    <span class="eyebrow">For bookings &amp; collaborations</span>
+    <h2>Let's Build<br>Something Loud</h2>
+    <p class="ph">Nairobi, Kenya &middot; Available across East Africa and internationally</p>
+    <a href="mailto:eugine.micah@outlook.com" class="mail">eugine.micah@outlook.com</a>
+    <p class="ph"><a href="tel:+254799886247">+254 799 886 247</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="copyright">&copy; <span id="yr"></span> Eugine Micah. Build it. Brand it. Believe it.</div>
+    <div class="socials">
+      <a href="https://www.instagram.com/eugine.micah/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/in/euginemicah/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.youtube.com/@urbannewsgang" target="_blank" rel="noopener">YouTube</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(i%4*80)+'ms'; obs.observe(el); });
+  document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+    if(window.innerWidth<=860){ document.querySelector('.nav-links').style.display='none'; document.querySelector('.burger').style.display='block'; }
+  }));
+</script>
+</body>
+</html>

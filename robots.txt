@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /docs/
+Disallow: /uploads/
+
+Sitemap: https://euginemicah.tech/sitemap.xml

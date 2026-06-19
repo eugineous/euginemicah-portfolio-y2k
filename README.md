@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Eugine Micah — The Official Estate
 
-## Getting Started
+A premium vintage personal-brand website for **Eugine Micah** — Kenyan broadcast journalist, author, speaker, and curator of culture. Head of Digital at PPP TV. Founder of Roylandz Media. Co-founder of Urban Gang Tour.
 
-First, run the development server:
+> **Build it · Brand it · Believe it.**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## What this is
+
+A seven-page static website built to read like a private maison — warm noir base, parchment cream, champagne gold, oxblood accents. Editorial typography (Bodoni Moda + EB Garamond), Roman-numeral chapters, gold rules, and slow cinematic reveals. The aesthetic reference is Don Julio's official site; the voice is funny-but-serious, never corporate, never filler.
+
+No build step. No frameworks. Open `index.html` and the site runs.
+
+---
+
+## Pages
+
+| File             | Chapter | Purpose                                                              |
+|------------------|---------|----------------------------------------------------------------------|
+| `index.html`     | Home    | Hero, four chairs, metrics, story teaser, selected work, memoir CTA  |
+| `story.html`     | II      | Long-form magazine profile · drop caps · pull quotes · dossier       |
+| `work.html`      | III     | The four chairs in detail · Urban News · Tour · Roylandz · Speaker   |
+| `book.html`      | IV      | *Born Broke. Built Loud.* · 3D book mockup · chapters · prologue     |
+| `press.html`     | V       | Press recognition list · press-kit request                           |
+| `booking.html`   | VI      | Services · rates · inquiry form                                      |
+| `contact.html`   | VII     | The line. Email, phone, socials.                                     |
+
+Plus `404.html` for missing routes.
+
+---
+
+## Project structure
+
+```
+.
+├── index.html
+├── story.html
+├── work.html
+├── book.html
+├── press.html
+├── booking.html
+├── contact.html
+├── 404.html
+├── robots.txt
+├── sitemap.xml
+├── assets/
+│   ├── em.css                  ← design system + all page styles
+│   ├── em.js                   ← masthead, reveal, back-to-top
+│   ├── em-monogram.png         ← black EM crown
+│   ├── em-wordmark.png         ← red crown + EUGINE MICAH wordmark
+│   ├── em-graduation.jpg       ← milestone photograph
+│   ├── em-portrait-suit.png    ← formal portrait
+│   ├── em-headshot-circle.png  ← press headshot
+│   ├── em-blue-knit.png        ← editorial portrait
+│   ├── em-varsity-a / b.png    ← varsity portraits
+│   ├── studio-*.jpeg           ← Urban News studio plates
+│   └── logo-*.png              ← brand partner logos
+└── docs/
+    ├── BRAND.md                ← voice, type, color, photography
+    ├── SITEMAP.md              ← page hierarchy
+    ├── CONTENT.md              ← copy inventory & source citations
+    └── DEPLOY.md               ← deployment instructions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This is a static site. Drop it on any static host.
 
-## Learn More
+- **Netlify / Vercel / Cloudflare Pages** — connect the repo, point the build at root, no build command needed. Publish directory is `.`
+- **GitHub Pages** — enable Pages on the main branch, root folder.
+- **Custom host (euginemicah.tech)** — upload contents of the repo root to `public_html/`. No server-side anything required.
 
-To learn more about Next.js, take a look at the following resources:
+See `docs/DEPLOY.md` for fuller notes.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Local preview
 
-## Deploy on Vercel
+```bash
+# any tiny static server works
+python3 -m http.server 8080
+# then open http://localhost:8080
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Or just double-click `index.html`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Editing content
+
+All text lives inline in the HTML files. There is no CMS by design — the site is small, the voice is precise, and a CMS would dilute both.
+
+When you need to update copy, follow the **voice and tone guide** in `docs/BRAND.md`. The most important rule: no em-dashes anywhere. Use commas, periods, or start a new sentence.
+
+---
+
+## Credits
+
+- **Subject** — Eugine Micah · Nairobi, Kenya
+- **Design system** — bespoke premium vintage editorial
+- **Type** — Bodoni Moda, EB Garamond, Pinyon Script (Google Fonts)
+- **Build** — handwritten static HTML/CSS/JS · zero dependencies
+
+© MMXXVI Eugine Micah. All rights reserved.
