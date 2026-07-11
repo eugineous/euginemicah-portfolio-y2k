@@ -1,8 +1,5 @@
 {
   "framework": "nextjs",
-  "crons": [
-    { "path": "/api/cron/post-due", "schedule": "*/15 * * * *" }
-  ],
   "headers": [
     {
       "source": "/(.*)",
