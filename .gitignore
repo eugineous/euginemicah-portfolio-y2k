@@ -5,3 +5,7 @@ Thumbs.db
 .DS_Store
 uploads/
 .thumbnail
+public/
+.env*
+!.env.example
+linkedin-export/
