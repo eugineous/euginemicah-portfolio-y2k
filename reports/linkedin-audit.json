@@ -1,0 +1,5 @@
+{
+  "generated": "2026-07-11T18:07:02.273Z",
+  "status": "awaiting_export",
+  "message": "LinkedIn export not found in ./linkedin-export. Upload it (see FINAL_CHECKLIST.md) and rerun: npm run analyze-linkedin"
+}

@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=Permanent+Marker&family=Caveat:wght@700&display=swap');
+@import "tailwindcss";
+
+/* euginemicah.tech design tokens (mirrors assets/em.css poster palette) */
+:root {
+  --pink: #ff15a6;
+  --blue: #2b3bff;
+  --cyan: #00c9b7;
+  --yellow: #ffd60a;
+  --purple: #a31fff;
+  --onyx: #121016;
+  --onyx-2: #1c1922;
+  --cream: #fff6e9;
+  --f-smash: 'Anton', 'Archivo Black', sans-serif;
+  --f-body: 'Archivo', system-ui, sans-serif;
+  --f-mark: 'Permanent Marker', cursive;
+}
+
+body { background: var(--onyx); color: var(--cream); font-family: var(--f-body); }
+
+.em-smash { font-family: var(--f-smash); text-transform: uppercase; letter-spacing: .01em; }
+.em-mark { font-family: var(--f-mark); }
+.em-card { background: var(--onyx-2); border: 1px solid #2a2633; border-radius: 14px; }
+.em-btn { background: var(--pink); color: #fff; font-weight: 800; border-radius: 10px; padding: 9px 16px; font-size: 13px; }
+.em-btn:hover { background: var(--pink); filter: brightness(1.12); }
+.em-btn-ghost { background: transparent; border: 1px solid #3a3545; color: var(--cream); font-weight: 700; border-radius: 10px; padding: 9px 16px; font-size: 13px; }
+.em-btn-ghost:hover { border-color: var(--pink); color: #fff; }
+.em-chip { border-radius: 999px; padding: 3px 10px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+.em-input { background: #17141d; border: 1px solid #2a2633; border-radius: 10px; padding: 10px 12px; color: var(--cream); font-size: 14px; width: 100%; }
+.em-input:focus { outline: none; border-color: var(--pink); }
+.em-th { text-align: left; padding: 8px 10px; font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; color: #8d879c; border-bottom: 1px solid #2a2633; white-space: nowrap; }
+.em-td { padding: 9px 10px; font-size: 13px; border-bottom: 1px solid #221e2b; vertical-align: top; }

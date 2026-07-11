@@ -1,0 +1,13 @@
+name = "em-poster-cron"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+[triggers]
+crons = ["*/15 * * * *"]
+
+[vars]
+SITE_URL = "https://euginemicah.tech"
+
+# CRON_SECRET is a secret, not a var — set it with:
+#   wrangler secret put CRON_SECRET
+# (paste the same value you set as CRON_SECRET in Vercel env vars)
