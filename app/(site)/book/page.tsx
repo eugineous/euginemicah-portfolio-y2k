@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { chaptersData, bookProduct, fmtKES } from '@/content/em-site-data';
-import { PreorderForm } from '../../_components/PreorderForm';
+import { BuyBookForm } from '../../_components/BuyBookForm';
 
 export const metadata: Metadata = {
-  title: 'Born Broke. Built Loud. — Pre-order the Memoir',
-  description: 'Pre-order Born Broke. Built Loud., Eugine Micah’s memoir — seven parts, forty-five chapters, from a kerosene-lit childhood in Lugari to the Urban News desk. Free to reserve, no charge until it ships.',
+  title: 'Born Broke. Built Loud. — Buy the Memoir',
+  description: 'Born Broke. Built Loud., Eugine Micah’s memoir — seven parts, forty-five chapters, from a kerosene-lit childhood in Lugari to the Urban News desk. Instant digital download.',
   alternates: { canonical: '/book' },
 };
 
@@ -27,7 +27,7 @@ export default function BookPage() {
             </div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
-            <p style={{ margin: 0, fontFamily: "'Spline Sans Mono'", fontSize: 12, letterSpacing: '.22em', textTransform: 'uppercase', color: '#D9A621', fontWeight: 600 }}>The Memoir · Pre-order now</p>
+            <p style={{ margin: 0, fontFamily: "'Spline Sans Mono'", fontSize: 12, letterSpacing: '.22em', textTransform: 'uppercase', color: '#D9A621', fontWeight: 600 }}>The Memoir · Out now</p>
             <h1 style={{ margin: 0, fontFamily: "'Bricolage Grotesque'", fontWeight: 800, fontSize: 'clamp(44px,5.6vw,84px)', lineHeight: .98, letterSpacing: '-.02em' }}>Born Broke. Built Loud.</h1>
             <p style={{ margin: 0, maxWidth: 600, fontFamily: "'Newsreader'", fontStyle: 'italic', fontSize: 19, lineHeight: 1.6, color: '#CFC7B6' }}>{bookProduct.subtitle}</p>
             <p style={{ margin: 0, maxWidth: 600, fontFamily: "'Newsreader'", fontSize: 18, lineHeight: 1.75, color: '#CFC7B6' }}>Seven parts. Forty-five chapters. One boy carried from Kisumu to Lugari to a national newsroom by a mouth his teachers called a problem and his bank account now calls a strategy. It is funny because it is true, and it is true because I kept the receipts.</p>
@@ -36,8 +36,8 @@ export default function BookPage() {
               <p style={{ margin: 0, fontFamily: "'Spline Sans Mono'", fontSize: 11, letterSpacing: '.16em', textTransform: 'uppercase', color: '#8B8272' }}>&mdash; Part One · The Kerosene Years</p>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap', marginTop: 6 }}>
-              <span style={{ fontFamily: "'Bricolage Grotesque'", fontWeight: 800, fontSize: 26 }}>{fmtKES(bookProduct.price)} <span style={{ fontFamily: "'Newsreader'", fontStyle: 'italic', fontWeight: 400, fontSize: 16, color: '#8B8272' }}>— expected price, pre-order is free to reserve</span></span>
-              <a href="#preorder" style={{ padding: '15px 28px', background: '#D9A621', color: '#191613', fontFamily: "'Spline Sans Mono'", fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase' }}>Reserve my copy &rarr;</a>
+              <span style={{ fontFamily: "'Bricolage Grotesque'", fontWeight: 800, fontSize: 26 }}>{fmtKES(bookProduct.price)}</span>
+              <a href="#buy" style={{ padding: '15px 28px', background: '#D9A621', color: '#191613', fontFamily: "'Spline Sans Mono'", fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase' }}>Buy now &rarr;</a>
             </div>
           </div>
         </div>
@@ -70,16 +70,16 @@ export default function BookPage() {
         </div>
       </section>
 
-      {/* PRE-ORDER */}
-      <section id="preorder" style={{ background: '#EFE6D2' }}>
+      {/* BUY */}
+      <section id="buy" style={{ background: '#EFE6D2' }}>
         <div style={{ maxWidth: 720, margin: '0 auto', padding: '90px 28px' }}>
           <div style={{ border: '2px solid #191613', padding: 44, background: '#F6F0E2' }}>
-            <p style={{ margin: '0 0 10px', fontFamily: "'Spline Sans Mono'", fontSize: 12, letterSpacing: '.22em', textTransform: 'uppercase', color: '#C03B22', fontWeight: 600 }}>Pre-order · Free to reserve</p>
-            <h2 style={{ margin: '0 0 8px', fontFamily: "'Bricolage Grotesque'", fontWeight: 800, fontSize: 'clamp(28px,3vw,42px)' }}>Get first dibs on the first print run.</h2>
+            <p style={{ margin: '0 0 10px', fontFamily: "'Spline Sans Mono'", fontSize: 12, letterSpacing: '.22em', textTransform: 'uppercase', color: '#C03B22', fontWeight: 600 }}>Buy · {fmtKES(bookProduct.price)}</p>
+            <h2 style={{ margin: '0 0 8px', fontFamily: "'Bricolage Grotesque'", fontWeight: 800, fontSize: 'clamp(28px,3vw,42px)' }}>Read it tonight.</h2>
             <p style={{ margin: '0 0 30px', fontFamily: "'Newsreader'", fontStyle: 'italic', fontSize: 16, lineHeight: 1.6, color: '#4A4237' }}>
-              This is an interest list, not a checkout &mdash; no payment is taken today. Reserve your spot and you&rsquo;ll be emailed the moment copies are ready, at the expected price of {fmtKES(bookProduct.price)}.
+              Instant PDF download after payment &mdash; the link lands on the next screen and stays valid for 48 hours.
             </p>
-            <PreorderForm />
+            <BuyBookForm />
           </div>
         </div>
       </section>

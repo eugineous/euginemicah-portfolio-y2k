@@ -18,6 +18,9 @@ const nextConfig = {
       { source: '/shop.html', destination: '/shop', permanent: true },
       { source: '/feed.html', destination: '/journal', permanent: true },
       { source: '/dates.html', destination: '/tour', permanent: true },
+      // The printed book's back-matter text says "euginemicah.tech/booking" —
+      // redirect rather than reprint, since the real route is /book-me.
+      { source: '/booking', destination: '/book-me', permanent: true },
     ];
   },
   async headers() {
