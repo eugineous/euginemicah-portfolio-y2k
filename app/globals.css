@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&family=Permanent+Marker&family=Caveat:wght@700&display=swap');
+/* Marketing site (The Official Channel) — Bricolage Grotesque/Newsreader/Spline Sans Mono.
+   Kept as a separate import from the admin fonts above: /admin (Control Room) still
+   uses --onyx/--cream/em-* below, marketing pages use the --paper/--ink tokens inline. */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Spline+Sans+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 /* euginemicah.tech design tokens (mirrors assets/em.css poster palette) */
@@ -14,9 +18,24 @@
   --f-smash: 'Anton', 'Archivo Black', sans-serif;
   --f-body: 'Archivo', system-ui, sans-serif;
   --f-mark: 'Permanent Marker', cursive;
+
+  /* Marketing site (The Official Channel) — broadsheet palette */
+  --paper: #F6F0E2;
+  --ink: #191613;
+  --ink-soft: #4A4237;
+  --ink-mute: #6E6455;
+  --vermillion: #C03B22;
+  --em-green: #2E5E48;
+  --em-gold: #D9A621;
+  --f-display: 'Bricolage Grotesque', sans-serif;
+  --f-editorial: 'Newsreader', Georgia, serif;
+  --f-label: 'Spline Sans Mono', monospace;
 }
 
 body { background: var(--onyx); color: var(--cream); font-family: var(--f-body); }
+
+@keyframes em-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes em-blink { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
 
 .em-smash { font-family: var(--f-smash); text-transform: uppercase; letter-spacing: .01em; }
 .em-mark { font-family: var(--f-mark); }
