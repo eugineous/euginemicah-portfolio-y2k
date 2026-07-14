@@ -8,19 +8,32 @@ const nextConfig = {
   async redirects() {
     return [
       { source: '/index.html', destination: '/', permanent: true },
-      { source: '/story.html', destination: '/story', permanent: true },
       { source: '/work.html', destination: '/work', permanent: true },
       { source: '/book.html', destination: '/book', permanent: true },
-      { source: '/press.html', destination: '/story', permanent: true },
-      { source: '/booking.html', destination: '/book-me', permanent: true },
-      { source: '/contact.html', destination: '/contact', permanent: true },
-      { source: '/gallery.html', destination: '/gallery', permanent: true },
-      { source: '/shop.html', destination: '/shop', permanent: true },
-      { source: '/feed.html', destination: '/journal', permanent: true },
-      { source: '/dates.html', destination: '/tour', permanent: true },
+      { source: '/story.html', destination: '/about', permanent: true },
+      { source: '/press.html', destination: '/press', permanent: true },
+      { source: '/booking.html', destination: '/work', permanent: true },
+      { source: '/contact.html', destination: '/messages', permanent: true },
+      { source: '/gallery.html', destination: '/about', permanent: true },
+      { source: '/shop.html', destination: '/about', permanent: true },
+      { source: '/feed.html', destination: '/blog', permanent: true },
+      { source: '/dates.html', destination: '/', permanent: true },
+
+      // 2026-07 site rebuild: old page set -> new page set.
+      { source: '/story', destination: '/about', permanent: true },
+      { source: '/tour', destination: '/', permanent: true },
+      { source: '/shop', destination: '/about', permanent: true },
+      { source: '/gallery', destination: '/about', permanent: true },
+      { source: '/contact', destination: '/messages', permanent: true },
+      { source: '/privacy-policy', destination: '/privacy', permanent: true },
+      { source: '/journal', destination: '/blog', permanent: true },
+      { source: '/journal/:slug', destination: '/blog/:slug', permanent: true },
+
       // The printed book's back-matter text says "euginemicah.tech/booking" —
-      // redirect rather than reprint, since the real route is /book-me.
-      { source: '/booking', destination: '/book-me', permanent: true },
+      // redirect rather than reprint. Both old booking routes now point at
+      // /work, the new "work with me" page (replaces /book-me).
+      { source: '/booking', destination: '/work', permanent: true },
+      { source: '/book-me', destination: '/work', permanent: true },
     ];
   },
   async headers() {
