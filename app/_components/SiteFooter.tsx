@@ -1,52 +1,159 @@
-import Link from 'next/link';
+'use client';
 
-const footNav1: [string, string][] = [
-  ['Front Page', '/'], ['The Story', '/story'], ['The Work', '/work'], ['The Tour', '/tour'], ['Journal', '/journal'],
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+
+const pagesLinks: [string, string][] = [
+  ['Home', '/'],
+  ['About', '/about'],
+  ['Shows', '/shows'],
+  ['Book', '/book'],
+  ['Press', '/press'],
+  ['Blog', '/blog'],
 ];
-const footNav2: [string, string][] = [
-  ['Classifieds', '/shop'], ['The Book', '/book'], ['Darkroom', '/gallery'], ['Mailroom', '/contact'],
+
+const connectLinks: [string, string][] = [
+  ['Send a message', '/messages'],
+  ['Roylandz Media', '/roylandz'],
+  ['Work with me', '/work'],
+  ['Book Eugine', '/work#bookings'],
 ];
+
+const legalLinks: [string, string][] = [
+  ['Terms of use', '/terms'],
+  ['Privacy policy', '/privacy'],
+];
+
+function useNairobiClock() {
+  const [time, setTime] = useState('');
+  useEffect(() => {
+    function tick() {
+      setTime(
+        new Date().toLocaleTimeString('en-KE', {
+          hour: '2-digit',
+          minute: '2-digit',
+          timeZone: 'Africa/Nairobi',
+        })
+      );
+    }
+    tick();
+    const id = setInterval(tick, 30000);
+    return () => clearInterval(id);
+  }, []);
+  return time;
+}
+
+const colHeadingStyle: React.CSSProperties = {
+  fontWeight: 800,
+  fontSize: 13,
+  letterSpacing: 1,
+  opacity: 0.55,
+  marginBottom: 14,
+  color: '#FAF4EA',
+};
+
+const linkStyle: React.CSSProperties = { color: '#FAF4EA', fontWeight: 600, fontSize: 15 };
 
 export function SiteFooter() {
+  const nairobiTime = useNairobiClock();
+  const [copied, setCopied] = useState(false);
+  const year = new Date().getFullYear();
+
+  async function copyLink() {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      // clipboard unavailable — no-op
+    }
+  }
+
   return (
-    <footer style={{ background: '#191613', color: '#F6F0E2', borderTop: '2px solid #191613' }}>
-      <div style={{ maxWidth: 1420, margin: '0 auto', padding: '72px 28px 36px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1.4fr) repeat(3,minmax(0,.7fr))', gap: 48, marginBottom: 52 }} className="max-[900px]:!grid-cols-2 max-[560px]:!grid-cols-1">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <span style={{ fontFamily: "'Bricolage Grotesque'", fontWeight: 800, fontSize: 26, letterSpacing: '-.01em' }}>EUGINE MICAH<span style={{ color: '#C03B22' }}>.</span></span>
-            <p style={{ margin: 0, maxWidth: 360, fontFamily: "'Newsreader'", fontSize: 15, lineHeight: 1.7, color: '#A79E8E' }}>
-              The official channel — journalist, author, speaker, curator of culture. Printed in Nairobi, read everywhere. Born Broke. Built Loud.
-            </p>
+    <footer
+      style={{
+        background: '#1B1714',
+        color: '#FAF4EA',
+        padding: '64px 28px 32px',
+        borderTop: '1px solid rgba(250,244,234,0.15)',
+      }}
+    >
+      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+        <div
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(140px, 1fr))', gap: 32, marginBottom: 48 }}
+          className="max-[560px]:!grid-cols-1"
+        >
+          <div>
+            <div style={colHeadingStyle}>PAGES</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {pagesLinks.map(([label, href]) => (
+                <Link key={href} href={href} className="emx-link" style={linkStyle}>
+                  {label}
+                </Link>
+              ))}
+            </div>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
-            <span style={{ fontFamily: "'Spline Sans Mono'", fontSize: 10.5, letterSpacing: '.22em', textTransform: 'uppercase', color: '#D9A621' }}>The Paper</span>
-            {footNav1.map(([label, href]) => (
-              <Link key={href} href={href} style={{ fontFamily: "'Newsreader'", fontSize: 15, color: '#DDD5C4' }}>{label}</Link>
-            ))}
+          <div>
+            <div style={colHeadingStyle}>CONNECT</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {connectLinks.map(([label, href]) => (
+                <Link key={href} href={href} className="emx-link" style={linkStyle}>
+                  {label}
+                </Link>
+              ))}
+            </div>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
-            <span style={{ fontFamily: "'Spline Sans Mono'", fontSize: 10.5, letterSpacing: '.22em', textTransform: 'uppercase', color: '#D9A621' }}>Engage</span>
-            {footNav2.map(([label, href]) => (
-              <Link key={href} href={href} style={{ fontFamily: "'Newsreader'", fontSize: 15, color: '#DDD5C4' }}>{label}</Link>
-            ))}
-            <Link href="/privacy-policy" style={{ fontFamily: "'Newsreader'", fontSize: 15, color: '#DDD5C4' }}>Privacy Policy</Link>
-            <Link href="/terms" style={{ fontFamily: "'Newsreader'", fontSize: 15, color: '#DDD5C4' }}>Terms</Link>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 11 }}>
-            <span style={{ fontFamily: "'Spline Sans Mono'", fontSize: 10.5, letterSpacing: '.22em', textTransform: 'uppercase', color: '#D9A621' }}>Wires</span>
-            <a href="https://instagram.com/eugine.micah" target="_blank" rel="noopener noreferrer" style={{ fontFamily: "'Newsreader'", fontSize: 15, color: '#DDD5C4' }}>Instagram</a>
-            <a href="https://tiktok.com/@eugine.micah" target="_blank" rel="noopener noreferrer" style={{ fontFamily: "'Newsreader'", fontSize: 15, color: '#DDD5C4' }}>TikTok</a>
-            <a href="https://youtube.com/@urbannewsgang" target="_blank" rel="noopener noreferrer" style={{ fontFamily: "'Newsreader'", fontSize: 15, color: '#DDD5C4' }}>YouTube</a>
-            <a href="https://linkedin.com/in/euginemicah" target="_blank" rel="noopener noreferrer" style={{ fontFamily: "'Newsreader'", fontSize: 15, color: '#DDD5C4' }}>LinkedIn</a>
-            <a href="mailto:eugine.micah@outlook.com" style={{ fontFamily: "'Newsreader'", fontSize: 15, color: '#DDD5C4' }}>Email</a>
+          <div>
+            <div style={colHeadingStyle}>LEGAL</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {legalLinks.map(([label, href]) => (
+                <Link key={href} href={href} className="emx-link" style={linkStyle}>
+                  {label}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 20, paddingTop: 24, borderTop: '1px solid #3A362E', flexWrap: 'wrap' }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-            <span style={{ fontFamily: "'Spline Sans Mono'", fontSize: 11, letterSpacing: '.14em', color: '#8B8272' }}>© MMXXVI · EUGINE MICAH · ALL RIGHTS RESERVED, LOUDLY</span>
-            <Link href="/admin" style={{ fontFamily: "'Spline Sans Mono'", fontSize: 11, letterSpacing: '.14em', color: '#D9A621', textTransform: 'uppercase' }}>★ Control Room</Link>
-          </span>
-          <span style={{ fontFamily: "'Newsreader'", fontStyle: 'italic', fontSize: 14, color: '#8B8272' }}>Printed on the internet, which explains the price.</span>
+
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: 16,
+            borderTop: '1px solid rgba(250,244,234,0.2)',
+            paddingTop: 24,
+            fontSize: 13,
+            color: 'rgba(250,244,234,0.6)',
+          }}
+        >
+          <div>
+            © {year} Eugine Micah · Roylandz Media
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+            <span>Nairobi {nairobiTime}</span>
+            <button
+              type="button"
+              onClick={copyLink}
+              className="emx-icon-btn"
+              style={{
+                cursor: 'pointer',
+                fontFamily: 'var(--font-bricolage), sans-serif',
+                fontWeight: 700,
+                fontSize: 12,
+                background: 'transparent',
+                color: 'rgba(250,244,234,0.7)',
+                border: '1px solid rgba(250,244,234,0.3)',
+                borderRadius: 999,
+                padding: '5px 12px',
+              }}
+            >
+              {copied ? 'Copied!' : 'Copy link'}
+            </button>
+          </div>
+          <div style={{ fontFamily: 'var(--font-instrument-serif), serif', fontStyle: 'italic', fontSize: 19, color: 'var(--c)' }}>
+            born broke, built loud ✦
+          </div>
         </div>
       </div>
     </footer>

@@ -3,84 +3,181 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { navDefs } from '@/content/em-site-data';
+import { ThemeToggle } from './ThemeToggle';
 
+// Exact nav order from the approved design source
+// ("Celebrity website project/index.html"'s shared nav block).
+const navLinks: [string, string][] = [
+  ['Home', '/'],
+  ['About', '/about'],
+  ['Shows', '/shows'],
+  ['Book', '/book'],
+  ['Press', '/press'],
+  ['Blog', '/blog'],
+  ['Roylandz', '/roylandz'],
+  ['Work with me', '/work'],
+];
+
+// Mobile breakpoint is 1180px — written as a literal Tailwind arbitrary
+// value below (`max-[1180px]:...`) rather than interpolated, since
+// Tailwind's compiler statically scans source text and can't see a
+// runtime-interpolated class name.
 export function SiteHeader() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <>
-      {/* TOP RULE BAR */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, padding: '8px 28px', borderBottom: '2px solid #191613', fontFamily: "'Spline Sans Mono'", fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase' }}>
-        <span>Nairobi, Kenya</span>
-        <span style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#C03B22', animation: 'em-blink 1.5s infinite' }} />
-            On air at 7:30 · PPP TV
-          </span>
-          <Link href="/admin" style={{ padding: '4px 10px', border: '1px solid #191613', fontFamily: "'Spline Sans Mono'", fontSize: 10, letterSpacing: '.14em', textTransform: 'uppercase' }}>Control Room</Link>
-        </span>
-      </div>
-
-      {/* MASTHEAD */}
-      <div style={{ textAlign: 'center', padding: '30px 24px 22px', borderBottom: '2px solid #191613' }}>
-        <p style={{ margin: '0 0 8px', fontFamily: "'Spline Sans Mono'", fontSize: 11, letterSpacing: '.34em', textTransform: 'uppercase', color: '#6E6455' }}>★ The Official Channel of ★</p>
-        <Link href="/" style={{ padding: 0, display: 'inline-block' }}>
-          <span style={{ fontFamily: "'Bricolage Grotesque'", fontWeight: 800, fontSize: 'clamp(44px,6.4vw,92px)', lineHeight: .95, letterSpacing: '-.02em', display: 'block' }}>EUGINE MICAH</span>
+    <header
+      style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 50,
+        background: 'var(--bg)',
+        backdropFilter: 'blur(10px)',
+        borderBottom: '3px solid var(--text)',
+      }}
+    >
+      <nav
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 16,
+          padding: '14px 28px',
+        }}
+      >
+        <Link
+          href="/"
+          onClick={() => setMenuOpen(false)}
+          className="emx-link"
+          style={{
+            fontWeight: 800,
+            fontSize: 19,
+            letterSpacing: '-0.3px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 9,
+            color: 'var(--text)',
+          }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/em-monogram.png"
+            alt="Eugine Micah logo"
+            width={30}
+            height={30}
+            className="emx-logo-mark"
+            style={{ objectFit: 'contain' }}
+          />
+          Eugine Micah
         </Link>
-        <p style={{ margin: '10px 0 0', fontFamily: "'Newsreader'", fontStyle: 'italic', fontSize: 16, color: '#6E6455' }}>
-          Journalist · Author · The loudest man on Kenyan television <span style={{ fontStyle: 'normal' }}>(self-certified)</span>
-        </p>
-      </div>
 
-      {/* NAV */}
-      <header style={{ position: 'sticky', top: 0, zIndex: 200, background: '#F6F0E2', borderBottom: '3px double #191613' }}>
-        <nav style={{ maxWidth: 1420, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4, padding: '0 20px', height: 54 }}>
-          <div style={{ alignItems: 'center', gap: 2, fontFamily: "'Spline Sans Mono'", fontSize: 12, letterSpacing: '.1em', textTransform: 'uppercase' }} className="flex max-[1250px]:!hidden">
-            {navDefs.map(([label, href]) => {
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <div
+            style={{
+              alignItems: 'center',
+              columnGap: 16,
+              rowGap: 6,
+              fontWeight: 700,
+              fontSize: 14,
+              flexWrap: 'wrap',
+            }}
+            className="flex max-[1180px]:!hidden"
+          >
+            {navLinks.map(([label, href]) => {
               const active = pathname === href;
               return (
-                <Link key={href} href={href} style={{ padding: '8px 13px', fontWeight: active ? 700 : 400, color: active ? '#C03B22' : '#191613' }}>
+                <Link
+                  key={href}
+                  href={href}
+                  className="emx-link"
+                  style={{
+                    color: active ? 'var(--a)' : 'var(--text)',
+                    borderBottom: `3px solid ${active ? 'var(--a)' : 'transparent'}`,
+                    paddingBottom: 2,
+                  }}
+                >
                   {label}
                 </Link>
               );
             })}
+            <Link
+              href="/work#bookings"
+              className="emx-link emx-cta"
+              style={{
+                display: 'inline-block',
+                background: 'var(--a)',
+                color: '#FAF4EA',
+                border: '2.5px solid var(--text)',
+                borderRadius: 999,
+                padding: '8px 18px',
+                boxShadow: '3px 3px 0 var(--text)',
+              }}
+            >
+              Book me ↗
+            </Link>
           </div>
+
           <button
+            type="button"
             onClick={() => setMenuOpen((v) => !v)}
-            style={{ alignItems: 'center', gap: 8, padding: '8px 14px', border: '2px solid #191613', fontFamily: "'Spline Sans Mono'", fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase' }}
-            className="hidden max-[1250px]:!inline-flex"
+            aria-label="Open menu"
+            aria-expanded={menuOpen}
+            className="emx-icon-btn hidden max-[1180px]:!inline-flex"
+            style={{
+              alignItems: 'center',
+              gap: 8,
+              padding: '7px 12px',
+              border: '2px solid var(--text)',
+              borderRadius: 8,
+              background: 'transparent',
+              color: 'var(--text)',
+              fontWeight: 700,
+              fontSize: 13,
+            }}
           >
-            Index ☰
+            Menu ☰
           </button>
-          <span style={{ width: 1, height: 22, background: '#191613', margin: '0 10px' }} />
-          <Link href="/book-me" style={{ marginLeft: 8, padding: '9px 16px', background: '#C03B22', color: '#F6F0E2', fontFamily: "'Spline Sans Mono'", fontWeight: 600, fontSize: 12, letterSpacing: '.1em', textTransform: 'uppercase' }}>Book Me</Link>
-        </nav>
-        {menuOpen && (
-          <div style={{ borderTop: '2px solid #191613', background: '#F6F0E2', flexDirection: 'column' }} className="flex">
-            {navDefs.map(([label, href]) => (
-              <Link key={href} href={href} onClick={() => setMenuOpen(false)} style={{ padding: '14px 24px', borderBottom: '1px solid #E3DAC5', fontFamily: "'Spline Sans Mono'", fontSize: 13, letterSpacing: '.1em', textTransform: 'uppercase' }}>
+
+          <ThemeToggle />
+        </div>
+      </nav>
+
+      {menuOpen && (
+        <div
+          className="hidden max-[1180px]:!flex"
+          style={{ borderTop: '2px solid var(--text)', background: 'var(--bg)', flexDirection: 'column' }}
+        >
+          {navLinks.map(([label, href]) => {
+            const active = pathname === href;
+            return (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setMenuOpen(false)}
+                className="emx-link"
+                style={{
+                  padding: '14px 24px',
+                  borderBottom: '1px solid var(--text)',
+                  fontWeight: 700,
+                  fontSize: 14,
+                  color: active ? 'var(--a)' : 'var(--text)',
+                }}
+              >
                 {label}
               </Link>
-            ))}
-          </div>
-        )}
-      </header>
-
-      {/* TICKER */}
-      <div style={{ overflow: 'hidden', background: '#191613', color: '#F6F0E2', padding: '9px 0', borderBottom: '2px solid #191613' }}>
-        <div style={{ display: 'flex', width: 'max-content', animation: 'em-marquee 38s linear infinite', fontFamily: "'Spline Sans Mono'", fontSize: 12, letterSpacing: '.12em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
-          {[0, 1].map((i) => (
-            <span key={i} style={{ paddingRight: 48 }}>
-              <span style={{ color: '#C03B22', fontWeight: 600 }}>Breaking ★</span> Local boy still refusing to whisper &nbsp;&nbsp;·&nbsp;&nbsp;
-              <span style={{ color: '#C03B22', fontWeight: 600 }}> Tour ★</span> Kagumo High braces for impact, July 25 &nbsp;&nbsp;·&nbsp;&nbsp;
-              <span style={{ color: '#C03B22', fontWeight: 600 }}> Books ★</span> Born Broke. Built Loud. — pre-orders open &nbsp;&nbsp;·&nbsp;&nbsp;
-              <span style={{ color: '#C03B22', fontWeight: 600 }}> Weather ★</span> Loud, with a chance of louder
-            </span>
-          ))}
+            );
+          })}
+          <Link
+            href="/work#bookings"
+            onClick={() => setMenuOpen(false)}
+            className="emx-link"
+            style={{ padding: '14px 24px', fontWeight: 800, color: 'var(--a)' }}
+          >
+            Book me ↗
+          </Link>
         </div>
-      </div>
-    </>
+      )}
+    </header>
   );
 }

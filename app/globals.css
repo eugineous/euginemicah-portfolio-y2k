@@ -49,3 +49,39 @@ body { background: var(--onyx); color: var(--cream); font-family: var(--f-body);
 .em-input:focus { outline: none; border-color: var(--pink); }
 .em-th { text-align: left; padding: 8px 10px; font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; color: #8d879c; border-bottom: 1px solid #2a2633; white-space: nowrap; }
 .em-td { padding: 9px 10px; font-size: 13px; border-bottom: 1px solid #221e2b; vertical-align: top; }
+
+/* ---- Phase 0 shared shell (2026-07 rebuild) ----
+   New brand system ported from the DCLogic mockup at
+   "Celebrity website project/index.html". Consumed by SiteHeader.tsx,
+   SiteFooter.tsx, ScrollChrome.tsx, ThemeToggle.tsx and app/(site)/layout.tsx
+   only. Uses fresh `--a/--b/--c`/`--bg`/`--text` tokens and an `emx-`
+   class prefix (distinct from the `em-` prefix above, which stays
+   load-bearing for /admin — untouched) so nothing here can collide with
+   existing selectors. The --paper/--ink/--f-display/etc. block above is
+   unused by any component today (old marketing pages hardcode hex values
+   and font names inline) and is left as-is for now. */
+:root {
+  --a: #7B2FBE;
+  --b: #FF6B35;
+  --c: #D4A017;
+  --bg-light: #FAF4EA;
+  --bg-dark: #141110;
+  --text-light: #1B1714;
+  --text-dark: #F5F1E8;
+  --bg: var(--bg-light);
+  --text: var(--text-light);
+}
+
+:root[data-theme='dark'] {
+  --bg: var(--bg-dark);
+  --text: var(--text-dark);
+}
+
+.emx-link { text-decoration: none; transition: color .15s ease, border-color .15s ease; }
+.emx-link:hover { color: var(--a) !important; }
+.emx-cta { transition: transform .15s ease, box-shadow .15s ease; }
+.emx-cta:hover { transform: translate(-2px, -2px) !important; box-shadow: 5px 5px 0 var(--text) !important; }
+.emx-icon-btn { transition: border-color .15s ease, color .15s ease; }
+.emx-icon-btn:hover { border-color: var(--a) !important; }
+.emx-logo-mark { filter: none; }
+:root[data-theme='dark'] .emx-logo-mark { filter: invert(1) brightness(1.08); }
