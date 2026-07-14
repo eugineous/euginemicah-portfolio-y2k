@@ -40,7 +40,7 @@ create policy "public can read published posts" on blog_posts
 
 create table if not exists shows (
   id bigint generated always as identity primary key,
-  name text not null,
+  name text not null unique, -- unique so the seed data below can upsert on conflict (name)
   tag text not null default '',
   description text not null default '',
   meta text not null default '',
@@ -102,3 +102,78 @@ alter table cms_admin_emails enable row level security;
 --   book_purchases / messages / newsletter_subscribers / cms_admin_emails --
 --     no public policy at all. Deny-all for anon/authenticated; every read
 --     and write goes through the service-role client.
+
+-- ============================================================================
+-- seed data (run this after the migration above, once, e.g. via the
+-- Supabase SQL editor or `supabase db push`) -- /shows launch content
+-- ============================================================================
+-- The four real shows Eugine hosts today, per content/em-site-data.ts's
+-- tvGuideData/workDetailData (both already-verified, existing site copy --
+-- not invented for this seed). `on conflict (name) do nothing` makes this
+-- safe to re-run: it will never duplicate or clobber rows an admin has
+-- since edited via /control-room.
+--
+-- cta_href sourcing notes (verified 2026-07-15, see phase report):
+--   - Urban News: real YouTube playlist of the show, confirmed via search.
+--   - Campus Xposure: no dedicated Campus Xposure channel could be
+--     confirmed to exist -- linked instead to Eugine's own verified TikTok
+--     (@eugine.micah, already used sitewide in Roylandz/Work's socials
+--     lists), where tvGuideData/workDetailData both say this show's
+--     clips actually live. Flagged for the owner to replace with a
+--     dedicated Campus Xposure link if/when one exists.
+--   - Nairobi Podcast: real Amazon Music show page, confirmed via search
+--     (exact title + host match: "The Nairobi Podcast", Eugine Micah &
+--     Lucy Ogunde).
+--   - Urban Gang Tour Live: the tour's own real, live site,
+--     urbangangtour.co.ke (Eugine's own ticketing/events site).
+insert into shows (name, tag, description, meta, image_url, cta_label, cta_href, is_flagship, sort_order, status)
+values
+  (
+    'Urban News',
+    'Flagship · PPP TV',
+    'The youth news desk of PPP TV, co-anchored with Lucy Ogunde. Hard topics made easy, easy topics made to matter -- at conversational speed, live, with no script and no retakes. The audience is young, national, and impossible to fool.',
+    'PPP TV · Live · Tue & Thu 7:30 PM',
+    '/hq-assets/un-desk-02.jpg',
+    'Watch on YouTube',
+    'https://www.youtube.com/playlist?list=PLxiuxBobXxN2Swp44BE8FpO-qajoJ9Dxz',
+    true,
+    1,
+    'published'
+  ),
+  (
+    'Campus Xposure',
+    'The Roaming Show',
+    'A camera walks into a campus and the quad becomes a studio -- talent, fashion, hot takes, and the occasional roast, all captured raw. Student culture without the adult supervision it probably deserves.',
+    'Tour season · YouTube & TikTok',
+    '/hq-assets/gal-dance.jpg',
+    'Watch on TikTok',
+    'https://www.tiktok.com/@eugine.micah',
+    false,
+    2,
+    'published'
+  ),
+  (
+    'Nairobi Podcast',
+    'The Long Form',
+    'Long conversations with the people building East African culture -- artists, founders, athletes, and the occasional politician who arrived with talking points and left without them. Silence is a co-host.',
+    'Weekly · Spotify & Amazon Music',
+    '/hq-assets/shoot-08.jpg',
+    'Listen on Amazon Music',
+    'https://music.amazon.com/podcasts/a949f49a-b297-4122-9a2e-54bd77f0b286/the-nairobi-podcast',
+    false,
+    3,
+    'published'
+  ),
+  (
+    'Urban Gang Tour Live',
+    'The Live Vehicle',
+    'Kenya''s youth talent search, mentorship and awards concert tour, co-founded with Lucy Ogunde. Showcases, mentorship pods, a modelling runway, and a national broadcast -- from a school field, every stop, at full volume.',
+    'Every stop · PPP TV · Live',
+    '/hq-assets/gal-festival.jpg',
+    'See tour dates',
+    'https://urbangangtour.co.ke',
+    false,
+    4,
+    'published'
+  )
+on conflict (name) do nothing;
