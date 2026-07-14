@@ -77,6 +77,11 @@ body { background: var(--onyx); color: var(--cream); font-family: var(--f-body);
   --text: var(--text-dark);
 }
 
+/* Matches the DCLogic mockups' `html { scroll-behavior: smooth }` — used by
+   every page's fixed on-page side nav (e.g. Press/Roylandz/Work's #facts,
+   #services, #bookings anchors) and the header's #work#bookings link. */
+html { scroll-behavior: smooth; }
+
 .emx-link { text-decoration: none; transition: color .15s ease, border-color .15s ease; }
 .emx-link:hover { color: var(--a) !important; }
 .emx-cta { transition: transform .15s ease, box-shadow .15s ease; }
