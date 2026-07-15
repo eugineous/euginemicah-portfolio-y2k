@@ -4,23 +4,37 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { categoryStyle, formatPostDate, type BlogPost } from '@/lib/blog';
 
-// List-view interactivity (search + category filter + tag cloud) as a thin
-// client component wrapping the already-fetched, server-rendered post list.
-// Structure/visual language ported from the DCLogic mockup at
-// "Celebrity website project/Blog.dc.html" (list view) -- the mockup's
-// `<sc-for>`/`{{ }}`/`onChange` bindings aren't portable code, this is a
-// from-scratch React reimplementation of the same layout. The mockup's
-// "stay in the loop" newsletter box is intentionally NOT reproduced here:
-// newsletter_subscribers is Phase 4 scope (see the migration's comments),
-// so this phase doesn't ship a signup form with nowhere real to submit to.
-// It's swapped for a book promo card (links to the already-live /book) and
-// a "have a story tip?" card (links to /messages, matching the same
-// forward-link convention already used by press/page.tsx and
-// roylandz/page.tsx for that not-yet-built route).
+// List-view interactivity (search + category filter + tag cloud + real
+// newsletter signup) as a thin client component wrapping the already-fetched,
+// server-rendered post list. Structure/visual language ported from the
+// DCLogic mockup at "Celebrity website project/Blog.dc.html" (list view) --
+// the mockup's `<sc-for>`/`{{ }}`/`onChange` bindings aren't portable code,
+// this is a from-scratch React reimplementation of the same layout,
+// including the "stay in the loop" newsletter box, now wired to a real
+// POST /api/newsletter (see that route) instead of the mockup's fake
+// local-state-only version.
 
 export function BlogListClient({ posts }: { posts: BlogPost[] }) {
   const [query, setQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
+  const [subEmail, setSubEmail] = useState('');
+  const [subStatus, setSubStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+
+  async function onSubscribe(e: React.FormEvent) {
+    e.preventDefault();
+    if (!subEmail.trim() || subStatus === 'sending') return;
+    setSubStatus('sending');
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: subEmail.trim(), source: 'blog' }),
+      });
+      setSubStatus(res.ok ? 'done' : 'error');
+    } catch {
+      setSubStatus('error');
+    }
+  }
 
   const categories = useMemo(() => {
     const counts = new Map<string, number>();
@@ -246,6 +260,59 @@ export function BlogListClient({ posts }: { posts: BlogPost[] }) {
               </Link>
             ))}
           </div>
+        </div>
+
+        <div style={{ background: '#1B1714', color: '#FAF4EA', borderRadius: 16, padding: 24 }}>
+          <div style={{ fontFamily: 'var(--font-instrument-serif), serif', fontStyle: 'italic', fontSize: 19, color: 'var(--c)', marginBottom: 8 }}>
+            stay in the loop
+          </div>
+          <p style={{ fontSize: 13.5, lineHeight: 1.55, fontWeight: 500, opacity: 0.8, margin: '0 0 16px' }}>
+            New posts on journalism, media and the book, straight to your inbox.
+          </p>
+          {subStatus !== 'done' ? (
+            <form onSubmit={onSubscribe} style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <input
+                type="email"
+                required
+                value={subEmail}
+                onChange={(e) => setSubEmail(e.target.value)}
+                placeholder="your@email.com"
+                style={{
+                  fontFamily: 'var(--font-bricolage), sans-serif',
+                  fontSize: 14,
+                  padding: '11px 14px',
+                  border: '2px solid rgba(250,244,234,0.35)',
+                  borderRadius: 10,
+                  background: 'rgba(250,244,234,0.06)',
+                  color: '#FAF4EA',
+                }}
+              />
+              <button
+                type="submit"
+                disabled={subStatus === 'sending'}
+                style={{
+                  fontFamily: 'var(--font-bricolage), sans-serif',
+                  cursor: 'pointer',
+                  fontWeight: 700,
+                  fontSize: 14,
+                  background: 'var(--c)',
+                  color: '#1B1714',
+                  borderRadius: 10,
+                  padding: 11,
+                  border: 'none',
+                }}
+              >
+                {subStatus === 'sending' ? 'Subscribing…' : 'Subscribe'}
+              </button>
+              {subStatus === 'error' && (
+                <span style={{ fontSize: 12.5, fontWeight: 600, color: '#FF6B35' }}>
+                  Something went wrong, try again in a moment.
+                </span>
+              )}
+            </form>
+          ) : (
+            <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--c)' }}>You&rsquo;re subscribed. ✦</div>
+          )}
         </div>
 
         {tagCloud.length > 0 && (
