@@ -42,30 +42,46 @@ export function BuyBookForm() {
   }
 
   const inputStyle: React.CSSProperties = {
-    padding: '14px 16px',
-    background: '#fff',
-    border: '2px solid #191613',
-    fontFamily: "'Spline Sans Mono'",
-    fontSize: 14,
+    padding: '14px 18px',
+    background: 'var(--bg)',
+    color: 'var(--text)',
+    border: '2.5px solid var(--text)',
+    borderRadius: 12,
+    fontFamily: 'inherit',
+    fontSize: 16,
     outline: 'none',
     width: '100%',
+    boxSizing: 'border-box',
   };
 
   return (
     <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-      <input name="name" required placeholder="Your name" style={inputStyle} />
-      <input type="email" name="email" required placeholder="Email — we'll send the download link here" style={inputStyle} />
+      <input name="name" required placeholder="Full name" className="emx-input" style={inputStyle} />
+      <input type="email" name="email" required placeholder="Email — we'll send the download link here" className="emx-input" style={inputStyle} />
       <button
         type="submit"
         disabled={status === 'sending'}
-        style={{ alignSelf: 'flex-start', padding: '15px 28px', background: '#D9A621', color: '#191613', fontFamily: "'Spline Sans Mono'", fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase' }}
+        className="emx-cta"
+        style={{
+          width: '100%',
+          fontWeight: 800,
+          fontSize: 16,
+          cursor: status === 'sending' ? 'wait' : 'pointer',
+          background: 'var(--a)',
+          color: '#FAF4EA',
+          border: '3px solid var(--text)',
+          borderRadius: 14,
+          padding: 16,
+          boxShadow: '4px 4px 0 var(--text)',
+          opacity: status === 'sending' ? 0.7 : 1,
+        }}
       >
         {status === 'sending' ? 'Redirecting to payment…' : 'Buy now →'}
       </button>
       {status === 'error' && (
-        <span style={{ fontFamily: "'Newsreader'", fontStyle: 'italic', fontSize: 14, color: '#C03B22' }}>{errorMsg}</span>
+        <span style={{ fontFamily: 'var(--font-instrument-serif), serif', fontStyle: 'italic', fontSize: 15, color: 'var(--b)' }}>{errorMsg}</span>
       )}
-      <span style={{ fontFamily: "'Spline Sans Mono'", fontSize: 11, letterSpacing: '.06em', color: '#6E6455' }}>Secure payment via Paystack. Instant download after payment.</span>
+      <span style={{ fontSize: 12.5, fontWeight: 600, opacity: 0.6 }}>Secure payment via Paystack. Instant download after payment.</span>
     </form>
   );
 }

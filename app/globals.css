@@ -120,3 +120,9 @@ html { scroll-behavior: smooth; }
 
 .emx-float { animation: emx-float 5s ease-in-out infinite; }
 .emx-float2 { animation: emx-float2 6s ease-in-out infinite; }
+
+/* ---- Phase 3 buy-flow utility (2026-07 rebuild) ----
+   Focus ring for the re-skinned /book checkout (BuyBookForm.tsx) — kept
+   namespaced under emx- alongside the rest of this block. */
+.emx-input { transition: border-color .15s ease; }
+.emx-input:focus { border-color: var(--a) !important; }
