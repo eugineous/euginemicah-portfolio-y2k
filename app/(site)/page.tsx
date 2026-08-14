@@ -55,8 +55,8 @@ const lanes = [
 const strip = [
   { src: '/hq-assets/un-desk-02.jpg', alt: 'Eugine Micah on the Urban News desk, with Lucy Ogunde', shadow: 'var(--a)' },
   { src: '/hq-assets/gal-festival.jpg', alt: 'Eugine Micah live at the Urban Gang Tour', shadow: 'var(--b)' },
-  { src: '/hq-assets/shoot-08.jpg', alt: 'Eugine Micah in studio, big thoughts loading', shadow: 'var(--c)' },
-  { src: '/hq-assets/celeb-02.webp', alt: 'Eugine Micah out and about with a microphone', shadow: 'var(--a)' },
+  { src: '/assets/brand/strip-1.png', alt: 'Eugine Micah in studio, big thoughts loading', shadow: 'var(--c)' },
+  { src: '/assets/brand/strip-2.png', alt: 'Eugine Micah out and about with a microphone', shadow: 'var(--a)' },
 ];
 
 const stats = [
@@ -102,13 +102,11 @@ export default function HomePage() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 48, alignItems: 'center' }}>
           <div>
             <h1
+              className="emx-display"
               style={{
-                fontWeight: 800,
-                fontOpticalSizing: 'auto',
-                fontFamily: 'var(--font-bricolage), sans-serif',
+                fontWeight: 400,
                 fontSize: 'clamp(56px, 8vw, 112px)',
                 lineHeight: 0.92,
-                letterSpacing: '-3px',
                 margin: '22px 0 10px',
               }}
             >
@@ -128,9 +126,9 @@ export default function HomePage() {
               the <RoleCycler />
             </div>
             <p style={{ fontSize: 17, lineHeight: 1.6, maxWidth: 480, margin: '18px 0 28px', fontWeight: 500 }}>
-              Presenter. Journalist. Founder. Author. Kenya knows him as the face of Urban News. This is the man
-              behind it: from a mud house in Manyonyi, Lugari, to the national screen, telling Kenya&rsquo;s stories
-              and building the rooms they get told in.
+              Kenya knows him as the face of Urban News. Before the desk, before the diploma, there was a mud
+              house in Manyonyi, Lugari. Presenter, journalist, founder, author: every title came after the
+              work, none of them before it.
             </p>
             <p
               style={{
@@ -142,7 +140,7 @@ export default function HomePage() {
                 margin: '0 0 28px',
               }}
             >
-              &ldquo;Not the story of a man who made it. The report of a man still climbing.&rdquo; ✦
+              &ldquo;Not a man who made it. A man who keeps showing up.&rdquo; ✦
             </p>
             <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
               <Link
@@ -196,7 +194,7 @@ export default function HomePage() {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/uploads/eugine-micah.png"
+                src="/assets/brand/hero-portrait.png"
                 alt="Eugine Micah portrait"
                 style={{ display: 'block', width: '100%', borderRadius: 8, border: '2px solid #1B1714' }}
               />

@@ -12,6 +12,7 @@ const navLinks: [string, string][] = [
   ['About', '/about'],
   ['Shows', '/shows'],
   ['Book', '/book'],
+  ['Ideas', '/ideas'],
   ['Press', '/press'],
   ['Blog', '/blog'],
   ['Roylandz', '/roylandz'],
