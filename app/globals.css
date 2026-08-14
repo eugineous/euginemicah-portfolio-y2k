@@ -86,10 +86,33 @@ body { background: var(--onyx); color: var(--cream); font-family: var(--f-body);
    #services, #bookings anchors) and the header's #work#bookings link. */
 html { scroll-behavior: smooth; }
 
-/* 2026-08 brand-platform pass: Anton display treatment for hero
-   headings, applied via className (not a bare h1/h2 rule) so it never
-   bleeds into /admin's separate em- design system. */
-.emx-display { font-family: var(--font-anton), sans-serif; text-transform: uppercase; letter-spacing: -0.01em; }
+/* 2026-08 brand-platform pass: Anton display treatment. Scoped to
+   .emx-site (the (site) route group's root wrapper, see (site)/layout.tsx)
+   so it covers every heading on every marketing page automatically
+   without a bare h1/h2 rule that could bleed into /admin's separate
+   em- design system. .emx-display stays available for one-off use
+   outside that scope (e.g. inline hero spans). */
+.emx-site h1, .emx-site h2, .emx-display {
+  font-family: var(--font-anton), sans-serif !important;
+  text-transform: uppercase;
+  /* Anton only ships one weight (400, already a heavy display face).
+     Every heading's inline style still says fontWeight: 800 from the
+     Bricolage days — without this the browser synthetic-bolds Anton on
+     top of itself, which looks chunky and slightly blurred. */
+  font-weight: 400 !important;
+  /* Overrides the -1.5px..-3px inline letter-spacing values tuned for
+     Bricolage Grotesque throughout (site)/*.tsx — Anton is already
+     condensed and reads badly with that much negative tracking piled
+     on top. !important is deliberate here: the alternative is editing
+     every inline style object across ~15 headings. */
+  letter-spacing: -0.01em !important;
+}
+
+.emx-site .emx-cta {
+  font-family: var(--font-anton), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
 
 .emx-link { text-decoration: none; transition: color .15s ease, border-color .15s ease; }
 .emx-link:hover { color: var(--a) !important; }

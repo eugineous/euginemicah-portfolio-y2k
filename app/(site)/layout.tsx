@@ -5,6 +5,7 @@ import { ScrollChrome } from '../_components/ScrollChrome';
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <div
+      className="emx-site"
       style={{
         minHeight: '100vh',
         background: 'var(--bg)',

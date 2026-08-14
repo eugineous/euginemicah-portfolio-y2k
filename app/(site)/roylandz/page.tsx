@@ -109,9 +109,9 @@ export default function RoylandzPage() {
             Roylandz<br /><span style={{ color: 'var(--a)' }}>Media</span>
           </h1>
           <p style={{ fontSize: 18, lineHeight: 1.65, maxWidth: 620, fontWeight: 500, margin: '0 0 30px' }}>
-            A content strategy, social and production studio built on one belief: nothing is waste in the hands of
-            someone resourceful enough to use it. We treat a brand&rsquo;s story the way our founder once treated
-            cow dung on a Friday morning &mdash; as raw material for something worth building.
+            One belief runs the whole studio: nothing is waste in the hands of someone resourceful enough to use
+            it. Our founder learned that on a Friday morning, turning cow dung into a classroom floor. We treat
+            a brand&rsquo;s story the same way, as raw material for something worth building.
           </p>
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
             <Link href="/messages" className="emx-cta" style={{ display: 'inline-block', fontWeight: 700, background: 'var(--a)', color: '#FAF4EA', border: '3px solid var(--text)', borderRadius: 14, padding: '14px 26px', boxShadow: '4px 4px 0 var(--text)' }}>

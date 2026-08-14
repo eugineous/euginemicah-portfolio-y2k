@@ -112,9 +112,9 @@ export default function WorkPage() {
           Work with me
         </h1>
         <p style={{ fontSize: 17, lineHeight: 1.65, maxWidth: 560, fontWeight: 500, margin: '0 0 26px' }}>
-          Event hosting, keynotes, panels, brand campaigns and media training &mdash; plus Roylandz Media for
-          content strategy, social and production. For brands, media houses and event organizers across East
-          Africa and beyond.
+          Hosting, keynotes, panels, brand campaigns, media training. Roylandz Media handles the content
+          strategy, social and production behind it. Brands, media houses and event organizers across East
+          Africa, and beyond, work with both.
         </p>
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
           <Link href="#bookings" className="emx-cta" style={{ display: 'inline-block', fontWeight: 700, background: 'var(--a)', color: '#FAF4EA', border: '3px solid var(--text)', borderRadius: 14, padding: '13px 24px', boxShadow: '4px 4px 0 var(--text)' }}>

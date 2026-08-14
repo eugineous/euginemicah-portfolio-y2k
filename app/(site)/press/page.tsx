@@ -33,7 +33,7 @@ const facts: [string, string][] = [
 
 const photos: { src: string; alt: string; caption: string; shadow: string }[] = [
   { src: '/assets/press/citizen-studio.webp', alt: 'Eugine Micah in the Citizen TV newsroom', caption: 'Newsroom, Citizen TV', shadow: 'var(--a)' },
-  { src: '/assets/press/shoot-1.jpg', alt: 'Eugine Micah studio portrait', caption: 'Studio portrait', shadow: 'var(--b)' },
+  { src: '/assets/brand/press-portrait.png', alt: 'Eugine Micah studio portrait', caption: 'Studio portrait', shadow: 'var(--b)' },
   { src: '/assets/press/ppp-studio-3.webp', alt: 'Eugine Micah on the PPP TV set', caption: 'On set, PPP TV', shadow: 'var(--c)' },
   { src: '/assets/press/grad-solo-2.webp', alt: 'Eugine Micah in graduation gown', caption: 'Valedictorian, 2024', shadow: 'var(--a)' },
 ];
@@ -125,8 +125,8 @@ export default function PressPage() {
             Press kit
           </h1>
           <p style={{ fontSize: 17, lineHeight: 1.65, maxWidth: 480, fontWeight: 500, margin: '0 0 26px' }}>
-            Bios, approved photography, brand marks and a fact sheet, cleared for editorial use. Everything a
-            producer, editor or booker needs in one place.
+            Everything a producer, editor or booker needs, in one place: bios, approved photography, brand
+            marks, and a fact sheet cleared for editorial use.
           </p>
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
             <Link
@@ -152,7 +152,7 @@ export default function PressPage() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/assets/press/shoot-1.jpg"
+              src="/assets/brand/press-portrait.png"
               alt="Eugine Micah press portrait"
               style={{ display: 'block', width: '100%', aspectRatio: '4/5', objectFit: 'cover', borderRadius: 8, border: '2px solid #1B1714' }}
             />
