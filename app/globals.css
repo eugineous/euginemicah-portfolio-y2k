@@ -61,13 +61,17 @@ body { background: var(--onyx); color: var(--cream); font-family: var(--f-body);
    unused by any component today (old marketing pages hardcode hex values
    and font names inline) and is left as-is for now. */
 :root {
-  --a: #7B2FBE;
-  --b: #FF6B35;
-  --c: #D4A017;
-  --bg-light: #FAF4EA;
-  --bg-dark: #141110;
-  --text-light: #1B1714;
-  --text-dark: #F5F1E8;
+  /* 2026-08 brand-platform pass: warm ink/paper/brass palette, replacing
+     the purple/orange/gold set above. Same --a/--b/--c/--bg/--text token
+     names, so SiteHeader/SiteFooter/ScrollChrome/ThemeToggle and every
+     (site) page's inline styles pick this up with no code changes. */
+  --a: #B8792E;
+  --b: #8A4B2E;
+  --c: #C9A227;
+  --bg-light: #F4EFE6;
+  --bg-dark: #14110D;
+  --text-light: #14110D;
+  --text-dark: #F4EFE6;
   --bg: var(--bg-light);
   --text: var(--text-light);
 }
@@ -81,6 +85,11 @@ body { background: var(--onyx); color: var(--cream); font-family: var(--f-body);
    every page's fixed on-page side nav (e.g. Press/Roylandz/Work's #facts,
    #services, #bookings anchors) and the header's #work#bookings link. */
 html { scroll-behavior: smooth; }
+
+/* 2026-08 brand-platform pass: Anton display treatment for hero
+   headings, applied via className (not a bare h1/h2 rule) so it never
+   bleeds into /admin's separate em- design system. */
+.emx-display { font-family: var(--font-anton), sans-serif; text-transform: uppercase; letter-spacing: -0.01em; }
 
 .emx-link { text-decoration: none; transition: color .15s ease, border-color .15s ease; }
 .emx-link:hover { color: var(--a) !important; }

@@ -102,13 +102,11 @@ export default function HomePage() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 48, alignItems: 'center' }}>
           <div>
             <h1
+              className="emx-display"
               style={{
-                fontWeight: 800,
-                fontOpticalSizing: 'auto',
-                fontFamily: 'var(--font-bricolage), sans-serif',
+                fontWeight: 400,
                 fontSize: 'clamp(56px, 8vw, 112px)',
                 lineHeight: 0.92,
-                letterSpacing: '-3px',
                 margin: '22px 0 10px',
               }}
             >

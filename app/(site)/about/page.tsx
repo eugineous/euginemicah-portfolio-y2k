@@ -91,7 +91,7 @@ export default function AboutPage() {
           <div style={{ fontFamily: 'var(--font-instrument-serif), serif', fontStyle: 'italic', fontSize: 24, color: 'var(--c)', marginBottom: 12 }}>
             who is this guy?
           </div>
-          <h1 style={{ fontWeight: 800, fontSize: 'clamp(48px, 8vw, 120px)', letterSpacing: '-3px', lineHeight: 0.9, margin: 0 }}>
+          <h1 className="emx-display" style={{ fontWeight: 400, fontSize: 'clamp(48px, 8vw, 120px)', lineHeight: 0.9, margin: 0 }}>
             Built from
             <br />
             nothing.

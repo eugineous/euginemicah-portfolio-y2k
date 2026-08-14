@@ -121,7 +121,7 @@ export default function PressPage() {
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#1B1714', color: '#FAF4EA', borderRadius: 999, padding: '7px 16px', fontSize: 13, fontWeight: 700, letterSpacing: 1, marginBottom: 22 }}>
             FOR MEDIA &amp; PARTNERS
           </div>
-          <h1 style={{ fontWeight: 800, fontSize: 'clamp(42px, 6vw, 80px)', letterSpacing: '-2.5px', lineHeight: 0.96, margin: '0 0 20px' }}>
+          <h1 className="emx-display" style={{ fontWeight: 400, fontSize: 'clamp(42px, 6vw, 80px)', lineHeight: 0.96, margin: '0 0 20px' }}>
             Press kit
           </h1>
           <p style={{ fontSize: 17, lineHeight: 1.65, maxWidth: 480, fontWeight: 500, margin: '0 0 26px' }}>

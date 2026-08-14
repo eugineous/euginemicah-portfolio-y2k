@@ -108,7 +108,7 @@ export default function WorkPage() {
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#1B1714', color: '#FAF4EA', borderRadius: 999, padding: '7px 16px', fontSize: 13, fontWeight: 700, letterSpacing: 1, marginBottom: 22 }}>
           AVAILABLE FOR BOOKINGS
         </div>
-        <h1 style={{ fontWeight: 800, fontSize: 'clamp(44px, 6.5vw, 88px)', letterSpacing: '-2.5px', lineHeight: 0.96, margin: '0 0 20px', maxWidth: 900 }}>
+        <h1 className="emx-display" style={{ fontWeight: 400, fontSize: 'clamp(44px, 6.5vw, 88px)', lineHeight: 0.96, margin: '0 0 20px', maxWidth: 900 }}>
           Work with me
         </h1>
         <p style={{ fontSize: 17, lineHeight: 1.65, maxWidth: 560, fontWeight: 500, margin: '0 0 26px' }}>

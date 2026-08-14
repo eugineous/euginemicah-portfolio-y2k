@@ -105,7 +105,7 @@ export default function RoylandzPage() {
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#1B1714', color: '#FAF4EA', borderRadius: 999, padding: '7px 16px', fontSize: 13, fontWeight: 700, letterSpacing: 1, marginBottom: 22 }}>
             FOUNDED IN THIKA · NAIROBI TODAY
           </div>
-          <h1 style={{ fontWeight: 800, fontSize: 'clamp(48px, 7vw, 96px)', letterSpacing: '-3px', lineHeight: 0.95, margin: '0 0 22px' }}>
+          <h1 className="emx-display" style={{ fontWeight: 400, fontSize: 'clamp(48px, 7vw, 96px)', lineHeight: 0.95, margin: '0 0 22px' }}>
             Roylandz<br /><span style={{ color: 'var(--a)' }}>Media</span>
           </h1>
           <p style={{ fontSize: 18, lineHeight: 1.65, maxWidth: 620, fontWeight: 500, margin: '0 0 30px' }}>

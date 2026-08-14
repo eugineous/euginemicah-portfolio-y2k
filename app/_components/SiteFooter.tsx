@@ -8,6 +8,7 @@ const pagesLinks: [string, string][] = [
   ['About', '/about'],
   ['Shows', '/shows'],
   ['Book', '/book'],
+  ['Ideas', '/ideas'],
   ['Press', '/press'],
   ['Blog', '/blog'],
 ];

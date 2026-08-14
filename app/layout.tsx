@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Bricolage_Grotesque, Instrument_Serif } from 'next/font/google';
+import { Anton, Bricolage_Grotesque, Instrument_Serif } from 'next/font/google';
 import './globals.css';
 
 // New brand system (2026-07 rebuild, Phase 0). Self-hosted via next/font
@@ -23,6 +23,16 @@ const instrumentSerif = Instrument_Serif({
   weight: '400',
   style: ['italic', 'normal'],
   variable: '--font-instrument-serif',
+  display: 'swap',
+});
+
+// 2026-08 brand-platform pass: display font for hero headings, applied
+// via the .emx-display utility class in globals.css, not a bare
+// h1/h2 rule — keeps /admin's separate font system untouched.
+const anton = Anton({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-anton',
   display: 'swap',
 });
 
@@ -64,7 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${bricolageGrotesque.variable} ${instrumentSerif.variable}`}
+      className={`${bricolageGrotesque.variable} ${instrumentSerif.variable} ${anton.variable}`}
       suppressHydrationWarning
     >
       <head>
