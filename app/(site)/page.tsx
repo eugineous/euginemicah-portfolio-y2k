@@ -85,6 +85,8 @@ const proof: { title: string; sub: string; href?: string }[] = [
 export default function HomePage() {
   return (
     <main style={{ overflowX: 'hidden' }}>
+      {/* eslint-disable-next-line @next/next/no-script-component-in-head */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
       {/* Scoped motion rules — kept local to this file (page.tsx is the only
           file this phase may touch). Reuses globals.css's existing
           `em-marquee` keyframe (translateX 0 → -50%, already shipped for
