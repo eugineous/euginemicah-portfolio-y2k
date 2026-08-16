@@ -406,8 +406,8 @@ export default function HomePage() {
             <div style={{ position: 'relative', overflow: 'hidden', width: '100%', aspectRatio: '3/4' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/assets/brand-2026-08/media-podcast.webp"
-                alt="Eugine Micah recording a podcast"
+                src="/assets/brand-2026-08/1 (14).webp"
+                alt="Eugine Micah, editorial portrait"
                 className="em-hp-speaking-img"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
