@@ -9,7 +9,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         minHeight: '100vh',
         background: 'var(--bg)',
         color: 'var(--text)',
-        fontFamily: 'var(--font-bricolage), sans-serif',
+        fontFamily: 'var(--f-work-sans)',
       }}
     >
       <ScrollChrome />

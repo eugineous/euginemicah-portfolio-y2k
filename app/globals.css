@@ -3,6 +3,8 @@
    Kept as a separate import from the admin fonts above: /admin (Control Room) still
    uses --onyx/--cream/em-* below, marketing pages use the --paper/--ink tokens inline. */
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Spline+Sans+Mono:wght@400;500;600&display=swap');
+/* 2026-08 rebrand — Archivo (already imported above, headlines/kickers) + Work Sans (body/UI). */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 /* euginemicah.tech design tokens (mirrors assets/em.css poster palette) */
@@ -50,26 +52,40 @@ body { background: var(--onyx); color: var(--cream); font-family: var(--f-body);
 .em-th { text-align: left; padding: 8px 10px; font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; color: #8d879c; border-bottom: 1px solid #2a2633; white-space: nowrap; }
 .em-td { padding: 9px 10px; font-size: 13px; border-bottom: 1px solid #221e2b; vertical-align: top; }
 
-/* ---- Phase 0 shared shell (2026-07 rebuild) ----
-   New brand system ported from the DCLogic mockup at
-   "Celebrity website project/index.html". Consumed by SiteHeader.tsx,
-   SiteFooter.tsx, ScrollChrome.tsx, ThemeToggle.tsx and app/(site)/layout.tsx
-   only. Uses fresh `--a/--b/--c`/`--bg`/`--text` tokens and an `emx-`
-   class prefix (distinct from the `em-` prefix above, which stays
-   load-bearing for /admin — untouched) so nothing here can collide with
-   existing selectors. The --paper/--ink/--f-display/etc. block above is
-   unused by any component today (old marketing pages hardcode hex values
-   and font names inline) and is left as-is for now. */
+/* ---- Phase 0 shared shell (2026-07 rebuild, re-themed 2026-08) ----
+   Consumed by SiteHeader.tsx, SiteFooter.tsx, ScrollChrome.tsx,
+   ThemeToggle.tsx, app/(site)/layout.tsx and every (site) page's inline
+   styles via the `emx-` class prefix (distinct from `em-`, which stays
+   load-bearing for /admin — untouched) so nothing here collides with
+   existing selectors.
+
+   2026-08 rebrand: repointed to the crimson/near-black/paper/tan palette
+   from the Eugine Micah brand handoff (see design_handoff_full_site_backend
+   /README.md) instead of introducing a parallel token set — every existing
+   page/component already reads --a/--bg/--text, so repointing here re-skins
+   them in place. --b/--c (previously a 3-accent rotation: orange/gold) both
+   collapse to the new tan secondary-surface color; the design system itself
+   is a single accent (crimson) on paper/tan/near-black, not a 3-color
+   rotation. New pages should prefer the explicit --em-* names below over
+   --a/--b/--c for clarity, but both resolve to the same values. */
 :root {
-  --a: #7B2FBE;
-  --b: #FF6B35;
-  --c: #D4A017;
-  --bg-light: #FAF4EA;
-  --bg-dark: #141110;
-  --text-light: #1B1714;
-  --text-dark: #F5F1E8;
+  --em-crimson: #D1272C;
+  --em-near-black: #17171A;
+  --em-paper: #FAF7F2;
+  --em-tan: #EFE7D8;
+
+  --a: var(--em-crimson);
+  --b: var(--em-tan);
+  --c: var(--em-tan);
+  --bg-light: var(--em-paper);
+  --bg-dark: var(--em-near-black);
+  --text-light: var(--em-near-black);
+  --text-dark: var(--em-paper);
   --bg: var(--bg-light);
   --text: var(--text-light);
+
+  --f-archivo: 'Archivo', sans-serif;
+  --f-work-sans: 'Work Sans', sans-serif;
 }
 
 :root[data-theme='dark'] {
