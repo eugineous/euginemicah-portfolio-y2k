@@ -36,7 +36,7 @@ type WorkItem = {
 const items: WorkItem[] = [
   {
     slotId: 'work-urbannews',
-    src: '/assets/brand-2026-08/1 (12).png',
+    src: '/assets/brand-2026-08/1 (12).webp',
     imgLabel: 'Urban News',
     kicker: 'Broadcast',
     title: 'Urban News',
@@ -44,13 +44,13 @@ const items: WorkItem[] = [
     flip: false,
     desc: "Co-hosted with Lucy. Current affairs and culture coverage for PPP TV's Urban News desk.",
     details: ['Co-host and on-air interviewer', 'Editorial input on segment selection', 'Field and studio production'],
-    logo: '/assets/brand-2026-08/logos/PPP-TV-logo.png',
+    logo: '/assets/brand-2026-08/logos/PPP-TV-logo.webp',
     logoAlt: 'PPP TV logo',
     links: [{ href: 'https://www.youtube.com/@urbannewsgang', label: 'Watch on YouTube' }],
   },
   {
     slotId: 'work-campus',
-    src: '/assets/brand-2026-08/1 (13).png',
+    src: '/assets/brand-2026-08/1 (13).webp',
     imgLabel: 'Campus Xposure',
     kicker: 'Campus',
     title: 'Campus Xposure',
@@ -61,7 +61,7 @@ const items: WorkItem[] = [
   },
   {
     slotId: 'work-podcast',
-    src: '/assets/brand-2026-08/1 (3).png',
+    src: '/assets/brand-2026-08/1 (3).webp',
     imgLabel: 'The Nairobi Podcast',
     kicker: 'Audio',
     title: 'The Nairobi Podcast',
@@ -73,7 +73,7 @@ const items: WorkItem[] = [
   },
   {
     slotId: 'work-journalism',
-    src: '/assets/brand-2026-08/1 (16).png',
+    src: '/assets/brand-2026-08/1 (16).webp',
     imgLabel: 'Journalism',
     kicker: 'Journalism',
     title: 'Journalism',
@@ -92,7 +92,7 @@ const items: WorkItem[] = [
   },
   {
     slotId: 'work-digital',
-    src: '/assets/brand-2026-08/1 (9).png',
+    src: '/assets/brand-2026-08/1 (9).webp',
     imgLabel: 'Digital',
     kicker: 'Digital',
     title: 'Digital',
@@ -103,7 +103,7 @@ const items: WorkItem[] = [
   },
   {
     slotId: 'work-live',
-    src: '/assets/brand-2026-08/1 (6).png',
+    src: '/assets/brand-2026-08/1 (6).webp',
     imgLabel: 'Live hosting',
     kicker: 'Live',
     title: 'Live',

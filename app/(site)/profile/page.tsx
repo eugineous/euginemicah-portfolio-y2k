@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Profile — Eugine Micah',
     description: 'Journalist and broadcaster, across TV, digital and live.',
-    images: ['/assets/brand-2026-08/1 (2).png'],
+    images: ['/assets/brand-2026-08/1 (2).webp'],
     type: 'profile',
   },
 };
@@ -119,7 +119,7 @@ export default function ProfilePage() {
           <div style={{ position: 'relative', overflow: 'hidden', width: '100%', aspectRatio: '3/4' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/assets/brand-2026-08/1 (2).png"
+              src="/assets/brand-2026-08/1 (2).webp"
               alt="Portrait of Eugine Micah"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />

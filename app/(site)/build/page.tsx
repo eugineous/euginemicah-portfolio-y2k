@@ -101,7 +101,7 @@ export default function BuildPage() {
         <div style={{ position: 'relative', overflow: 'hidden', width: '100%', aspectRatio: '3/4' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/assets/brand-2026-08/1 (10).png"
+            src="/assets/brand-2026-08/1 (10).webp"
             alt="Roylandz Media"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
@@ -128,7 +128,7 @@ export default function BuildPage() {
         <div style={{ maxWidth: 1400, margin: '0 auto' }}>
           <div style={{ marginBottom: 32 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/brand-2026-08/ugt-logo-v2.png" alt="Urban Gang Tour logo" style={{ height: 64, width: 'auto', display: 'block', marginBottom: 16 }} />
+            <img src="/assets/brand-2026-08/ugt-logo-v2.webp" alt="Urban Gang Tour logo" style={{ height: 64, width: 'auto', display: 'block', marginBottom: 16 }} />
             <div style={{ fontFamily: 'var(--f-work-sans)', fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--em-crimson)', marginBottom: 12 }}>
               Founder
             </div>

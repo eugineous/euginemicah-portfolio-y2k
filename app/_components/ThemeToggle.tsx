@@ -10,13 +10,18 @@ const STORAGE_KEY = 'em_theme';
 // this component only takes over from there — reading whatever the script
 // already applied, then keeping localStorage + the DOM attribute in sync
 // on click. No raw DOM class manipulation beyond that single attribute.
+//
+// 2026-08: dark is the default (see app/layout.tsx's themeInitScript) --
+// this toggle still lets a visitor switch to light mode, it just no longer
+// starts there. Only an explicit 'light' choice is persisted; the absence
+// of a stored value means dark, not light.
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (document.documentElement.getAttribute('data-theme') === 'dark') {
-      setTheme('dark');
+    if (document.documentElement.getAttribute('data-theme') !== 'dark') {
+      setTheme('light');
     }
     setMounted(true);
   }, []);
@@ -25,7 +30,7 @@ export function ThemeToggle() {
     if (!mounted) return;
     document.documentElement.setAttribute('data-theme', theme);
     try {
-      if (theme === 'dark') localStorage.setItem(STORAGE_KEY, 'dark');
+      if (theme === 'light') localStorage.setItem(STORAGE_KEY, 'light');
       else localStorage.removeItem(STORAGE_KEY);
     } catch {
       // localStorage unavailable (private mode, etc.) — theme just won't persist

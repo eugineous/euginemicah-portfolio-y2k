@@ -33,6 +33,32 @@ export const metadata: Metadata = {
 const ticker = ['Broadcast', 'Journalism', 'Live Hosting', 'Digital', 'Founder'];
 const tickerDouble = [...ticker, ...ticker];
 
+// The site had zero Person/identity structured data before this -- only
+// /ideas (Book), /build (Organization), /work-with-eugine (FAQPage) and
+// /blog/[slug] (Article) carried any JSON-LD. Adding the canonical Person
+// entity here, on the homepage, since Google recommends one authoritative
+// instance rather than repeating it per page. sameAs links are the same
+// real, already-verified URLs used in SiteFooter.tsx.
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Eugine Micah',
+  url: 'https://euginemicah.tech',
+  jobTitle: 'Broadcaster, Journalist, Founder',
+  description: 'Broadcaster, journalist, and founder building media, technology, and youth culture platforms across Kenya.',
+  image: 'https://euginemicah.tech/assets/brand-2026-08/1 (11).webp',
+  worksFor: [
+    { '@type': 'Organization', name: 'Roylandz Media' },
+    { '@type': 'Organization', name: 'Urban Gang Tour' },
+  ],
+  sameAs: [
+    'https://ke.linkedin.com/in/euginemicah',
+    'https://instagram.com/eugine.micah/',
+    'https://x.com/eugineroylandz',
+    'https://muckrack.com/eugine-micah/portfolio',
+  ],
+};
+
 const background = ['Citizen TV', 'Royal Media Services', 'PPP TV — Urban News', 'Global Cyber Alliance'];
 
 const properties: { kicker: string; title: string; desc: string; href: string }[] = [
@@ -82,7 +108,7 @@ export default function HomePage() {
       <section style={{ position: 'relative', minHeight: '86vh', overflow: 'hidden', background: 'var(--em-near-black)' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/assets/brand-2026-08/1 (11).png"
+          src="/assets/brand-2026-08/1 (11).webp"
           alt="Portrait of Eugine Micah"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
         />

@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Born Broke, Built Loud — Eugine Micah',
     description: 'The true story of a boy who was smuggled into the world and had to talk his way through it.',
-    images: ['/assets/brand-2026-08/book-cover-paperback.jpg'],
+    images: ['/assets/brand-2026-08/book-cover-paperback.webp'],
     type: 'book',
   },
 };
@@ -178,7 +178,7 @@ export default function IdeasPage() {
           <div style={{ position: 'relative', overflow: 'hidden', width: '100%', aspectRatio: '971/1500' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/assets/brand-2026-08/book-cover-paperback.jpg"
+              src="/assets/brand-2026-08/book-cover-paperback.webp"
               alt="Born Broke, Built Loud book cover"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
@@ -235,7 +235,7 @@ export default function IdeasPage() {
         <div style={{ flex: 'none', width: 64, height: 64, borderRadius: '50%', overflow: 'hidden' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/assets/brand-2026-08/1 (15).png"
+            src="/assets/brand-2026-08/1 (15).webp"
             alt="Eugine Micah"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
