@@ -26,17 +26,24 @@ const instrumentSerif = Instrument_Serif({
   display: 'swap',
 });
 
-// Render-blocking theme bootstrap: applies the persisted theme preference to
-// <html> before first paint, so toggling in ThemeToggle.tsx never causes a
-// flash of the wrong theme. Key ('em_theme') matches what ThemeToggle.tsx
-// writes to localStorage.
+// Render-blocking theme bootstrap: applies the persisted dark-mode
+// preference to <html> before first paint, so toggling in ThemeToggle.tsx
+// never causes a flash of the wrong theme. Key ('em_theme') matches what
+// ThemeToggle.tsx writes to localStorage.
 //
-// 2026-08: dark is now the site's default, not light. The site always opens
-// dark unless the visitor has explicitly switched to light mode this
-// session (stored as 'light') -- there is deliberately no persisted "dark"
-// value to check for anymore, since dark is simply what happens when
-// nothing else is stored.
-const themeInitScript = `(function(){try{if(localStorage.getItem('em_theme')!=='light'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`;
+// 2026-08 note: briefly tried making dark the site-wide default here, but
+// reverted it -- the shared --bg/--text tokens are used across older,
+// untouched pages (/roylandz, /about, /shows, /blog, /book, /messages,
+// /terms) that pair them with hardcoded hex colors designed only for the
+// light default (e.g. a card background of `rgba(250,244,234,0.04)` next
+// to text hardcoded to the same paper color -- fine on a light page, close
+// to invisible once the page itself goes dark). Fixing every such
+// combination across all those pages was out of scope for this change;
+// reverting to a light default was the safe fix. The new rebrand pages
+// (Home, Profile, Work, Build, Ideas, Now, News, Work-With-Eugine) don't
+// use these tokens for their content at all -- they hardcode their own
+// --em-* colors per the verbatim design -- so they're unaffected either way.
+const themeInitScript = `(function(){try{if(localStorage.getItem('em_theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://euginemicah.tech'),

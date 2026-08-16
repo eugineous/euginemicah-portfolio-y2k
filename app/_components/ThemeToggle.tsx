@@ -11,17 +11,16 @@ const STORAGE_KEY = 'em_theme';
 // already applied, then keeping localStorage + the DOM attribute in sync
 // on click. No raw DOM class manipulation beyond that single attribute.
 //
-// 2026-08: dark is the default (see app/layout.tsx's themeInitScript) --
-// this toggle still lets a visitor switch to light mode, it just no longer
-// starts there. Only an explicit 'light' choice is persisted; the absence
-// of a stored value means dark, not light.
+// Light is the default (see app/layout.tsx's themeInitScript comment for
+// why a dark default was tried and reverted -- it broke text contrast on
+// several older pages that pair --text/--bg with hardcoded hex colors).
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (document.documentElement.getAttribute('data-theme') !== 'dark') {
-      setTheme('light');
+    if (document.documentElement.getAttribute('data-theme') === 'dark') {
+      setTheme('dark');
     }
     setMounted(true);
   }, []);
@@ -30,7 +29,7 @@ export function ThemeToggle() {
     if (!mounted) return;
     document.documentElement.setAttribute('data-theme', theme);
     try {
-      if (theme === 'light') localStorage.setItem(STORAGE_KEY, 'light');
+      if (theme === 'dark') localStorage.setItem(STORAGE_KEY, 'dark');
       else localStorage.removeItem(STORAGE_KEY);
     } catch {
       // localStorage unavailable (private mode, etc.) — theme just won't persist

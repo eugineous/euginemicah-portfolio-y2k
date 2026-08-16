@@ -62,12 +62,26 @@ body { background: var(--onyx); color: var(--cream); font-family: var(--f-body);
    2026-08 rebrand: repointed to the crimson/near-black/paper/tan palette
    from the Eugine Micah brand handoff (see design_handoff_full_site_backend
    /README.md) instead of introducing a parallel token set — every existing
-   page/component already reads --a/--bg/--text, so repointing here re-skins
-   them in place. --b/--c (previously a 3-accent rotation: orange/gold) both
-   collapse to the new tan secondary-surface color; the design system itself
-   is a single accent (crimson) on paper/tan/near-black, not a 3-color
-   rotation. New pages should prefer the explicit --em-* names below over
-   --a/--b/--c for clarity, but both resolve to the same values. */
+   page/component already reads --a/--bg/--text, so repointing --a re-skins
+   it in place. New pages should prefer the explicit --em-* names below.
+
+   --b/--c fix (2026-08): two attempts at repointing these both broke real,
+   untouched pages and got reverted. Repointing them to --em-tan (light)
+   broke cards that pair --b/--c backgrounds with hardcoded near-white text
+   (e.g. Roylandz's service cards — designed for the original orange/gold,
+   both dark enough for light text). Repointing them to --em-near-black
+   (dark) then broke a *different* set of elements that pair --b/--c
+   backgrounds with hardcoded near-black text (e.g. Roylandz's stat
+   badges — designed for the original orange/gold being light enough for
+   dark text). The old pages use --b/--c inconsistently: sometimes as a
+   dark surface for light text, sometimes as a light surface for dark
+   text, because the original orange (#FF6B35) and gold (#D4A017) sat in
+   the middle of that range and worked either way. No single new color
+   satisfies both, so --b/--c are left at their original values here —
+   confirmed via grep that none of this session's new pages (Home,
+   Profile, Work, Build, Ideas, Now, News, Work-With-Eugine, SiteHeader,
+   SiteFooter) reference --a/--b/--c at all, only the explicit --em-*
+   names, so this has zero effect on the rebrand. */
 :root {
   --em-crimson: #D1272C;
   --em-near-black: #17171A;
@@ -75,8 +89,8 @@ body { background: var(--onyx); color: var(--cream); font-family: var(--f-body);
   --em-tan: #EFE7D8;
 
   --a: var(--em-crimson);
-  --b: var(--em-tan);
-  --c: var(--em-tan);
+  --b: #FF6B35;
+  --c: #D4A017;
   --bg-light: var(--em-paper);
   --bg-dark: var(--em-near-black);
   --text-light: var(--em-near-black);
