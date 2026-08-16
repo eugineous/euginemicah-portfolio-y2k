@@ -10,6 +10,7 @@ import { verifyCmsAdmin } from '@/lib/cms-auth';
 
 const EDITABLE = new Set([
   'slug', 'category', 'title', 'excerpt', 'paragraphs', 'tag_chips', 'read_time', 'status', 'published_at',
+  'hero_image_url', 'focus_keyword', 'seo_title', 'seo_description',
 ]);
 
 export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {

@@ -15,10 +15,20 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return {};
+  const title = post.seo_title || post.title;
+  const description = post.seo_description || post.excerpt;
   return {
-    title: post.title,
-    description: post.excerpt,
+    title,
+    description,
     alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      publishedTime: post.published_at || undefined,
+      images: post.hero_image_url ? [post.hero_image_url] : undefined,
+    },
+    twitter: { card: 'summary_large_image', title, description, images: post.hero_image_url ? [post.hero_image_url] : undefined },
   };
 }
 
@@ -31,6 +41,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const recentPosts = allPosts.filter((p) => p.slug !== post.slug).slice(0, 5);
   const relatedPosts = allPosts.filter((p) => p.slug !== post.slug && p.category === post.category).slice(0, 3);
   const swatch = categoryStyle(post.category);
+
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.seo_description || post.excerpt,
+    datePublished: post.published_at || undefined,
+    author: { '@type': 'Person', name: 'Eugine Micah' },
+    image: post.hero_image_url || undefined,
+  };
 
   return (
     <section
@@ -45,7 +65,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       }}
       className="max-[860px]:!grid-cols-1"
     >
+      {/* eslint-disable-next-line @next/next/no-script-component-in-head */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <article>
+        {post.hero_image_url && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={post.hero_image_url}
+            alt=""
+            style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', borderRadius: 14, marginBottom: 26 }}
+          />
+        )}
         <nav aria-label="Breadcrumb" style={{ fontSize: 13, fontWeight: 600, opacity: 0.55, marginBottom: 24 }}>
           <Link href="/" className="emx-link">
             Home

@@ -159,7 +159,7 @@ export default function ControlRoomClient() {
 
       <Toast message={toast} />
 
-      {tab === 'blog' && <BlogTab api={api} say={say} />}
+      {tab === 'blog' && <BlogTab api={api} say={say} authToken={session.token} />}
       {tab === 'shows' && <ShowsTab api={api} say={say} />}
       {tab === 'messages' && <MessagesTab api={api} say={say} />}
       {tab === 'orders' && <OrdersTab api={api} say={say} />}

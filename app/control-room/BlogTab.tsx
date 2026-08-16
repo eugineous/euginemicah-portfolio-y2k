@@ -16,6 +16,10 @@ type BlogPost = {
   status: 'draft' | 'published';
   published_at: string | null;
   created_at: string;
+  hero_image_url: string | null;
+  focus_keyword: string;
+  seo_title: string;
+  seo_description: string;
 };
 
 type FormState = {
@@ -28,13 +32,18 @@ type FormState = {
   tag_chips: string; // comma-separated
   read_time: string;
   status: 'draft' | 'published';
+  hero_image_url: string;
+  focus_keyword: string;
+  seo_title: string;
+  seo_description: string;
 };
 
 const BLANK: FormState = {
   id: null, slug: '', category: '', title: '', excerpt: '', paragraphs: '', tag_chips: '', read_time: '', status: 'draft',
+  hero_image_url: '', focus_keyword: '', seo_title: '', seo_description: '',
 };
 
-export function BlogTab({ api, say }: { api: ApiFn; say: (m: string) => void }) {
+export function BlogTab({ api, say, authToken }: { api: ApiFn; say: (m: string) => void; authToken: string }) {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [form, setForm] = useState<FormState | null>(null);
@@ -61,6 +70,10 @@ export function BlogTab({ api, say }: { api: ApiFn; say: (m: string) => void }) 
       tag_chips: (p.tag_chips || []).join(', '),
       read_time: p.read_time,
       status: p.status,
+      hero_image_url: p.hero_image_url || '',
+      focus_keyword: p.focus_keyword || '',
+      seo_title: p.seo_title || '',
+      seo_description: p.seo_description || '',
     });
   }
 
@@ -74,6 +87,10 @@ export function BlogTab({ api, say }: { api: ApiFn; say: (m: string) => void }) 
       tag_chips: f.tag_chips.split(',').map((t) => t.trim()).filter(Boolean),
       read_time: f.read_time.trim(),
       status: f.status,
+      hero_image_url: f.hero_image_url.trim() || null,
+      focus_keyword: f.focus_keyword.trim(),
+      seo_title: f.seo_title.trim(),
+      seo_description: f.seo_description.trim(),
     };
     const { status, data } = f.id
       ? await api(`/api/cms/blog/${f.id}`, { method: 'PATCH', body: JSON.stringify(payload) })
@@ -136,14 +153,81 @@ export function BlogTab({ api, say }: { api: ApiFn; say: (m: string) => void }) 
         </div>
       </Card>
 
-      {form && <BlogForm form={form} onCancel={() => setForm(null)} onSave={save} />}
+      {form && <BlogForm form={form} onCancel={() => setForm(null)} onSave={save} authToken={authToken} say={say} />}
     </div>
   );
 }
 
-function BlogForm({ form, onCancel, onSave }: { form: FormState; onCancel: () => void; onSave: (f: FormState) => void }) {
+// SEO checklist rules, ported from Admin.dc.html: title 30-60 chars, meta
+// description 120-160 chars, focus keyword present in the title, focus
+// keyword present in the body.
+function seoChecklist(f: FormState) {
+  const title = (f.seo_title || f.title).trim();
+  const desc = f.seo_description.trim();
+  const keyword = f.focus_keyword.trim().toLowerCase();
+  const body = f.paragraphs.toLowerCase();
+  return [
+    { label: 'SEO title length (30–60 chars)', ok: title.length >= 30 && title.length <= 60 },
+    { label: 'Meta description length (120–160 chars)', ok: desc.length >= 120 && desc.length <= 160 },
+    { label: 'Focus keyword in title', ok: !!keyword && title.toLowerCase().includes(keyword) },
+    { label: 'Focus keyword in body', ok: !!keyword && body.includes(keyword) },
+  ];
+}
+
+function SeoDot({ ok }: { ok: boolean }) {
+  return (
+    <span
+      aria-hidden
+      style={{ display: 'inline-block', width: 9, height: 9, borderRadius: '50%', background: ok ? '#1a7f37' : '#D1272C', flexShrink: 0 }}
+    />
+  );
+}
+
+function BlogForm({
+  form,
+  onCancel,
+  onSave,
+  authToken,
+  say,
+}: {
+  form: FormState;
+  onCancel: () => void;
+  onSave: (f: FormState) => void;
+  authToken: string;
+  say: (m: string) => void;
+}) {
   const [f, setF] = useState(form);
+  const [uploading, setUploading] = useState(false);
   const set = <K extends keyof FormState>(k: K, v: FormState[K]) => setF((x) => ({ ...x, [k]: v }));
+
+  async function onFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const body = new FormData();
+      body.append('file', file);
+      const res = await fetch('/api/cms/blog/upload-image', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${authToken}` },
+        body,
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.url) {
+        set('hero_image_url', data.url);
+      } else {
+        say('Image upload failed: ' + (data.error || res.status));
+      }
+    } catch {
+      say('Image upload failed: network error');
+    } finally {
+      setUploading(false);
+      e.target.value = '';
+    }
+  }
+
+  const checklist = seoChecklist(f);
+
   return (
     <div
       style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.6)', zIndex: 50, display: 'flex', alignItems: 'flex-start', justifyContent: 'center', overflowY: 'auto', padding: '5vh 14px' }}
@@ -152,6 +236,18 @@ function BlogForm({ form, onCancel, onSave }: { form: FormState; onCancel: () =>
       <Card style={{ maxWidth: 680, width: '100%', padding: 22, background: 'var(--bg)' }}>
         <div onClick={(e) => e.stopPropagation()}>
           <h3 style={{ margin: '0 0 4px', fontSize: 18, fontWeight: 800 }}>{f.id ? `Edit post #${f.id}` : 'New post'}</h3>
+
+          <label style={labelStyle}>Hero image</label>
+          {f.hero_image_url && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={f.hero_image_url}
+              alt=""
+              style={{ width: '100%', maxHeight: 160, objectFit: 'cover', borderRadius: 8, marginBottom: 8 }}
+            />
+          )}
+          <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" onChange={onFileChange} disabled={uploading} style={{ marginBottom: 4 }} />
+          {uploading && <div style={{ fontSize: 12, opacity: 0.6, marginBottom: 4 }}>Uploading…</div>}
 
           <label style={labelStyle}>Title</label>
           <input style={inputStyle} value={f.title} onChange={(e) => set('title', e.target.value)} />
@@ -184,6 +280,28 @@ function BlogForm({ form, onCancel, onSave }: { form: FormState; onCancel: () =>
             <option value="draft">Draft</option>
             <option value="published">Published</option>
           </select>
+
+          <div style={{ marginTop: 18, paddingTop: 14, borderTop: '1px solid rgba(0,0,0,.1)' }}>
+            <div style={{ fontSize: 13, fontWeight: 800, marginBottom: 8 }}>SEO</div>
+
+            <label style={labelStyle}>Focus keyword</label>
+            <input style={inputStyle} value={f.focus_keyword} onChange={(e) => set('focus_keyword', e.target.value)} />
+
+            <label style={labelStyle}>SEO title (defaults to Title)</label>
+            <input style={inputStyle} value={f.seo_title} onChange={(e) => set('seo_title', e.target.value)} placeholder={f.title} />
+
+            <label style={labelStyle}>Meta description</label>
+            <textarea style={{ ...inputStyle, resize: 'vertical' }} rows={2} value={f.seo_description} onChange={(e) => set('seo_description', e.target.value)} />
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 10 }}>
+              {checklist.map((c) => (
+                <div key={c.label} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12.5, opacity: 0.85 }}>
+                  <SeoDot ok={c.ok} />
+                  {c.label}
+                </div>
+              ))}
+            </div>
+          </div>
 
           <div style={{ display: 'flex', gap: 10, marginTop: 20 }}>
             <Button onClick={() => onSave(f)} disabled={!f.title.trim() || !f.slug.trim()}>Save</Button>

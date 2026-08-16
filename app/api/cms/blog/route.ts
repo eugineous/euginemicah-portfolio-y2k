@@ -38,6 +38,10 @@ export async function POST(req: Request) {
     read_time: b.read_time || '',
     status,
     published_at: status === 'published' ? b.published_at || new Date().toISOString() : b.published_at || null,
+    hero_image_url: b.hero_image_url || null,
+    focus_keyword: b.focus_keyword || '',
+    seo_title: b.seo_title || '',
+    seo_description: b.seo_description || '',
   };
   const { data, error } = await db.from('blog_posts').insert(row).select('id').single();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });

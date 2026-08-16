@@ -31,9 +31,24 @@ const nextConfig = {
 
       // The printed book's back-matter text says "euginemicah.tech/booking" —
       // redirect rather than reprint. Both old booking routes now point at
-      // /work, the new "work with me" page (replaces /book-me).
-      { source: '/booking', destination: '/work', permanent: true },
-      { source: '/book-me', destination: '/work', permanent: true },
+      // /work-with-eugine, the 2026-08 rebrand's enquiry hub (previously
+      // pointed at /work, which is now the portfolio page, not the booking
+      // one -- see the 2026-08 rebrand redirects below).
+      { source: '/booking', destination: '/work-with-eugine', permanent: true },
+      { source: '/book-me', destination: '/work-with-eugine', permanent: true },
+
+      // 2026-08 rebrand: new brand IA. /about -> /profile and /shows -> /work
+      // are full replaces (old pages' content/routes no longer exist).
+      // /book, /roylandz, /terms deliberately keep working and are NOT
+      // redirected here: /book still has the live Paystack checkout (now
+      // also reachable from /ideas, the new canonical book page, without
+      // moving the checkout itself or its Paystack success-page target);
+      // /roylandz has a fuller real company profile than the new /build
+      // page's brief summary, which links to it instead of replacing it;
+      // /terms isn't part of the new page set but has real legal content
+      // worth keeping reachable.
+      { source: '/about', destination: '/profile', permanent: true },
+      { source: '/shows', destination: '/work', permanent: true },
     ];
   },
   async headers() {

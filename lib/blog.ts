@@ -14,6 +14,10 @@ export type BlogPost = {
   published_at: string | null;
   created_at: string;
   updated_at: string;
+  hero_image_url: string | null;
+  focus_keyword: string;
+  seo_title: string;
+  seo_description: string;
 };
 
 // Both helpers fail soft: if env vars aren't configured yet, the anon client
