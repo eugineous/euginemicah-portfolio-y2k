@@ -39,8 +39,8 @@ const photos: { src: string; alt: string; caption: string; shadow: string }[] = 
 ];
 
 const logos: { src: string; alt: string; bg: string }[] = [
-  { src: '/assets/press/em-logo-black.png', alt: 'Eugine Micah logo, black on cream', bg: '#FAF4EA' },
-  { src: '/assets/press/em-logo-cream.png', alt: 'Eugine Micah logo, cream on black', bg: '#1B1714' },
+  { src: '/assets/press/em-logo-black.png', alt: 'Eugine Micah logo, black on cream', bg: 'var(--em-paper)' },
+  { src: '/assets/press/em-logo-cream.png', alt: 'Eugine Micah logo, cream on black', bg: 'var(--em-near-black)' },
 ];
 
 const shortBio =
@@ -58,7 +58,7 @@ const railStops: [string, string, 'a' | 'b' | 'c'][] = [
 ];
 
 const railBg: Record<'a' | 'b' | 'c', string> = { a: 'var(--a)', b: 'var(--b)', c: 'var(--c)' };
-const railColor: Record<'a' | 'b' | 'c', string> = { a: '#FAF4EA', b: '#FAF4EA', c: '#1B1714' };
+const railColor: Record<'a' | 'b' | 'c', string> = { a: 'var(--em-paper)', b: 'var(--em-paper)', c: 'var(--em-near-black)' };
 
 export default function PressPage() {
   return (
@@ -118,7 +118,7 @@ export default function PressPage() {
         }}
       >
         <div>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#1B1714', color: '#FAF4EA', borderRadius: 999, padding: '7px 16px', fontSize: 13, fontWeight: 700, letterSpacing: 1, marginBottom: 22 }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'var(--em-near-black)', color: 'var(--em-paper)', borderRadius: 999, padding: '7px 16px', fontSize: 13, fontWeight: 700, letterSpacing: 1, marginBottom: 22 }}>
             FOR MEDIA &amp; PARTNERS
           </div>
           <h1 style={{ fontWeight: 800, fontSize: 'clamp(42px, 6vw, 80px)', letterSpacing: '-2.5px', lineHeight: 0.96, margin: '0 0 20px' }}>
@@ -132,7 +132,7 @@ export default function PressPage() {
             <Link
               href="#bios"
               className="emx-cta"
-              style={{ display: 'inline-block', fontWeight: 700, background: 'var(--a)', color: '#FAF4EA', border: '3px solid var(--text)', borderRadius: 14, padding: '13px 24px', boxShadow: '4px 4px 0 var(--text)' }}
+              style={{ display: 'inline-block', fontWeight: 700, background: 'var(--a)', color: 'var(--em-paper)', border: '3px solid var(--text)', borderRadius: 14, padding: '13px 24px', boxShadow: '4px 4px 0 var(--text)' }}
             >
               Jump to bios
             </Link>
@@ -148,16 +148,16 @@ export default function PressPage() {
         <div style={{ position: 'relative', justifySelf: 'center' }}>
           <div
             className="emx-portrait-frame"
-            style={{ transform: 'rotate(2deg)', background: '#fff', border: '3px solid #1B1714', borderRadius: 18, padding: 12, boxShadow: '8px 10px 0 var(--a)', maxWidth: 340 }}
+            style={{ transform: 'rotate(2deg)', background: '#fff', border: '3px solid var(--em-near-black)', borderRadius: 18, padding: 12, boxShadow: '8px 10px 0 var(--a)', maxWidth: 340 }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/press/shoot-1.jpg"
               alt="Eugine Micah press portrait"
-              style={{ display: 'block', width: '100%', aspectRatio: '4/5', objectFit: 'cover', borderRadius: 8, border: '2px solid #1B1714' }}
+              style={{ display: 'block', width: '100%', aspectRatio: '4/5', objectFit: 'cover', borderRadius: 8, border: '2px solid var(--em-near-black)' }}
             />
           </div>
-          <div style={{ position: 'absolute', top: -16, right: -18, background: 'var(--c)', color: '#1B1714', fontWeight: 800, fontSize: 13, padding: '9px 15px', border: '3px solid #1B1714', borderRadius: 999, transform: 'rotate(6deg)' }}>
+          <div style={{ position: 'absolute', top: -16, right: -18, background: 'var(--c)', color: 'var(--em-near-black)', fontWeight: 800, fontSize: 13, padding: '9px 15px', border: '3px solid var(--em-near-black)', borderRadius: 999, transform: 'rotate(6deg)' }}>
             HIGH-RES BELOW
           </div>
         </div>
@@ -180,7 +180,7 @@ export default function PressPage() {
       {/* BIOS */}
       <section id="bios" style={{ maxWidth: 1200, margin: '0 auto', padding: '90px 28px 70px' }}>
         <div style={{ marginBottom: 30 }}>
-          <div style={{ fontFamily: 'var(--font-instrument-serif), serif', fontStyle: 'italic', fontSize: 24, color: 'var(--a)' }}>for the write-up</div>
+          <div style={{ fontFamily: 'var(--f-work-sans)', fontStyle: 'italic', fontSize: 24, color: 'var(--a)' }}>for the write-up</div>
           <h2 style={{ fontWeight: 800, fontSize: 'clamp(30px, 4vw, 44px)', letterSpacing: '-1.5px', margin: '8px 0 0' }}>Bios</h2>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 22 }}>
@@ -209,22 +209,22 @@ export default function PressPage() {
       </section>
 
       {/* PHOTOS */}
-      <section id="photos" style={{ background: '#1B1714', padding: '80px 28px' }}>
+      <section id="photos" style={{ background: 'var(--em-near-black)', padding: '80px 28px' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 20, flexWrap: 'wrap', marginBottom: 30 }}>
             <div>
-              <div style={{ fontFamily: 'var(--font-instrument-serif), serif', fontStyle: 'italic', fontSize: 24, color: 'var(--c)' }}>approved for use</div>
-              <h2 style={{ fontWeight: 800, fontSize: 'clamp(30px, 4vw, 44px)', letterSpacing: '-1.5px', color: '#FAF4EA', margin: '8px 0 0' }}>Photos</h2>
+              <div style={{ fontFamily: 'var(--f-work-sans)', fontStyle: 'italic', fontSize: 24, color: 'var(--c)' }}>approved for use</div>
+              <h2 style={{ fontWeight: 800, fontSize: 'clamp(30px, 4vw, 44px)', letterSpacing: '-1.5px', color: 'var(--em-paper)', margin: '8px 0 0' }}>Photos</h2>
             </div>
             <div style={{ fontSize: 13, fontWeight: 600, color: 'rgba(250,244,234,0.55)' }}>Credit: Roylandz Media</div>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20 }}>
             {photos.map((p) => (
-              <div key={p.src} className="emx-gallery-card" style={{ ['--sh' as string]: p.shadow, background: '#FAF4EA', border: '3px solid #1B1714', borderRadius: 14, padding: 10 }}>
+              <div key={p.src} className="emx-gallery-card" style={{ ['--sh' as string]: p.shadow, background: 'var(--em-paper)', border: '3px solid var(--em-near-black)', borderRadius: 14, padding: 10 }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img loading="lazy" src={p.src} alt={p.alt} style={{ display: 'block', width: '100%', aspectRatio: '4/5', objectFit: 'cover', borderRadius: 6, border: '2px solid #1B1714', marginBottom: 10 }} />
-                <div style={{ fontSize: 12, fontWeight: 600, opacity: 0.65, marginBottom: 8, color: '#1B1714' }}>{p.caption}</div>
-                <a href={p.src} download style={{ display: 'block', textAlign: 'center', fontWeight: 700, fontSize: 13, background: '#1B1714', color: '#FAF4EA', borderRadius: 8, padding: 9 }}>
+                <img loading="lazy" src={p.src} alt={p.alt} style={{ display: 'block', width: '100%', aspectRatio: '4/5', objectFit: 'cover', borderRadius: 6, border: '2px solid var(--em-near-black)', marginBottom: 10 }} />
+                <div style={{ fontSize: 12, fontWeight: 600, opacity: 0.65, marginBottom: 8, color: 'var(--em-near-black)' }}>{p.caption}</div>
+                <a href={p.src} download style={{ display: 'block', textAlign: 'center', fontWeight: 700, fontSize: 13, background: 'var(--em-near-black)', color: 'var(--em-paper)', borderRadius: 8, padding: 9 }}>
                   Download ↓
                 </a>
               </div>
@@ -236,7 +236,7 @@ export default function PressPage() {
       {/* LOGOS */}
       <section id="logos" style={{ maxWidth: 1200, margin: '0 auto', padding: '80px 28px' }}>
         <div style={{ marginBottom: 30 }}>
-          <div style={{ fontFamily: 'var(--font-instrument-serif), serif', fontStyle: 'italic', fontSize: 24, color: 'var(--b)' }}>brand marks</div>
+          <div style={{ fontFamily: 'var(--f-work-sans)', fontStyle: 'italic', fontSize: 24, color: 'var(--b)' }}>brand marks</div>
           <h2 style={{ fontWeight: 800, fontSize: 'clamp(30px, 4vw, 44px)', letterSpacing: '-1.5px', margin: '8px 0 0' }}>Logos</h2>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 20 }}>
@@ -246,7 +246,7 @@ export default function PressPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={l.src} alt={l.alt} style={{ width: 96, height: 96, objectFit: 'contain' }} />
               </div>
-              <a href={l.src} download style={{ display: 'block', width: '100%', textAlign: 'center', fontWeight: 700, fontSize: 13, background: '#1B1714', color: '#FAF4EA', padding: 10, boxSizing: 'border-box' }}>
+              <a href={l.src} download style={{ display: 'block', width: '100%', textAlign: 'center', fontWeight: 700, fontSize: 13, background: 'var(--em-near-black)', color: 'var(--em-paper)', padding: 10, boxSizing: 'border-box' }}>
                 Download PNG ↓
               </a>
             </div>
@@ -256,15 +256,15 @@ export default function PressPage() {
 
       {/* CONTACT */}
       <section id="press-contact" style={{ maxWidth: 1200, margin: '0 auto', padding: '0 28px 100px' }}>
-        <div style={{ background: 'var(--c)', border: '3px solid #1B1714', borderRadius: 24, padding: '60px 40px', textAlign: 'center', boxShadow: '8px 8px 0 #1B1714' }}>
-          <h2 style={{ fontWeight: 800, fontSize: 'clamp(28px, 4vw, 42px)', letterSpacing: '-1.5px', margin: '0 0 12px', color: '#1B1714' }}>Working on a feature?</h2>
-          <p style={{ fontSize: 16, fontWeight: 500, margin: '0 0 24px', color: '#1B1714' }}>
+        <div style={{ background: 'var(--c)', border: '3px solid var(--em-near-black)', borderRadius: 24, padding: '60px 40px', textAlign: 'center', boxShadow: '8px 8px 0 var(--em-near-black)' }}>
+          <h2 style={{ fontWeight: 800, fontSize: 'clamp(28px, 4vw, 42px)', letterSpacing: '-1.5px', margin: '0 0 12px', color: 'var(--em-near-black)' }}>Working on a feature?</h2>
+          <p style={{ fontSize: 16, fontWeight: 500, margin: '0 0 24px', color: 'var(--em-near-black)' }}>
             Reach the team directly at <strong>{PRESS_EMAIL}</strong>, or send it straight through.
           </p>
           <Link
             href="/messages"
             className="emx-cta"
-            style={{ display: 'inline-block', fontWeight: 800, background: '#1B1714', color: '#FAF4EA', border: '3px solid #1B1714', borderRadius: 999, padding: '15px 32px', boxShadow: '4px 4px 0 rgba(27,23,20,0.3)' }}
+            style={{ display: 'inline-block', fontWeight: 800, background: 'var(--em-near-black)', color: 'var(--em-paper)', border: '3px solid var(--em-near-black)', borderRadius: 999, padding: '15px 32px', boxShadow: '4px 4px 0 rgba(27,23,20,0.3)' }}
           >
             Message the team ↗
           </Link>

@@ -12,7 +12,7 @@ import { supaAdmin } from '@/lib/supabase';
 // this route uses supaAdmin() (service-role, bypasses RLS) to insert
 // server-side instead. That is the whole reason this route exists.
 
-const VALID_SOURCES = ['contact', 'booking', 'roylandz', 'deletion_request'] as const;
+const VALID_SOURCES = ['contact', 'booking', 'roylandz', 'deletion_request', 'work_with_eugine'] as const;
 type Source = (typeof VALID_SOURCES)[number];
 
 function isValidSource(value: unknown): value is Source {

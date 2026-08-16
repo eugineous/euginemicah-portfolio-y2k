@@ -1,401 +1,389 @@
 import type { Metadata } from 'next';
-import type { CSSProperties } from 'react';
 import Link from 'next/link';
-import { RoleCycler } from '../_components/RoleCycler';
 
+// HOMEPAGE — 2026-08 rebrand full replace.
+//
+// Ported verbatim from the design handoff's Home.dc.html (Pages/Home.dc.html
+// in the "Eugine Micah — Full Site Rebuild" bundle, found locally at
+// "Downloads/eugine micah brand new website" — the DesignSync MCP tool
+// named in this phase's brief was not available in this session, so the
+// bundle's own copy of the .dc.html source file was used directly instead;
+// its README.md confirms it as the same content-final, ground-truth handoff
+// — "every page has final copy, final colors, final typography... none of
+// it is lorem ipsum"). Every heading, kicker, card description and proof
+// point below is copied as-is from that file's renderVals() block, not
+// paraphrased.
+//
+// Routes: Urban News / Campus Xposure / The Nairobi Podcast point at /work,
+// Urban Gang Tour / Roylandz Media point at /build, the hero CTA points at
+// /profile, and the closing CTA points at /work-with-eugine — matching the
+// nav map already wired up in SiteHeader.tsx for this same rebrand phase.
+//
+// Testimonials: the source renders this section's shell with
+// hasTestimonials:false / testimonials:[] — i.e. intentionally empty until
+// real quotes exist (see the handoff README's "Known gaps" list). Kept as
+// an empty shell here too — no invented quotes.
 export const metadata: Metadata = {
-  title: 'Eugine Micah | TV Presenter, Journalist, Founder & Author',
+  title: 'Eugine Micah — Broadcaster, Journalist, Founder',
   description:
-    "Official website of Eugine Micah: Kenyan TV presenter, journalist, founder of Roylandz Media, and author. Co-anchor of Urban News on PPP TV, host of Campus Xposure and the Nairobi Podcast, co-founder of the Urban Gang Tour.",
+    'Broadcaster, journalist, and founder building media, technology, and youth culture platforms across Kenya.',
   alternates: { canonical: '/' },
 };
 
-// Small helper so inline style objects can carry a custom CSS property
-// (`--sh`) alongside typed React.CSSProperties — read by the .emx-lane /
-// .emx-strip-item / .emx-gallery-card hover rules in globals.css.
-function withShadow(color: string, style: CSSProperties = {}): CSSProperties {
-  return { ...style, ['--sh' as string]: color } as CSSProperties;
-}
+const ticker = ['Broadcast', 'Journalism', 'Live Hosting', 'Digital', 'Founder'];
+const tickerDouble = [...ticker, ...ticker];
 
-const lanes = [
-  {
-    href: '/about',
-    icon: '◍',
-    name: 'The story',
-    desc: 'From a mud house in Manyonyi, Lugari to the face of youth news in Kenya.',
-    cta: 'Read about Eugine',
-    shadow: 'var(--a)',
-  },
-  {
-    href: '/shows',
-    icon: '▶',
-    name: 'Shows & podcasts',
-    desc: 'Urban News, Campus Xposure and the Nairobi Podcast.',
-    cta: 'Press play',
-    shadow: 'var(--b)',
-  },
-  {
-    href: '/book',
-    icon: '✎',
-    name: 'The book',
-    desc: 'Born Broke. Built Loud: the memoir. From a mud house in Lugari to a national screen.',
-    cta: 'Get the book',
-    shadow: 'var(--c)',
-  },
-  {
-    href: '/work',
-    icon: '✉',
-    name: 'Work with me',
-    desc: 'Roylandz Media, event hosting, keynotes, campaigns and press.',
-    cta: 'Book Eugine',
-    shadow: 'var(--a)',
-  },
+const background = ['Citizen TV', 'Royal Media Services', 'PPP TV — Urban News', 'Global Cyber Alliance'];
+
+const properties: { kicker: string; title: string; desc: string; href: string }[] = [
+  { kicker: 'Broadcast', title: 'Urban News', desc: 'Co-hosted current affairs and culture coverage.', href: '/work' },
+  { kicker: 'Campus', title: 'Campus Xposure', desc: 'Student culture and innovation across Kenyan universities.', href: '/work' },
+  { kicker: 'Audio', title: 'The Nairobi Podcast', desc: 'Conversations recorded around the city.', href: '/work' },
+  { kicker: 'Founder', title: 'Urban Gang Tour', desc: 'A high-school talent tour reaching schools across Kenya.', href: '/build' },
+  { kicker: 'Company', title: 'Roylandz Media', desc: 'The media company built from an early personal brand.', href: '/build' },
 ];
 
-const strip = [
-  { src: '/hq-assets/un-desk-02.jpg', alt: 'Eugine Micah on the Urban News desk, with Lucy Ogunde', shadow: 'var(--a)' },
-  { src: '/hq-assets/gal-festival.jpg', alt: 'Eugine Micah live at the Urban Gang Tour', shadow: 'var(--b)' },
-  { src: '/hq-assets/shoot-08.jpg', alt: 'Eugine Micah in studio, big thoughts loading', shadow: 'var(--c)' },
-  { src: '/hq-assets/celeb-02.webp', alt: 'Eugine Micah out and about with a microphone', shadow: 'var(--a)' },
+const currently: { label: string; desc: string }[] = [
+  { label: 'On air', desc: 'Co-hosting Urban News' },
+  { label: 'Hosting', desc: 'Campus Xposure across Kenyan campuses' },
+  { label: 'Building', desc: "Urban Gang Tour's next school tour" },
 ];
 
-const stats = [
-  { num: '4', label: 'shows & podcasts hosted', color: 'var(--c)' },
-  { num: '200+', label: 'news stories written, EN & SW', color: 'var(--b)' },
-  { num: '6', label: 'addresses, one direction', color: '#FAF4EA' },
-  { num: '2024', label: 'valedictorian, TIBS', color: 'var(--c)' },
+const proof: { title: string; sub: string; href?: string }[] = [
+  { title: 'Co-host, Urban News', sub: 'Broadcast journalism' },
+  { title: 'Founder, Urban Gang Tour', sub: 'Youth talent platform, since 2024' },
+  { title: 'Contributor, Global Cyber Alliance', sub: 'Editorial writing' },
+  { title: 'Journalist portfolio', sub: 'Published clips on Muck Rack', href: 'https://muckrack.com/eugine-micah/portfolio' },
 ];
 
 export default function HomePage() {
   return (
     <main style={{ overflowX: 'hidden' }}>
-      {/* HERO */}
-      <header style={{ position: 'relative', padding: '64px 28px 80px', maxWidth: 1200, margin: '0 auto' }}>
+      {/* Scoped motion rules — kept local to this file (page.tsx is the only
+          file this phase may touch). Reuses globals.css's existing
+          `em-marquee` keyframe (translateX 0 → -50%, already shipped for
+          the pre-rebrand homepage's own ticker) rather than declaring a
+          duplicate. Everything here respects prefers-reduced-motion. */}
+      <style>{`
+        .em-hp-marquee-track { animation: em-marquee 22s linear infinite; }
+        @keyframes em-hp-scroll-bounce { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(8px); opacity: 1; } }
+        .em-hp-scroll-cue { animation: em-hp-scroll-bounce 2s ease-in-out infinite; }
+        .em-hp-cta-solid { transition: background 0.2s ease; }
+        .em-hp-cta-solid:hover { background: var(--em-near-black) !important; }
+        .em-hp-speaking-img { transition: transform 0.5s cubic-bezier(.2,.8,.2,1); }
+        .em-hp-speaking-img:hover { transform: scale(1.06); }
+        @media (prefers-reduced-motion: reduce) {
+          .em-hp-marquee-track, .em-hp-scroll-cue { animation: none !important; }
+          .em-hp-cta-solid, .em-hp-speaking-img { transition: none !important; }
+        }
+      `}</style>
+
+      {/* HERO — full-bleed portrait, dark gradient, headline bottom-aligned */}
+      <section style={{ position: 'relative', minHeight: '86vh', overflow: 'hidden', background: 'var(--em-near-black)' }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/assets/brand-2026-08/1 (11).png"
+          alt="Portrait of Eugine Micah"
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+        />
         <div
           aria-hidden
-          className="emx-float max-[700px]:!hidden"
+          style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(23,23,26,0.1) 0%, rgba(23,23,26,0.85) 100%)' }}
+        />
+        <div
           style={{
-            position: 'absolute',
-            top: -6,
-            right: '26%',
-            width: 54,
-            height: 54,
-            borderRadius: '50%',
-            background: 'var(--c)',
-            border: '3px solid var(--text)',
+            position: 'relative',
+            zIndex: 2,
+            maxWidth: 1400,
+            margin: '0 auto',
+            padding: '150px 32px 80px',
+            boxSizing: 'border-box',
+            minHeight: '86vh',
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: 24,
+            flexDirection: 'column',
+            justifyContent: 'flex-end',
           }}
         >
-          ☻
-        </div>
-        <div
-          aria-hidden
-          className="emx-float2 max-[700px]:!hidden"
-          style={{ position: 'absolute', top: 10, left: '2%', fontSize: 44, color: 'var(--b)' }}
-        >
-          ✦
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 48, alignItems: 'center' }}>
-          <div>
-            <h1
-              style={{
-                fontWeight: 800,
-                fontOpticalSizing: 'auto',
-                fontFamily: 'var(--font-bricolage), sans-serif',
-                fontSize: 'clamp(56px, 8vw, 112px)',
-                lineHeight: 0.92,
-                letterSpacing: '-3px',
-                margin: '22px 0 10px',
-              }}
-            >
-              Eugine
-              <br />
-              <span style={{ color: 'var(--a)' }}>Micah</span>
-            </h1>
-            <div
-              style={{
-                fontFamily: 'var(--font-instrument-serif), serif',
-                fontStyle: 'italic',
-                fontSize: 'clamp(24px, 3vw, 36px)',
-                margin: '14px 0 6px',
-                minHeight: '1.2em',
-              }}
-            >
-              the <RoleCycler />
-            </div>
-            <p style={{ fontSize: 17, lineHeight: 1.6, maxWidth: 480, margin: '18px 0 28px', fontWeight: 500 }}>
-              Presenter. Journalist. Founder. Author. Kenya knows him as the face of Urban News. This is the man
-              behind it: from a mud house in Manyonyi, Lugari, to the national screen, telling Kenya&rsquo;s stories
-              and building the rooms they get told in.
-            </p>
+          <div
+            style={{
+              fontFamily: 'var(--f-archivo)',
+              fontWeight: 900,
+              fontSize: 'clamp(48px, 10vw, 144px)',
+              lineHeight: 0.92,
+              letterSpacing: '-0.02em',
+              color: 'var(--em-paper)',
+              margin: '0 0 24px',
+            }}
+          >
+            EUGINE
+            <br />
+            MICAH
+            <span style={{ color: 'var(--em-crimson)' }}>.</span>
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24 }}>
             <p
               style={{
-                fontFamily: 'var(--font-instrument-serif), serif',
-                fontStyle: 'italic',
-                fontSize: 19,
-                color: 'var(--a)',
-                maxWidth: 460,
-                margin: '0 0 28px',
+                fontSize: 'clamp(15px, 1.8vw, 20px)',
+                color: 'var(--em-paper)',
+                maxWidth: 560,
+                lineHeight: 1.5,
+                margin: 0,
+                fontFamily: 'var(--f-work-sans)',
               }}
             >
-              &ldquo;Not the story of a man who made it. The report of a man still climbing.&rdquo; ✦
+              Broadcaster, journalist, and founder building media, technology, and youth culture platforms across
+              Kenya.
             </p>
-            <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-              <Link
-                href="/shows"
-                className="emx-link emx-cta"
-                style={{
-                  display: 'inline-block',
-                  fontWeight: 700,
-                  background: 'var(--a)',
-                  color: '#FAF4EA',
-                  border: '3px solid var(--text)',
-                  borderRadius: 14,
-                  padding: '14px 26px',
-                  boxShadow: '4px 4px 0 var(--text)',
-                }}
-              >
-                Watch the shows
-              </Link>
-              <Link
-                href="/book"
-                className="emx-link emx-cta"
-                style={{
-                  display: 'inline-block',
-                  fontWeight: 700,
-                  background: 'var(--bg)',
-                  color: 'var(--text)',
-                  border: '3px solid var(--text)',
-                  borderRadius: 14,
-                  padding: '14px 26px',
-                  boxShadow: '4px 4px 0 var(--text)',
-                }}
-              >
-                The book →
-              </Link>
-            </div>
-          </div>
-
-          <div style={{ position: 'relative', justifySelf: 'center' }}>
-            <div
-              className="emx-portrait-frame"
+            <Link
+              href="/profile"
+              className="em-hp-cta-solid"
               style={{
-                position: 'relative',
-                transform: 'rotate(2.5deg)',
-                background: '#fff',
-                border: '3px solid var(--text)',
-                borderRadius: 18,
-                padding: '14px 14px 52px',
-                boxShadow: '8px 10px 0 var(--b)',
-                maxWidth: 380,
-              }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/uploads/eugine-micah.png"
-                alt="Eugine Micah portrait"
-                style={{ display: 'block', width: '100%', borderRadius: 8, border: '2px solid #1B1714' }}
-              />
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: 10,
-                  left: 0,
-                  right: 0,
-                  textAlign: 'center',
-                  fontFamily: 'var(--font-instrument-serif), serif',
-                  fontStyle: 'italic',
-                  fontSize: 24,
-                  color: '#1B1714',
-                }}
-              >
-                born broke, built loud ✦
-              </div>
-              <div
-                aria-hidden
-                style={{
-                  position: 'absolute',
-                  top: -16,
-                  left: 42,
-                  width: 90,
-                  height: 28,
-                  background: 'var(--c)',
-                  opacity: 0.9,
-                  transform: 'rotate(-6deg)',
-                  border: '1px solid rgba(27,23,20,0.25)',
-                }}
-              />
-            </div>
-            <div
-              className="max-[500px]:!hidden"
-              style={{
-                position: 'absolute',
-                bottom: 110,
-                left: -26,
-                background: 'var(--c)',
-                color: '#1B1714',
-                fontWeight: 800,
+                flex: 'none',
+                background: 'var(--em-crimson)',
+                color: 'var(--em-paper)',
+                padding: '16px 28px',
                 fontSize: 13,
-                padding: '9px 13px',
-                border: '3px solid var(--text)',
-                borderRadius: 12,
-                transform: 'rotate(-7deg)',
+                fontWeight: 700,
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                textDecoration: 'none',
+                fontFamily: 'var(--f-work-sans)',
               }}
             >
-              PRESENTER · JOURNALIST · AUTHOR
-            </div>
+              Full profile →
+            </Link>
           </div>
         </div>
-      </header>
-
-      {/* MARQUEE */}
-      <div style={{ background: 'var(--a)', borderTop: '3px solid var(--text)', borderBottom: '3px solid var(--text)', overflow: 'hidden', padding: '12px 0' }}>
         <div
-          style={{
-            display: 'flex',
-            width: 'max-content',
-            animation: 'em-marquee 28s linear infinite',
-            fontWeight: 800,
-            color: '#FAF4EA',
-            fontSize: 20,
-            letterSpacing: 0.5,
-            whiteSpace: 'nowrap',
-          }}
-        >
-          <span style={{ paddingRight: 28 }}>
-            URBAN NEWS ✦ CAMPUS XPOSURE ✦ THE NAIROBI PODCAST ✦ URBAN GANG TOUR ✦ ROYLANDZ MEDIA ✦ BORN BROKE, BUILT LOUD ✦&nbsp;
-          </span>
-          <span style={{ paddingRight: 28 }}>
-            URBAN NEWS ✦ CAMPUS XPOSURE ✦ THE NAIROBI PODCAST ✦ URBAN GANG TOUR ✦ ROYLANDZ MEDIA ✦ BORN BROKE, BUILT LOUD ✦&nbsp;
-          </span>
+          aria-hidden
+          className="em-hp-scroll-cue"
+          style={{ position: 'absolute', left: '50%', bottom: 18, transform: 'translateX(-50%)', zIndex: 2, width: 1, height: 26, background: 'var(--em-paper)', opacity: 0.7 }}
+        />
+      </section>
+
+      {/* MARQUEE TICKER */}
+      <div style={{ background: 'var(--em-crimson)', overflow: 'hidden', padding: '14px 0' }}>
+        <div className="em-hp-marquee-track" style={{ display: 'flex', width: 'max-content' }}>
+          {tickerDouble.map((label, i) => (
+            <div key={`${label}-${i}`} style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '0 32px', whiteSpace: 'nowrap' }}>
+              <span
+                style={{
+                  fontFamily: 'var(--f-archivo)',
+                  fontWeight: 900,
+                  fontSize: 16,
+                  color: 'var(--em-near-black)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.02em',
+                }}
+              >
+                {label}
+              </span>
+              <span style={{ width: 6, height: 6, background: 'var(--em-paper)', flex: 'none' }} />
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* EXPLORE / PICK A LANE */}
-      <section style={{ maxWidth: 1200, margin: '0 auto', padding: '90px 28px' }}>
-        <div style={{ marginBottom: 40 }}>
-          <div style={{ fontFamily: 'var(--font-instrument-serif), serif', fontStyle: 'italic', fontSize: 26, color: 'var(--a)' }}>
-            start here
-          </div>
-          <h2 style={{ fontWeight: 800, fontSize: 'clamp(36px, 4.5vw, 58px)', letterSpacing: '-1.5px', lineHeight: 1, margin: '8px 0 0' }}>
-            Pick a lane
-          </h2>
+      {/* BROADCAST & EDITORIAL BACKGROUND STRIP */}
+      <div style={{ borderBottom: '3px solid var(--text)', padding: '22px 32px', boxSizing: 'border-box' }}>
+        <div style={{ maxWidth: 1400, margin: '0 auto', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 18 }}>
+          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text)', opacity: 0.45 }}>
+            Broadcast &amp; editorial background
+          </span>
+          {background.map((name) => (
+            <span key={name} style={{ fontFamily: 'var(--f-archivo)', fontWeight: 800, fontSize: 15, color: 'var(--text)' }}>
+              {name}
+            </span>
+          ))}
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 22 }}>
-          {lanes.map((lane) => (
+      </div>
+
+      {/* FIVE THINGS, ONE NAME */}
+      <section style={{ maxWidth: 1400, margin: '0 auto', padding: '90px 32px', boxSizing: 'border-box' }}>
+        <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--em-crimson)', marginBottom: 10 }}>
+          What&rsquo;s under the name
+        </div>
+        <h2
+          style={{
+            fontFamily: 'var(--f-archivo)',
+            fontWeight: 900,
+            fontSize: 'clamp(30px, 4.5vw, 52px)',
+            lineHeight: 1,
+            letterSpacing: '-0.01em',
+            color: 'var(--text)',
+            margin: '0 0 44px',
+          }}
+        >
+          Five things,
+          <br />
+          one name.
+        </h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 2, background: 'var(--text)' }}>
+          {properties.map((p) => (
             <Link
-              key={lane.href}
-              href={lane.href}
-              className="emx-link emx-lane"
-              style={withShadow(lane.shadow, {
+              key={p.title}
+              href={p.href}
+              className="emx-link"
+              style={{
+                background: 'var(--bg)',
+                padding: 26,
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 12,
-                background: '#fff',
-                border: '3px solid var(--text)',
-                borderRadius: 18,
-                padding: 26,
-                color: '#1B1714',
-              })}
+                gap: 14,
+                textDecoration: 'none',
+                minHeight: 170,
+                boxSizing: 'border-box',
+              }}
             >
-              <div style={{ fontSize: 30 }}>{lane.icon}</div>
-              <div style={{ fontWeight: 800, fontSize: 24, letterSpacing: '-0.5px' }}>{lane.name}</div>
-              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, flex: 1, fontWeight: 500 }}>{lane.desc}</p>
-              <div style={{ fontWeight: 800, fontSize: 14, color: 'var(--a)' }}>{lane.cta} →</div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--em-crimson)' }}>
+                {p.kicker}
+              </div>
+              <div style={{ fontFamily: 'var(--f-archivo)', fontWeight: 800, fontSize: 21, color: 'var(--text)', lineHeight: 1.15 }}>
+                {p.title}
+              </div>
+              <div style={{ fontSize: 14, color: 'var(--text)', opacity: 0.65, lineHeight: 1.5, flex: 1 }}>{p.desc}</div>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* ON STAGE & ON SCREEN */}
-      <section style={{ maxWidth: 1200, margin: '0 auto', padding: '0 28px 90px' }}>
-        <div style={{ marginBottom: 26 }}>
-          <div style={{ fontFamily: 'var(--font-instrument-serif), serif', fontStyle: 'italic', fontSize: 24, color: 'var(--b)' }}>
-            on stage & on screen
+      {/* RIGHT NOW */}
+      <section style={{ background: 'var(--em-near-black)', color: 'var(--em-paper)', padding: '90px 32px' }}>
+        <div style={{ maxWidth: 1400, margin: '0 auto' }}>
+          <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--em-crimson)', marginBottom: 10 }}>
+            Right now
+          </div>
+          <h2
+            style={{
+              fontFamily: 'var(--f-archivo)',
+              fontWeight: 900,
+              fontSize: 'clamp(30px, 4.5vw, 52px)',
+              lineHeight: 1,
+              letterSpacing: '-0.01em',
+              margin: '0 0 48px',
+              maxWidth: 800,
+            }}
+          >
+            On air, on tour, and building.
+          </h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 36 }}>
+            {currently.map((c) => (
+              <div key={c.label} style={{ borderTop: '3px solid var(--em-crimson)', paddingTop: 18 }}>
+                <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--em-crimson)', marginBottom: 10 }}>
+                  {c.label}
+                </div>
+                <div style={{ fontSize: 17, lineHeight: 1.5 }}>{c.desc}</div>
+              </div>
+            ))}
           </div>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 16 }}>
-          {strip.map((s) => (
-            <div
-              key={s.src}
-              className="emx-strip-item"
-              style={withShadow(s.shadow, { border: '3px solid var(--text)', borderRadius: 14, overflow: 'hidden' })}
+      </section>
+
+      {/* ON THE RECORD */}
+      <section style={{ maxWidth: 1400, margin: '0 auto', padding: '90px 32px', boxSizing: 'border-box' }}>
+        <div style={{ fontFamily: 'var(--f-archivo)', fontWeight: 900, fontSize: 'clamp(26px, 3.5vw, 40px)', color: 'var(--text)', marginBottom: 36 }}>
+          On the record
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 28 }}>
+          {proof.map((pr) =>
+            pr.href ? (
+              <a
+                key={pr.title}
+                href={pr.href}
+                target="_blank"
+                rel="noopener"
+                className="emx-link"
+                style={{ borderTop: '2px solid var(--text)', paddingTop: 16, textDecoration: 'none', display: 'block' }}
+              >
+                <div style={{ fontFamily: 'var(--f-archivo)', fontWeight: 700, fontSize: 17, color: 'var(--text)', marginBottom: 6 }}>
+                  {pr.title}
+                </div>
+                <div style={{ fontSize: 13, color: 'var(--text)', opacity: 0.55 }}>{pr.sub}</div>
+              </a>
+            ) : (
+              <div key={pr.title} style={{ borderTop: '2px solid var(--text)', paddingTop: 16 }}>
+                <div style={{ fontFamily: 'var(--f-archivo)', fontWeight: 700, fontSize: 17, color: 'var(--text)', marginBottom: 6 }}>
+                  {pr.title}
+                </div>
+                <div style={{ fontSize: 13, color: 'var(--text)', opacity: 0.55 }}>{pr.sub}</div>
+              </div>
+            )
+          )}
+        </div>
+      </section>
+
+      {/* WHAT PEOPLE SAY — shell only. Source renders this with
+          hasTestimonials:false / testimonials:[]; no quotes exist yet, so
+          none are invented here. Remove the "More to come." note and map
+          over real entries once testimonials are supplied. */}
+      <section style={{ maxWidth: 1400, margin: '0 auto', padding: '0 32px 90px', boxSizing: 'border-box' }}>
+        <div style={{ fontFamily: 'var(--f-archivo)', fontWeight: 900, fontSize: 'clamp(26px, 3.5vw, 40px)', color: 'var(--text)', marginBottom: 36 }}>
+          What people say
+        </div>
+        <div style={{ fontSize: 14, color: 'var(--text)', opacity: 0.5 }}>More to come.</div>
+      </section>
+
+      {/* WORK WITH EUGINE — closing CTA */}
+      <section style={{ background: 'var(--em-near-black)' }}>
+        <div
+          style={{
+            maxWidth: 1400,
+            margin: '0 auto',
+            padding: '100px 32px',
+            boxSizing: 'border-box',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: 56,
+            alignItems: 'center',
+          }}
+        >
+          <div>
+            <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--em-crimson)', marginBottom: 16 }}>
+              Work with Eugine
+            </div>
+            <h2
+              style={{
+                fontFamily: 'var(--f-archivo)',
+                fontWeight: 900,
+                fontSize: 'clamp(30px, 4.5vw, 52px)',
+                lineHeight: 1.05,
+                color: 'var(--em-paper)',
+                maxWidth: 520,
+                margin: '0 0 28px',
+              }}
             >
+              Appearances, partnerships, projects, conversations.
+            </h2>
+            <Link
+              href="/work-with-eugine"
+              className="em-hp-cta-solid"
+              style={{
+                display: 'inline-block',
+                background: 'var(--em-crimson)',
+                color: 'var(--em-paper)',
+                padding: '16px 28px',
+                fontSize: 13,
+                fontWeight: 700,
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                textDecoration: 'none',
+                fontFamily: 'var(--f-work-sans)',
+              }}
+            >
+              Get in touch →
+            </Link>
+          </div>
+          <div style={{ position: 'relative', justifySelf: 'center', width: '100%', maxWidth: 340 }}>
+            <div aria-hidden style={{ position: 'absolute', top: 20, left: -20, width: '100%', height: '100%', background: 'var(--em-crimson)' }} />
+            <div style={{ position: 'relative', overflow: 'hidden', width: '100%', aspectRatio: '3/4' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img loading="lazy" src={s.src} alt={s.alt} style={{ display: 'block', width: '100%', aspectRatio: '4/5', objectFit: 'cover' }} />
+              <img
+                src="/assets/brand-2026-08/media-podcast.webp"
+                alt="Eugine Micah recording a podcast"
+                className="em-hp-speaking-img"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* STATS STRIP */}
-      <section style={{ background: '#1B1714', borderTop: '3px solid var(--text)', padding: '70px 28px' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20 }}>
-          {stats.map((st) => (
-            <div
-              key={st.label}
-              className="emx-stat"
-              style={{
-                color: '#FAF4EA',
-                border: '2.5px solid rgba(250,244,234,0.3)',
-                borderRadius: 16,
-                padding: 24,
-                textAlign: 'center',
-              }}
-            >
-              <div style={{ fontWeight: 800, fontSize: 42, letterSpacing: '-1px', color: st.color }}>{st.num}</div>
-              <div style={{ fontWeight: 600, fontSize: 14, opacity: 0.85 }}>{st.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* LET'S TALK */}
-      <section style={{ background: '#1B1714', color: '#FAF4EA', padding: '96px 28px', borderBottom: '1px solid rgba(250,244,234,0.15)' }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 24 }}>
-          <div style={{ fontWeight: 800, fontSize: 'clamp(44px, 8vw, 100px)', letterSpacing: '-3px', lineHeight: 0.95 }}>
-            Let&rsquo;s <span style={{ color: 'var(--b)' }}>talk.</span>
-          </div>
-          <p style={{ margin: 0, maxWidth: 560, fontFamily: 'var(--font-instrument-serif), serif', fontStyle: 'italic', fontSize: 19, color: 'rgba(250,244,234,0.75)' }}>
-            Booking inquiries, press requests, or just saying hello — the mailroom is open.
-          </p>
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-            <Link
-              href="/messages"
-              className="emx-link emx-cta"
-              style={{
-                display: 'inline-block',
-                fontWeight: 700,
-                background: 'var(--c)',
-                color: '#1B1714',
-                border: '3px solid #FAF4EA',
-                borderRadius: 14,
-                padding: '14px 26px',
-                boxShadow: '4px 4px 0 #FAF4EA',
-              }}
-            >
-              Send a message
-            </Link>
-            <Link
-              href="/work#bookings"
-              className="emx-link emx-cta"
-              style={{
-                display: 'inline-block',
-                fontWeight: 700,
-                background: 'transparent',
-                color: '#FAF4EA',
-                border: '3px solid #FAF4EA',
-                borderRadius: 14,
-                padding: '14px 26px',
-                boxShadow: '4px 4px 0 rgba(250,244,234,0.4)',
-              }}
-            >
-              Book Eugine ↗
-            </Link>
           </div>
         </div>
       </section>

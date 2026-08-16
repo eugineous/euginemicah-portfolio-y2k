@@ -15,7 +15,7 @@ const sections = [
     id: 'sec1',
     n: 1,
     color: 'var(--a)',
-    fg: '#FAF4EA',
+    fg: 'var(--em-paper)',
     title: 'What we collect',
     body: (
       <>
@@ -42,7 +42,7 @@ const sections = [
     id: 'sec2',
     n: 2,
     color: 'var(--b)',
-    fg: '#FAF4EA',
+    fg: 'var(--em-paper)',
     title: 'How we use it',
     body: (
       <p style={p}>
@@ -56,7 +56,7 @@ const sections = [
     id: 'sec3',
     n: 3,
     color: 'var(--c)',
-    fg: '#1B1714',
+    fg: 'var(--em-near-black)',
     title: 'Payment processing',
     body: (
       <p style={p}>
@@ -73,7 +73,7 @@ const sections = [
     id: 'sec4',
     n: 4,
     color: 'var(--a)',
-    fg: '#FAF4EA',
+    fg: 'var(--em-paper)',
     title: 'Where your data lives',
     body: (
       <p style={p}>
@@ -88,7 +88,7 @@ const sections = [
     id: 'sec5',
     n: 5,
     color: 'var(--b)',
-    fg: '#FAF4EA',
+    fg: 'var(--em-paper)',
     title: 'Sharing & sale of data',
     body: (
       <p style={p}>
@@ -102,7 +102,7 @@ const sections = [
     id: 'sec6',
     n: 6,
     color: 'var(--c)',
-    fg: '#1B1714',
+    fg: 'var(--em-near-black)',
     title: 'Your rights under Kenyan law',
     body: (
       <p style={p}>
@@ -120,7 +120,7 @@ const sections = [
     id: 'sec7',
     n: 7,
     color: 'var(--a)',
-    fg: '#FAF4EA',
+    fg: 'var(--em-paper)',
     title: 'Cookies & local storage',
     body: (
       <p style={p}>
@@ -136,7 +136,7 @@ export default function PrivacyPage() {
   return (
     <main style={{ overflowX: 'hidden' }}>
       <section style={{ maxWidth: 800, margin: '0 auto', padding: '80px 28px 0' }}>
-        <div style={{ fontFamily: 'var(--font-instrument-serif), serif', fontStyle: 'italic', fontSize: 24, color: 'var(--b)' }}>
+        <div style={{ fontFamily: 'var(--f-work-sans)', fontStyle: 'italic', fontSize: 24, color: 'var(--b)' }}>
           what we keep
         </div>
         <h1 style={{ fontWeight: 800, fontSize: 'clamp(36px, 5vw, 56px)', letterSpacing: '-1.5px', margin: '8px 0 8px' }}>Privacy Policy</h1>
