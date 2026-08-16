@@ -104,5 +104,32 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'insert_failed' }, { status: 502 });
   }
 
+  // Real-time email notification, on top of the Supabase row above: the
+  // control-room Messages inbox is real but only checked when someone
+  // visits it -- Eugine asked for enquiries to land in his Gmail directly.
+  // Uses formsubmit.co (no API key needed, already used elsewhere in this
+  // codebase's history for the same purpose, see the old ContactForm.tsx/
+  // NewsletterForm.tsx components) rather than a transactional email
+  // provider, since no such provider is configured for this project and
+  // this route can't be blocked on obtaining a new API key. Best-effort:
+  // failure here never fails the request -- the Supabase row is the
+  // source of truth, this is a convenience notification on top of it.
+  try {
+    await fetch(`https://formsubmit.co/ajax/euginemicah@gmail.com`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        _subject: `New ${source} enquiry — euginemicah.tech`,
+        name,
+        email,
+        phone: phone || '(not provided)',
+        source,
+        message: body,
+      }),
+    });
+  } catch (e) {
+    console.error('[api/messages] email notification failed (non-fatal):', e);
+  }
+
   return NextResponse.json({ ok: true });
 }
