@@ -1,6 +1,12 @@
 import type { Metadata } from 'next';
+import { getPublishedNowItems, formatUpdatedLabel } from '@/lib/now';
 
-// New route — verbatim content from design_handoff_full_site_backend/site/Now.dc.html.
+// Originally shipped with hardcoded content, verbatim from
+// design_handoff_full_site_backend/site/Now.dc.html. Now reads from the
+// real `now_items` table (see lib/now.ts, supabase/migrations/
+// 006_now_items.sql) so it can be updated from /control-room without a
+// code deploy -- the whole point of a "now page" is that it stays current.
+// Seeded with the same 5 items it originally shipped with.
 
 export const metadata: Metadata = {
   title: 'Now — Eugine Micah',
@@ -8,15 +14,9 @@ export const metadata: Metadata = {
   alternates: { canonical: '/now' },
 };
 
-const nowItems = [
-  { label: 'On air', text: 'Co-hosting Urban News, covering current affairs and culture.' },
-  { label: 'On tour', text: "Running Urban Gang Tour's next school cycle with Lucy and Charles Luche." },
-  { label: 'Hosting', text: 'Campus Xposure across Kenyan campuses, and The Nairobi Podcast.' },
-  { label: 'Published', text: 'Released his first book, Born Broke, Built Loud — out now on Amazon.' },
-  { label: 'Building', text: 'ProPost and a second technical project, both in development.' },
-];
-
-export default function NowPage() {
+export default async function NowPage() {
+  const nowItems = await getPublishedNowItems();
+  const updatedLabel = formatUpdatedLabel(nowItems);
   return (
     <main>
       <section style={{ maxWidth: 900, margin: '0 auto', padding: '90px 32px 100px' }}>
@@ -46,12 +46,17 @@ export default function NowPage() {
         >
           What he&rsquo;s doing right now.
         </h1>
-        <div style={{ fontFamily: 'var(--f-work-sans)', fontSize: 13, color: 'rgba(23,23,26,0.5)', marginBottom: 48 }}>
-          Updated August 2026
-        </div>
+        {updatedLabel && (
+          <div style={{ fontFamily: 'var(--f-work-sans)', fontSize: 13, color: 'rgba(23,23,26,0.5)', marginBottom: 48 }}>
+            {updatedLabel}
+          </div>
+        )}
+        {nowItems.length === 0 && (
+          <p style={{ fontFamily: 'var(--f-work-sans)', fontSize: 15, opacity: 0.6 }}>Nothing published yet.</p>
+        )}
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           {nowItems.map((n) => (
-            <div key={n.label} style={{ display: 'flex', gap: 24, padding: '24px 0', borderTop: '2px solid var(--em-near-black)', flexWrap: 'wrap' }}>
+            <div key={n.id} style={{ display: 'flex', gap: 24, padding: '24px 0', borderTop: '2px solid var(--em-near-black)', flexWrap: 'wrap' }}>
               <div
                 style={{
                   flex: 'none',

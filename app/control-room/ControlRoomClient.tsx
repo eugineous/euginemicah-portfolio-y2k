@@ -14,14 +14,16 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { Button, Card, Toast } from './ui';
 import { BlogTab } from './BlogTab';
 import { ShowsTab } from './ShowsTab';
+import { NowTab } from './NowTab';
 import { MessagesTab } from './MessagesTab';
 import { OrdersTab } from './OrdersTab';
 import { NewsletterTab } from './NewsletterTab';
 
-type Tab = 'blog' | 'shows' | 'messages' | 'orders' | 'newsletter';
+type Tab = 'blog' | 'shows' | 'now' | 'messages' | 'orders' | 'newsletter';
 const TABS: { id: Tab; label: string }[] = [
   { id: 'blog', label: 'Blog' },
   { id: 'shows', label: 'Work' },
+  { id: 'now', label: 'Now' },
   { id: 'messages', label: 'Messages' },
   { id: 'orders', label: 'Book Orders' },
   { id: 'newsletter', label: 'Newsletter' },
@@ -161,6 +163,7 @@ export default function ControlRoomClient() {
 
       {tab === 'blog' && <BlogTab api={api} say={say} authToken={session.token} />}
       {tab === 'shows' && <ShowsTab api={api} say={say} />}
+      {tab === 'now' && <NowTab api={api} say={say} />}
       {tab === 'messages' && <MessagesTab api={api} say={say} />}
       {tab === 'orders' && <OrdersTab api={api} say={say} />}
       {tab === 'newsletter' && <NewsletterTab api={api} say={say} />}
