@@ -17,6 +17,12 @@ export const metadata: Metadata = {
   alternates: { canonical: '/work' },
 };
 
+// ISR, same pattern as /blog (app/(site)/blog/page.tsx) -- without this the
+// page is purely static-at-build, so a transient build-time Supabase hiccup
+// bakes in an empty result until the next admin edit triggers
+// revalidatePath. 60s keeps it self-healing.
+export const revalidate = 60;
+
 export default async function WorkPage() {
   const items = await getPublishedShows();
 

@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   alternates: { canonical: '/now' },
 };
 
+// ISR, same reasoning as /work's revalidate export -- see its comment.
+export const revalidate = 60;
+
 export default async function NowPage() {
   const nowItems = await getPublishedNowItems();
   const updatedLabel = formatUpdatedLabel(nowItems);
