@@ -20,10 +20,10 @@ export const metadata: Metadata = {
   alternates: { canonical: '/press' },
 };
 
-const PRESS_EMAIL = 'eugine.micah@outlook.com';
+export const PRESS_EMAIL = 'eugine.micah@outlook.com';
 
-const facts: [string, string][] = [
-  ['2022', 'co-anchoring Urban News, live'],
+export const facts: [string, string][] = [
+  ['2022', 'anchoring Urban News, live'],
   ['4', 'shows & platforms hosted'],
   ['40+', 'schools toured, Urban Gang Tour'],
   ['2024', 'valedictorian, TIBS College'],
@@ -43,11 +43,11 @@ const logos: { src: string; alt: string; bg: string }[] = [
   { src: '/assets/press/em-logo-cream.png', alt: 'Eugine Micah logo, cream on black', bg: 'var(--em-near-black)' },
 ];
 
-const shortBio =
-  'Eugine Micah is a Kenyan TV presenter, journalist, founder and author. He co-anchors Urban News on PPP TV with Lucy Ogunde, leads Roylandz Media, co-founded the Urban Gang Tour, and is the author of the memoir Born Broke. Built Loud.';
+export const shortBio =
+  'Eugine Micah is a Kenyan TV presenter, journalist, founder and author. He anchors Urban News on PPP TV with Lucy Ogunde, leads Roylandz Media, co-founded the Urban Gang Tour, and is the author of the memoir Born Broke. Built Loud.';
 
-const longBio =
-  "Born on Christmas Eve in Kisumu and raised in Manyonyi village, Lugari, Eugine Micah grew up with a kerosene lamp for a streetlight and a grandfather, Rev. Micah Ob'bayi, whose preaching voice needed no microphone. He interned at Citizen TV, hosted radio and TV at TIBS FM and TIBS TV in Thika, and graduated valedictorian from TIBS College (Journalism & Media), class of 2024. He now co-anchors Urban News on PPP TV with Lucy Ogunde — live, twice weekly, no script — and also hosts Campus Xposure and The Nairobi Podcast. He taught himself to code and built the newsroom's automated news-to-social pipeline, is a published contributor to the Global Cyber Alliance's work on journalist safety in Africa, founded Roylandz Media, co-founded the Urban Gang Tour, and is the author of the memoir Born Broke. Built Loud, available now.";
+export const longBio =
+  "Born on Christmas Eve in Kisumu and raised in Manyonyi village, Lugari, Eugine Micah grew up with a kerosene lamp for a streetlight and a grandfather, Rev. Micah Ob'bayi, whose preaching voice needed no microphone. He interned at Citizen TV, hosted radio and TV at TIBS FM and TIBS TV in Thika, and graduated valedictorian from TIBS College (Journalism & Media), class of 2024. He now anchors Urban News on PPP TV with Lucy Ogunde, live, twice weekly, no script, and also hosts Campus Xposure and The Nairobi Podcast. He taught himself to code and built the newsroom's automated news-to-social pipeline, is a published contributor to the Global Cyber Alliance's work on journalist safety in Africa, founded Roylandz Media, co-founded the Urban Gang Tour, and is the author of the memoir Born Broke. Built Loud, available now.";
 
 const railStops: [string, string, 'a' | 'b' | 'c'][] = [
   ['#facts', 'FACTS', 'a'],
@@ -147,10 +147,19 @@ export default function PressPage() {
             producer, editor or booker needs in one place.
           </p>
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+            <a
+              href="/api/media-kit"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="emx-cta"
+              style={{ display: 'inline-block', fontWeight: 700, background: 'var(--a)', color: 'var(--em-paper)', border: '3px solid var(--text)', borderRadius: 14, padding: '13px 24px', boxShadow: '4px 4px 0 var(--text)' }}
+            >
+              Download media kit (PDF)
+            </a>
             <Link
               href="#bios"
               className="emx-cta"
-              style={{ display: 'inline-block', fontWeight: 700, background: 'var(--a)', color: 'var(--em-paper)', border: '3px solid var(--text)', borderRadius: 14, padding: '13px 24px', boxShadow: '4px 4px 0 var(--text)' }}
+              style={{ display: 'inline-block', fontWeight: 700, background: 'var(--bg)', color: 'var(--text)', border: '3px solid var(--text)', borderRadius: 14, padding: '13px 24px', boxShadow: '4px 4px 0 var(--text)' }}
             >
               Jump to bios
             </Link>
