@@ -108,7 +108,12 @@ export default function HomePage() {
           the pre-rebrand homepage's own ticker) rather than declaring a
           duplicate. Everything here respects prefers-reduced-motion. */}
       <style>{`
-        .em-hp-marquee-track { animation: em-marquee 22s linear infinite; }
+        /* Duration scales with tickerHalf's repeat count (6x) so the visual
+           scroll speed matches the original single-copy version -- the fix
+           for the blank-gap bug (repeating content wider) would otherwise
+           also speed up playback, since the same 22s now covers 6x the
+           distance. 22s * 6 = 132s keeps px/sec constant. */
+        .em-hp-marquee-track { animation: em-marquee 132s linear infinite; }
         @keyframes em-hp-scroll-bounce { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(8px); opacity: 1; } }
         .em-hp-scroll-cue { animation: em-hp-scroll-bounce 2s ease-in-out infinite; }
         .em-hp-cta-solid { transition: background 0.2s ease; }
