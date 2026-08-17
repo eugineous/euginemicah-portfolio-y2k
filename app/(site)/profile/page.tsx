@@ -66,9 +66,29 @@ const documents = [
   { label: 'Download references', href: '/assets/brand-2026-08/documents/Eugine-Micah-References.docx' },
 ];
 
+const profileJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    name: 'Eugine Micah',
+    url: 'https://euginemicah.tech/profile',
+    jobTitle: 'Journalist and broadcaster',
+    description: 'Journalist and broadcaster, across TV, digital and live.',
+    sameAs: [
+      'https://ke.linkedin.com/in/euginemicah',
+      'https://instagram.com/eugine.micah/',
+      'https://x.com/eugineroylandz',
+      'https://muckrack.com/eugine-micah/portfolio',
+    ],
+  },
+};
+
 export default function ProfilePage() {
   return (
     <main>
+      {/* eslint-disable-next-line @next/next/no-script-component-in-head */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }} />
       {/* HERO */}
       <section
         style={{

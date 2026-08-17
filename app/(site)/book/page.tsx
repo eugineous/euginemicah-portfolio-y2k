@@ -20,10 +20,24 @@ import { BuyBookForm } from '../../_components/BuyBookForm';
 const AMAZON_KINDLE_URL = 'https://www.amazon.com/dp/B0H8WM3HFX';
 
 export const metadata: Metadata = {
-  title: 'Born Broke. Built Loud. — Buy the Memoir',
+  title: 'Born Broke. Built Loud.: Buy the Memoir',
   description:
-    'Born Broke. Built Loud., Eugine Micah’s memoir — seven parts, forty-five chapters, from a kerosene-lit childhood in Lugari to the Urban News desk. Instant PDF download after payment, or get the Kindle edition on Amazon.',
+    'Born Broke. Built Loud., Eugine Micah’s memoir: seven parts, forty-five chapters, from a kerosene-lit childhood in Lugari to the Urban News desk. Instant PDF download after payment, or get the Kindle edition on Amazon.',
   alternates: { canonical: '/book' },
+};
+
+const bookProductJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: bookProduct.name,
+  description: bookProduct.subtitle,
+  offers: {
+    '@type': 'Offer',
+    price: bookProduct.price,
+    priceCurrency: 'KES',
+    availability: 'https://schema.org/InStock',
+    url: 'https://euginemicah.tech/book',
+  },
 };
 
 const railStops: [string, string, 'a' | 'b' | 'c'][] = [
@@ -53,6 +67,8 @@ const photoPlates: { src: string; alt: string; caption: string; shadow: string }
 export default function BookPage() {
   return (
     <main>
+      {/* eslint-disable-next-line @next/next/no-script-component-in-head */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(bookProductJsonLd) }} />
       {/* ON-PAGE NAV */}
       <div
         className="hidden md:flex"

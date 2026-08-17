@@ -28,8 +28,24 @@ export const dynamic = 'force-dynamic';
 export default async function WorkPage() {
   const items = await getPublishedShows();
 
+  const workJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: items.map((w, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: w.name,
+      description: w.description,
+      url: w.cta_href || undefined,
+    })),
+  };
+
   return (
     <main>
+      {items.length > 0 && (
+        // eslint-disable-next-line @next/next/no-script-component-in-head
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(workJsonLd) }} />
+      )}
       <section style={{ maxWidth: 1400, margin: '0 auto', padding: '70px 32px 40px' }}>
         <div
           style={{

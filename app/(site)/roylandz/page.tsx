@@ -70,9 +70,20 @@ const railStops: [string, string, 'a' | 'b' | 'c'][] = [
 const railBg: Record<'a' | 'b' | 'c', string> = { a: 'var(--a)', b: 'var(--b)', c: 'var(--c)' };
 const railColor: Record<'a' | 'b' | 'c', string> = { a: '#FAF4EA', b: '#FAF4EA', c: '#1B1714' };
 
+const roylandzJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Roylandz Media',
+  url: 'https://euginemicah.tech/roylandz',
+  founder: { '@type': 'Person', name: 'Eugine Micah' },
+  description: 'Content strategy, social media management and production for brands.',
+};
+
 export default function RoylandzPage() {
   return (
     <main>
+      {/* eslint-disable-next-line @next/next/no-script-component-in-head */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(roylandzJsonLd) }} />
       {/* ON-PAGE NAV */}
       <div
         className="hidden md:flex"

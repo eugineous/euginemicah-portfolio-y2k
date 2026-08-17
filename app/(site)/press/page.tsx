@@ -60,9 +60,27 @@ const railStops: [string, string, 'a' | 'b' | 'c'][] = [
 const railBg: Record<'a' | 'b' | 'c', string> = { a: 'var(--a)', b: 'var(--b)', c: 'var(--c)' };
 const railColor: Record<'a' | 'b' | 'c', string> = { a: 'var(--em-paper)', b: 'var(--em-paper)', c: 'var(--em-near-black)' };
 
+const pressJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    name: 'Eugine Micah',
+    url: 'https://euginemicah.tech/press',
+    sameAs: [
+      'https://ke.linkedin.com/in/euginemicah',
+      'https://instagram.com/eugine.micah/',
+      'https://x.com/eugineroylandz',
+      'https://muckrack.com/eugine-micah/portfolio',
+    ],
+  },
+};
+
 export default function PressPage() {
   return (
     <main>
+      {/* eslint-disable-next-line @next/next/no-script-component-in-head */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pressJsonLd) }} />
       {/* ON-PAGE NAV */}
       <div
         className="hidden md:flex"
