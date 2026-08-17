@@ -21,7 +21,7 @@ import { NewsletterTab } from './NewsletterTab';
 type Tab = 'blog' | 'shows' | 'messages' | 'orders' | 'newsletter';
 const TABS: { id: Tab; label: string }[] = [
   { id: 'blog', label: 'Blog' },
-  { id: 'shows', label: 'Shows' },
+  { id: 'shows', label: 'Work' },
   { id: 'messages', label: 'Messages' },
   { id: 'orders', label: 'Book Orders' },
   { id: 'newsletter', label: 'Newsletter' },

@@ -16,13 +16,19 @@ type Show = {
   is_flagship: boolean;
   sort_order: number;
   status: 'draft' | 'published';
+  details: string[];
+  logo_url: string;
 };
 
-type FormState = Omit<Show, 'id'> & { id: number | null };
+// This table now powers the live /work page directly (see lib/shows.ts) --
+// publishing/editing a row here changes what visitors see. Form state keeps
+// `details` as a newline-joined string in the textarea, same pattern as
+// BlogTab's paragraphs field, and splits/joins on save.
+type FormState = Omit<Show, 'id' | 'details'> & { id: number | null; details: string };
 
 const BLANK: FormState = {
   id: null, name: '', tag: '', description: '', meta: '', image_url: '', cta_label: '', cta_href: '',
-  is_flagship: false, sort_order: 0, status: 'draft',
+  is_flagship: false, sort_order: 0, status: 'draft', details: '', logo_url: '',
 };
 
 export function ShowsTab({ api, say }: { api: ApiFn; say: (m: string) => void }) {
@@ -41,7 +47,7 @@ export function ShowsTab({ api, say }: { api: ApiFn; say: (m: string) => void })
   useEffect(() => { reload(); }, [reload]);
 
   function openCreate() { setForm({ ...BLANK }); }
-  function openEdit(s: Show) { setForm({ ...s }); }
+  function openEdit(s: Show) { setForm({ ...s, details: (s.details || []).join('\n') }); }
 
   async function save(f: FormState) {
     const payload = {
@@ -55,6 +61,8 @@ export function ShowsTab({ api, say }: { api: ApiFn; say: (m: string) => void })
       is_flagship: f.is_flagship,
       sort_order: f.sort_order,
       status: f.status,
+      details: f.details.split('\n').map((d) => d.trim()).filter(Boolean),
+      logo_url: f.logo_url.trim(),
     };
     const { status, data } = f.id
       ? await api(`/api/cms/shows/${f.id}`, { method: 'PATCH', body: JSON.stringify(payload) })
@@ -148,6 +156,12 @@ function ShowForm({ form, onCancel, onSave }: { form: FormState; onCancel: () =>
 
           <label style={labelStyle}>Image URL</label>
           <input style={inputStyle} value={f.image_url} onChange={(e) => set('image_url', e.target.value)} placeholder="/hq-assets/…" />
+
+          <label style={labelStyle}>Logo URL (optional partner/brand logo)</label>
+          <input style={inputStyle} value={f.logo_url} onChange={(e) => set('logo_url', e.target.value)} placeholder="/assets/brand-2026-08/logos/…" />
+
+          <label style={labelStyle}>Details (one bullet per line)</label>
+          <textarea style={{ ...inputStyle, resize: 'vertical' }} rows={4} value={f.details} onChange={(e) => set('details', e.target.value)} placeholder={'Co-host and on-air interviewer\nEditorial input on segment selection'} />
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
             <div>

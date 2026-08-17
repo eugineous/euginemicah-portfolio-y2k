@@ -10,6 +10,7 @@ import { verifyCmsAdmin } from '@/lib/cms-auth';
 
 const EDITABLE = new Set([
   'name', 'tag', 'description', 'meta', 'image_url', 'cta_label', 'cta_href', 'is_flagship', 'sort_order', 'status',
+  'details', 'logo_url',
 ]);
 
 export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -28,7 +29,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   const { error } = await db.from('shows').update(patch).eq('id', id);
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
-  revalidatePath('/shows');
+  revalidatePath('/work');
   return NextResponse.json({ ok: true });
 }
 
@@ -41,6 +42,6 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
   const { error } = await db.from('shows').delete().eq('id', id);
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
-  revalidatePath('/shows');
+  revalidatePath('/work');
   return NextResponse.json({ ok: true });
 }

@@ -35,10 +35,12 @@ export async function POST(req: Request) {
     is_flagship: !!b.is_flagship,
     sort_order: Number.isFinite(b.sort_order) ? b.sort_order : 0,
     status: b.status === 'published' ? 'published' : 'draft',
+    details: Array.isArray(b.details) ? b.details : [],
+    logo_url: b.logo_url || '',
   };
   const { data, error } = await db.from('shows').insert(row).select('id').single();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
-  revalidatePath('/shows');
+  revalidatePath('/work');
   return NextResponse.json({ ok: true, id: data.id });
 }
