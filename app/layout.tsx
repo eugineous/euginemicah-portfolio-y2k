@@ -54,6 +54,7 @@ export const metadata: Metadata = {
   description:
     'Eugine Micah: Kenyan broadcast journalist, author of Born Broke. Built Loud., speaker, and curator of culture. Anchor of Urban News on PPP TV, founder of Roylandz Media, co-founder of the Urban Gang Tour.',
   robots: { index: true, follow: true },
+  alternates: { types: { 'application/rss+xml': '/feed.xml' } },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
