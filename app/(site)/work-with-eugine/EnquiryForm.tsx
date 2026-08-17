@@ -22,7 +22,7 @@ const CATEGORIES: { id: Category; title: string; blurb: string; placeholder: str
     id: 'Appearances',
     title: 'Appearances',
     blurb: 'Television, hosting, events and panels.',
-    placeholder: "Tell us about the appearance — date, format, audience, and what you'd need from Eugine...",
+    placeholder: "Tell us about the appearance, date, format, audience, and what you'd need from Eugine...",
   },
   {
     id: 'Partnerships',
@@ -34,13 +34,13 @@ const CATEGORIES: { id: Category; title: string; blurb: string; placeholder: str
     id: 'Projects',
     title: 'Projects',
     blurb: 'Media, digital and production collaborations.',
-    placeholder: 'Tell us about the project — what you’re building, your timeline, and where Eugine or Roylandz Media fits in...',
+    placeholder: 'Tell us about the project, what you’re building, your timeline, and where Eugine or Roylandz Media fits in...',
   },
   {
     id: 'Conversations',
     title: 'Conversations',
     blurb: 'Speaking, press and interviews.',
-    placeholder: 'Tell us about the conversation — speaking slot, press piece or interview, and your deadline...',
+    placeholder: 'Tell us about the conversation, speaking slot, press piece or interview, and your deadline...',
   },
 ];
 
@@ -93,17 +93,17 @@ export function EnquiryForm() {
 
       const data = await res.json().catch(() => ({}) as { error?: string });
       if (res.status === 429) {
-        setErrorMsg(`You've sent a few enquiries already — give it a bit and try again, or email ${CONTACT_EMAIL} directly.`);
+        setErrorMsg(`You've sent a few enquiries already, give it a bit and try again, or email ${CONTACT_EMAIL} directly.`);
       } else if (res.status === 503) {
-        setErrorMsg(`Enquiries aren't switched on yet — email ${CONTACT_EMAIL} directly instead.`);
+        setErrorMsg(`Enquiries aren't switched on yet, email ${CONTACT_EMAIL} directly instead.`);
       } else if (data?.error === 'name_email_and_message_required') {
         setErrorMsg('Please fill in your name, a valid email, and a message.');
       } else {
-        setErrorMsg('Something went wrong — please try again.');
+        setErrorMsg('Something went wrong, please try again.');
       }
       setStatus('error');
     } catch {
-      setErrorMsg('Network error — please try again.');
+      setErrorMsg('Network error, please try again.');
       setStatus('error');
     }
   }
