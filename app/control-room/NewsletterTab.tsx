@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { Card, EmptyRow, td, th } from './ui';
+import { Button, Card, downloadCsv, EmptyRow, td, th } from './ui';
 import type { ApiFn } from './types';
 
 type Subscriber = {
@@ -32,7 +32,17 @@ export function NewsletterTab({ api, say }: { api: ApiFn; say: (m: string) => vo
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
         <h2 style={{ margin: 0, fontSize: 18, fontWeight: 800 }}>Newsletter subscribers</h2>
-        <span style={{ fontSize: 13, opacity: 0.7 }}>{subs.length} subscribers</span>
+        <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+          <span style={{ fontSize: 13, opacity: 0.7 }}>{subs.length} subscribers</span>
+          <Button
+            variant="ghost"
+            style={{ padding: '5px 12px' }}
+            onClick={() => downloadCsv('newsletter-subscribers.csv', subs.map((s) => ({ email: s.email, source: s.source, subscribed_at: s.created_at })))}
+            disabled={subs.length === 0}
+          >
+            Export CSV
+          </Button>
+        </div>
       </div>
       <Card>
         <div style={{ overflowX: 'auto' }}>

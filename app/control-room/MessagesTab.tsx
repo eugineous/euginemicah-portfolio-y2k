@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { Badge, Button, Card, EmptyRow, td, th } from './ui';
+import { Badge, Button, Card, downloadCsv, EmptyRow, td, th } from './ui';
 import type { ApiFn } from './types';
 
 type Message = {
@@ -48,12 +48,20 @@ export function MessagesTab({ api, say }: { api: ApiFn; say: (m: string) => void
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12, flexWrap: 'wrap', gap: 10 }}>
         <h2 style={{ margin: 0, fontSize: 18, fontWeight: 800 }}>Messages</h2>
-        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', alignItems: 'center' }}>
           {(['all', 'new', 'read', 'replied', 'archived'] as const).map((s) => (
             <Button key={s} variant={filter === s ? 'primary' : 'ghost'} style={{ padding: '5px 12px' }} onClick={() => setFilter(s)}>
               {s} {s !== 'all' ? `(${messages.filter((m) => m.status === s).length})` : `(${messages.length})`}
             </Button>
           ))}
+          <Button
+            variant="ghost"
+            style={{ padding: '5px 12px' }}
+            onClick={() => downloadCsv('messages.csv', shown.map((m) => ({ received: m.created_at, source: m.source, name: m.name, email: m.email, phone: m.phone, message: m.body, status: m.status })))}
+            disabled={shown.length === 0}
+          >
+            Export CSV
+          </Button>
         </div>
       </div>
       <Card>

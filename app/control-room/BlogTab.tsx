@@ -47,6 +47,7 @@ export function BlogTab({ api, say, authToken }: { api: ApiFn; say: (m: string) 
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [form, setForm] = useState<FormState | null>(null);
+  const [query, setQuery] = useState('');
 
   const reload = useCallback(async () => {
     setLoading(true);
@@ -113,11 +114,25 @@ export function BlogTab({ api, say, authToken }: { api: ApiFn; say: (m: string) 
     else say('Delete failed: ' + (data.error || status));
   }
 
+  const shown = posts.filter((p) => {
+    const q = query.trim().toLowerCase();
+    if (!q) return true;
+    return p.title.toLowerCase().includes(q) || p.slug.toLowerCase().includes(q) || p.category.toLowerCase().includes(q);
+  });
+
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12, flexWrap: 'wrap', gap: 10 }}>
         <h2 style={{ margin: 0, fontSize: 18, fontWeight: 800 }}>Blog posts</h2>
-        <Button onClick={openCreate}>+ New post</Button>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <input
+            style={{ ...inputStyle, width: 200 }}
+            placeholder="Search title, slug, category…"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <Button onClick={openCreate}>+ New post</Button>
+        </div>
       </div>
       <Card>
         <div style={{ overflowX: 'auto' }}>
@@ -131,8 +146,10 @@ export function BlogTab({ api, say, authToken }: { api: ApiFn; say: (m: string) 
             </thead>
             <tbody>
               {loading && <EmptyRow colSpan={6}>Loading…</EmptyRow>}
-              {!loading && posts.length === 0 && <EmptyRow colSpan={6}>No posts yet — create one above.</EmptyRow>}
-              {posts.map((p) => (
+              {!loading && shown.length === 0 && (
+                <EmptyRow colSpan={6}>{query ? 'No posts match your search.' : 'No posts yet — create one above.'}</EmptyRow>
+              )}
+              {shown.map((p) => (
                 <tr key={p.id}>
                   <td style={{ ...td, maxWidth: 320, fontWeight: 600 }}>{p.title}</td>
                   <td style={td}>{p.category || '—'}</td>
@@ -198,7 +215,25 @@ function BlogForm({
 }) {
   const [f, setF] = useState(form);
   const [uploading, setUploading] = useState(false);
+  const [library, setLibrary] = useState<{ name: string; url: string }[] | null>(null);
+  const [libraryLoading, setLibraryLoading] = useState(false);
   const set = <K extends keyof FormState>(k: K, v: FormState[K]) => setF((x) => ({ ...x, [k]: v }));
+
+  async function openLibrary() {
+    if (library) { setLibrary(null); return; } // toggle closed if already open
+    setLibraryLoading(true);
+    try {
+      const res = await fetch('/api/cms/blog/upload-image', { headers: { Authorization: `Bearer ${authToken}` } });
+      const data = await res.json().catch(() => ({}));
+      setLibrary(res.ok ? data.images || [] : []);
+      if (!res.ok) say('Failed to load media library: ' + (data.error || res.status));
+    } catch {
+      say('Failed to load media library: network error');
+      setLibrary([]);
+    } finally {
+      setLibraryLoading(false);
+    }
+  }
 
   async function onFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -246,8 +281,36 @@ function BlogForm({
               style={{ width: '100%', maxHeight: 160, objectFit: 'cover', borderRadius: 8, marginBottom: 8 }}
             />
           )}
-          <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" onChange={onFileChange} disabled={uploading} style={{ marginBottom: 4 }} />
+          <div style={{ display: 'flex', gap: 10, alignItems: 'center', marginBottom: 4 }}>
+            <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" onChange={onFileChange} disabled={uploading} />
+            <Button type="button" variant="ghost" style={{ padding: '4px 10px', fontSize: 12 }} onClick={openLibrary}>
+              {library ? 'Hide library' : 'Choose from library'}
+            </Button>
+          </div>
           {uploading && <div style={{ fontSize: 12, opacity: 0.6, marginBottom: 4 }}>Uploading…</div>}
+          {library && (
+            <div style={{ marginBottom: 8 }}>
+              {libraryLoading ? (
+                <div style={{ fontSize: 12, opacity: 0.6 }}>Loading…</div>
+              ) : library.length === 0 ? (
+                <div style={{ fontSize: 12, opacity: 0.6 }}>No previously uploaded images yet.</div>
+              ) : (
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(64px, 1fr))', gap: 6, maxHeight: 160, overflowY: 'auto', padding: 6, border: '1px solid color-mix(in srgb, var(--text) 15%, transparent)', borderRadius: 8 }}>
+                  {library.map((img) => (
+                    <button
+                      key={img.name}
+                      type="button"
+                      onClick={() => { set('hero_image_url', img.url); setLibrary(null); }}
+                      style={{ all: 'unset', cursor: 'pointer', border: img.url === f.hero_image_url ? '2px solid var(--a)' : '2px solid transparent', borderRadius: 6, overflow: 'hidden', lineHeight: 0 }}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={img.url} alt="" style={{ width: '100%', height: 60, objectFit: 'cover', display: 'block' }} />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
 
           <label style={labelStyle}>Title</label>
           <input style={inputStyle} value={f.title} onChange={(e) => set('title', e.target.value)} />

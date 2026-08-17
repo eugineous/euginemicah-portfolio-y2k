@@ -13,6 +13,30 @@ import { verifyCmsAdmin } from '@/lib/cms-auth';
 const MAX_BYTES = 5 * 1024 * 1024;
 const ALLOWED_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
 
+// GET /api/cms/blog/upload-image -> list previously uploaded hero images,
+// newest first, so the admin can reuse one instead of re-uploading. Same
+// bucket, same allowlist gate as POST below.
+export async function GET(req: Request) {
+  if (!(await verifyCmsAdmin(req))) return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
+  const db = supaAdmin();
+  if (!db) return NextResponse.json({ error: 'supabase_not_configured' }, { status: 503 });
+
+  const { data, error } = await db.storage.from('blog-images').list('', {
+    limit: 100,
+    sortBy: { column: 'created_at', order: 'desc' },
+  });
+  if (error) return NextResponse.json({ error: error.message }, { status: 502 });
+
+  const images = (data || [])
+    .filter((f) => f.name && !f.name.endsWith('/'))
+    .map((f) => ({
+      name: f.name,
+      url: db.storage.from('blog-images').getPublicUrl(f.name).data.publicUrl,
+      created_at: f.created_at,
+    }));
+  return NextResponse.json({ images });
+}
+
 export async function POST(req: Request) {
   if (!(await verifyCmsAdmin(req))) return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
   const db = supaAdmin();

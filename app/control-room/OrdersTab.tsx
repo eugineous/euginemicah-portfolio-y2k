@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { Badge, Card, EmptyRow, td, th } from './ui';
+import { Badge, Button, Card, downloadCsv, EmptyRow, td, th } from './ui';
 import type { ApiFn } from './types';
 
 type Purchase = {
@@ -38,7 +38,17 @@ export function OrdersTab({ api, say }: { api: ApiFn; say: (m: string) => void }
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12, flexWrap: 'wrap', gap: 10 }}>
         <h2 style={{ margin: 0, fontSize: 18, fontWeight: 800 }}>Book orders</h2>
-        <span style={{ fontSize: 13, opacity: 0.7 }}>{purchases.length} orders · KES {totalPaid.toLocaleString()} confirmed</span>
+        <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+          <span style={{ fontSize: 13, opacity: 0.7 }}>{purchases.length} orders · KES {totalPaid.toLocaleString()} confirmed</span>
+          <Button
+            variant="ghost"
+            style={{ padding: '5px 12px' }}
+            onClick={() => downloadCsv('book-orders.csv', purchases.map((p) => ({ reference: p.reference, name: p.name, email: p.email, amount_kes: p.amount_kes, status: p.status, paid_at: p.paid_at, created_at: p.created_at })))}
+            disabled={purchases.length === 0}
+          >
+            Export CSV
+          </Button>
+        </div>
       </div>
       <Card>
         <div style={{ overflowX: 'auto' }}>
