@@ -52,7 +52,46 @@ const nextConfig = {
     ];
   },
   async headers() {
+    // Security headers -- this deployment (Cloudflare via OpenNext, not
+    // Vercel) had none at all before this. CSP is pragmatic rather than
+    // maximally strict: every component in this codebase uses inline
+    // `style={{}}` (real HTML style="" attributes) and several pages emit
+    // inline JSON-LD <script> tags, so script-src/style-src need
+    // 'unsafe-inline' rather than a nonce-based setup -- the alternative
+    // is a large refactor, out of scope here. Still meaningfully closes the
+    // real gap (no CSP/HSTS/frame protection at all) without breaking the
+    // site's actual external dependencies:
+    //   - Google Fonts (style/font-src) -- see globals.css's @import lines
+    //   - Supabase Auth (connect-src) -- browser-side sign-in in
+    //     ControlRoomClient.tsx talks directly to <project>.supabase.co
+    //   - Paystack is only ever called server-side (app/api/checkout) or
+    //     via a full-page redirect (BuyBookForm.tsx), never embedded or
+    //     fetched from the browser, so it needs no CSP entry.
+    const csp = [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline'",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "font-src 'self' https://fonts.gstatic.com data:",
+      "img-src 'self' data: https:",
+      "connect-src 'self' https://*.supabase.co",
+      "frame-src 'none'",
+      "frame-ancestors 'self'",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+    ].join('; ');
+
+    const securityHeaders = [
+      { key: 'Content-Security-Policy', value: csp },
+      { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+      { key: 'X-Content-Type-Options', value: 'nosniff' },
+      { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+      { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+    ];
+
     return [
+      { source: '/:path*', headers: securityHeaders },
       {
         source: '/hq-assets/:path*',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],

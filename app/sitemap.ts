@@ -3,6 +3,14 @@ import { getPublishedPosts } from '@/lib/blog';
 
 const SITE = 'https://euginemicah.tech';
 
+// force-dynamic: this deployment was confirmed to persist static-page
+// output across deploys in a way that doesn't reliably invalidate (see
+// app/(site)/work/page.tsx's comment). Without this, the sitemap's live
+// query for published blog posts got baked in once as an empty result
+// and stayed that way -- 22 real posts were missing from the live
+// sitemap.xml despite the query code being correct.
+export const dynamic = 'force-dynamic';
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${SITE}/`, changeFrequency: 'weekly', priority: 1 },
