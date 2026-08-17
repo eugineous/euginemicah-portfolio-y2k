@@ -48,11 +48,11 @@ const themeInitScript = `(function(){try{if(localStorage.getItem('em_theme')==='
 export const metadata: Metadata = {
   metadataBase: new URL('https://euginemicah.tech'),
   title: {
-    default: 'Eugine Micah — The Official Channel',
-    template: '%s — Eugine Micah',
+    default: 'Eugine Micah: The Official Channel',
+    template: '%s: Eugine Micah',
   },
   description:
-    'Eugine Micah — Kenyan broadcast journalist, author of Born Broke. Built Loud., speaker, and curator of culture. Co-anchor of Urban News on PPP TV, founder of Roylandz Media, co-founder of the Urban Gang Tour.',
+    'Eugine Micah: Kenyan broadcast journalist, author of Born Broke. Built Loud., speaker, and curator of culture. Anchor of Urban News on PPP TV, founder of Roylandz Media, co-founder of the Urban Gang Tour.',
   robots: { index: true, follow: true },
   icons: {
     icon: [
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    siteName: 'Eugine Micah — The Official Channel',
+    siteName: 'Eugine Micah: The Official Channel',
     locale: 'en_KE',
   },
   twitter: { card: 'summary_large_image' },

@@ -30,13 +30,13 @@ export function BuyBookForm() {
         return;
       }
       if (res.status === 503) {
-        setErrorMsg('Checkout isn’t switched on yet — email eugine.micah@outlook.com to buy directly.');
+        setErrorMsg('Checkout isn’t switched on yet, email eugine.micah@outlook.com to buy directly.');
       } else {
         setErrorMsg(body?.error || 'Something went wrong.');
       }
       setStatus('error');
     } catch {
-      setErrorMsg('Network error — please try again.');
+      setErrorMsg('Network error, please try again.');
       setStatus('error');
     }
   }
@@ -57,7 +57,7 @@ export function BuyBookForm() {
   return (
     <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
       <input name="name" required placeholder="Full name" className="emx-input" style={inputStyle} />
-      <input type="email" name="email" required placeholder="Email — we'll send the download link here" className="emx-input" style={inputStyle} />
+      <input type="email" name="email" required placeholder="Email: we'll send the download link here" className="emx-input" style={inputStyle} />
       <button
         type="submit"
         disabled={status === 'sending'}
