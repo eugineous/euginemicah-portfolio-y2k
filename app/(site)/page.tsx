@@ -30,8 +30,23 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 };
 
+// Forces per-request rendering rather than static generation -- this
+// Cloudflare/OpenNext deployment was confirmed live to persist static page
+// output across deploys (a code fix landed in the deployed worker bundle
+// but the served HTML stayed stale for 5+ minutes with no self-heal, even
+// on pages using ISR's revalidate). force-dynamic sidesteps that cache
+// entirely. See app/(site)/work/page.tsx's comment for the full story.
+export const dynamic = 'force-dynamic';
+
 const ticker = ['Broadcast', 'Journalism', 'Live Hosting', 'Digital', 'Founder'];
-const tickerDouble = [...ticker, ...ticker];
+// The marquee loops via translateX(0) -> translateX(-50%), which is only
+// seamless if each half of the track is at least as wide as the widest
+// viewport it renders on -- two copies of this short 5-item list isn't
+// wide enough on large/ultra-wide screens, leaving a visible blank gap
+// before the loop catches up. Repeating the list 6x per half (12x total)
+// comfortably covers any realistic viewport width at this font size.
+const tickerHalf = Array(6).fill(ticker).flat();
+const tickerDouble = [...tickerHalf, ...tickerHalf];
 
 // The site had zero Person/identity structured data before this -- only
 // /ideas (Book), /build (Organization), /work-with-eugine (FAQPage) and

@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   alternates: { canonical: '/work-with-eugine' },
 };
 
+// force-dynamic -- see app/(site)/work/page.tsx's comment for why every
+// rebrand page needs this on this deployment.
+export const dynamic = 'force-dynamic';
+
 const faqs: { q: string; a: string }[] = [
   {
     q: 'What kind of speaking and hosting does Eugine do?',

@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   alternates: { canonical: '/news' },
 };
 
+// force-dynamic -- see app/(site)/work/page.tsx's comment for why every
+// rebrand page needs this on this deployment.
+export const dynamic = 'force-dynamic';
+
 const clips = [
   {
     source: 'Citizen Digital',

@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   alternates: { canonical: '/now' },
 };
 
-// ISR, same reasoning as /work's revalidate export -- see its comment.
-export const revalidate = 60;
+// force-dynamic, not ISR -- see app/(site)/work/page.tsx's comment for why.
+export const dynamic = 'force-dynamic';
 
 export default async function NowPage() {
   const nowItems = await getPublishedNowItems();

@@ -23,6 +23,10 @@ export const metadata: Metadata = {
   alternates: { canonical: '/build' },
 };
 
+// force-dynamic -- see app/(site)/work/page.tsx's comment for why every
+// rebrand page needs this on this deployment.
+export const dynamic = 'force-dynamic';
+
 const ugtSections = [
   { title: 'Format', desc: 'A touring talent showcase held at partner schools.' },
   { title: 'Who it serves', desc: 'High-school students across Kenya.' },

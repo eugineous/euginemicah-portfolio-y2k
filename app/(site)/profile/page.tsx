@@ -23,6 +23,10 @@ export const metadata: Metadata = {
   },
 };
 
+// force-dynamic -- see app/(site)/work/page.tsx's comment for why every
+// rebrand page needs this on this deployment.
+export const dynamic = 'force-dynamic';
+
 const roles = [
   { org: 'Urban News', role: 'Host, broadcast journalism and culture coverage' },
   { org: 'Campus Xposure', role: 'Host, student culture and innovation across Kenyan campuses' },

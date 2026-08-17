@@ -17,11 +17,13 @@ export const metadata: Metadata = {
   alternates: { canonical: '/work' },
 };
 
-// ISR, same pattern as /blog (app/(site)/blog/page.tsx) -- without this the
-// page is purely static-at-build, so a transient build-time Supabase hiccup
-// bakes in an empty result until the next admin edit triggers
-// revalidatePath. 60s keeps it self-healing.
-export const revalidate = 60;
+// Forces per-request rendering rather than static/ISR. Tried revalidate=60
+// first (matching /blog's pattern) but confirmed live that this Cloudflare/
+// OpenNext deployment doesn't reliably self-heal ISR pages -- content
+// stayed stale for 5+ minutes past the revalidate window. force-dynamic
+// sidesteps whatever's persisting the stale cache across deploys by never
+// caching the route at all.
+export const dynamic = 'force-dynamic';
 
 export default async function WorkPage() {
   const items = await getPublishedShows();
