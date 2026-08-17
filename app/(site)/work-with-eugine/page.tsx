@@ -2,16 +2,16 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { EnquiryForm } from './EnquiryForm';
 
-// /work-with-eugine — the new brand IA's single enquiry hub, replacing the
+// /work-with-eugine: the new brand IA's single enquiry hub, replacing the
 // old scattered /work, /roylandz "book a session" CTAs as the one place the
 // header's primary CTA and SiteFooter link point to (see SiteHeader.tsx,
 // SiteFooter.tsx). Structure per the 2026-08 design handoff: an H1, four
-// category cards ("four ways in"), one enquiry form, and an FAQ — all
+// category cards ("four ways in"), one enquiry form, and an FAQ, all
 // verbatim from design_handoff_full_site_backend/site/WorkWithEugine.dc.html
 // (including its FAQPage JSON-LD, ported below), fetched directly via
 // DesignSync. An earlier pass wrote plausible-but-invented FAQ copy after
 // hitting the same tool from inside a subagent that doesn't have DesignSync
-// access — that content has been replaced with the real source text.
+// access: that content has been replaced with the real source text.
 
 export const metadata: Metadata = {
   title: 'Work With Eugine',
@@ -23,19 +23,19 @@ export const metadata: Metadata = {
 const faqs: { q: string; a: string }[] = [
   {
     q: 'What kind of speaking and hosting does Eugine do?',
-    a: 'Live hosting, MC work, panel moderation, and on-air appearances — from school events to brand activations and panels.',
+    a: 'Live hosting, MC work, panel moderation, and on-air appearances, from school events to brand activations and panels.',
   },
   {
     q: 'Does Eugine do brand partnerships?',
-    a: 'Yes. Campaigns, youth-focused initiatives and live activations are considered case by case — send details through the Partnerships category above.',
+    a: 'Yes. Campaigns, youth-focused initiatives and live activations are considered case by case: send details through the Partnerships category above.',
   },
   {
     q: 'Can Eugine speak on journalism, media or digital strategy?',
-    a: 'Yes — interviews, panels and talks on broadcast journalism, content strategy and digital publishing fall under the Conversations route.',
+    a: 'Yes: interviews, panels and talks on broadcast journalism, content strategy and digital publishing fall under the Conversations route.',
   },
   {
     q: 'Is Eugine available for digital or content strategy projects?',
-    a: 'Selectively, through the Projects route — share scope, timeline and budget range and the team will follow up.',
+    a: 'Selectively, through the Projects route: share scope, timeline and budget range and the team will follow up.',
   },
   {
     q: "What's the availability and lead time?",
@@ -43,7 +43,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What's the booking process?",
-    a: "Pick a category above, share the details requested, and Eugine's team will follow up directly. No fixed rates are published — every request is scoped individually.",
+    a: "Pick a category above, share the details requested, and Eugine's team will follow up directly. No fixed rates are published: every request is scoped individually.",
   },
 ];
 

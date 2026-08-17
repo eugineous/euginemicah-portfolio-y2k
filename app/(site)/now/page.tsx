@@ -9,7 +9,7 @@ import { getPublishedNowItems, formatUpdatedLabel } from '@/lib/now';
 // Seeded with the same 5 items it originally shipped with.
 
 export const metadata: Metadata = {
-  title: 'Now — Eugine Micah',
+  title: 'Now: Eugine Micah',
   description: 'What Eugine Micah is currently working on.',
   alternates: { canonical: '/now' },
 };

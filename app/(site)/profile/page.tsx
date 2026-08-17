@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-// "Profile" — the new brand IA's dedicated profile/CV page (design_handoff_
+// "Profile": the new brand IA's dedicated profile/CV page (design_handoff_
 // full_site_backend/site/Profile.dc.html). Copy below is carried over
 // verbatim from that source file.
 //
 // Documents section (CV / Cover Letter / References) is a new addition not
-// present in Profile.dc.html itself — the design handoff's own README flags
+// present in Profile.dc.html itself: the design handoff's own README flags
 // these three real documents as needing a placement decision on the site,
 // and suggests this page. Placed here, as a small section of its own,
 // between "Working principles" and the book callout.
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description: 'Journalist and broadcaster, across TV, digital and live.',
   alternates: { canonical: '/profile' },
   openGraph: {
-    title: 'Profile — Eugine Micah',
+    title: 'Profile: Eugine Micah',
     description: 'Journalist and broadcaster, across TV, digital and live.',
     images: ['/assets/brand-2026-08/1 (2).webp'],
     type: 'profile',
@@ -24,19 +24,19 @@ export const metadata: Metadata = {
 };
 
 const roles = [
-  { org: 'Urban News', role: 'Co-host, broadcast journalism and culture coverage' },
+  { org: 'Urban News', role: 'Host, broadcast journalism and culture coverage' },
   { org: 'Campus Xposure', role: 'Host, student culture and innovation across Kenyan campuses' },
   { org: 'The Nairobi Podcast', role: 'Host' },
-  { org: 'Urban Gang Tour', role: 'Founder and co-host, high-school talent tour' },
+  { org: 'Urban Gang Tour', role: 'Founder and Host, high-school talent tour' },
   { org: 'Roylandz Media', role: 'Founder' },
 ];
 
 const stages = [
   { n: '1', text: 'Started in radio and broadcast journalism, building interviewing and reporting fundamentals.' },
   { n: '2', text: 'Worked across Citizen TV and Royal Media Services, and wrote editorially for Global Cyber Alliance.' },
-  { n: '3', text: 'Moved into digital — SEO, publishing workflows, and AI-assisted content systems.' },
-  { n: '4', text: 'Built a broadcast presence: co-hosting Urban News, hosting Campus Xposure and The Nairobi Podcast.' },
-  { n: '5', text: 'Turned founder — built Roylandz Media and launched Urban Gang Tour for Kenyan high schools.' },
+  { n: '3', text: 'Moved into digital: SEO, publishing workflows, and AI-assisted content systems.' },
+  { n: '4', text: 'Built a broadcast presence: hosting Urban News, hosting Campus Xposure and The Nairobi Podcast.' },
+  { n: '5', text: 'Turned founder, built Roylandz Media and launched Urban Gang Tour for Kenyan high schools.' },
 ];
 
 const skills = [
@@ -105,7 +105,7 @@ export default function ProfilePage() {
             Journalist and broadcaster, across TV, digital and live.
           </h1>
           <p style={{ fontFamily: 'var(--f-work-sans)', fontSize: 16, lineHeight: 1.65, color: 'rgba(23,23,26,0.7)', margin: '0 0 16px' }}>
-            Eugine Micah works across broadcast journalism, digital media, and live hosting. He co-hosts Urban News,
+            Eugine Micah works across broadcast journalism, digital media, and live hosting. He hosts Urban News,
             hosts Campus Xposure and The Nairobi Podcast, and founded Urban Gang Tour, a talent tour for Kenyan high
             schools.
           </p>
@@ -256,7 +256,7 @@ export default function ProfilePage() {
         </div>
       </section>
 
-      {/* DOCUMENTS — CV, cover letter, references */}
+      {/* DOCUMENTS: CV, cover letter, references */}
       <section style={{ maxWidth: 1400, margin: '0 auto', padding: '0 32px 70px' }}>
         <div style={{ fontFamily: 'var(--f-archivo)', fontWeight: 900, fontSize: 24, color: 'var(--em-near-black)', marginBottom: 20 }}>
           Documents
@@ -311,7 +311,7 @@ export default function ProfilePage() {
               Author
             </div>
             <div style={{ fontFamily: 'var(--f-archivo)', fontWeight: 900, fontSize: 26, color: 'var(--em-near-black)' }}>
-              Born Broke, Built Loud &mdash; his first book, out now.
+              Born Broke, Built Loud: his first book, out now.
             </div>
           </div>
           <Link

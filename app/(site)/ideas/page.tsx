@@ -3,10 +3,10 @@ import Link from 'next/link';
 import { chaptersData } from '@/content/em-site-data';
 import { BuyBookForm } from '../../_components/BuyBookForm';
 
-// "Ideas" — the new brand IA's book landing page, replacing /book as the
+// "Ideas": the new brand IA's book landing page, replacing /book as the
 // canonical nav destination (design_handoff_full_site_backend/site/
-// Ideas.dc.html). /book itself is untouched and still works — see
-// next.config.mjs for the redirect — its real Paystack checkout
+// Ideas.dc.html). /book itself is untouched and still works (see
+// next.config.mjs for the redirect); its real Paystack checkout
 // (BuyBookForm, /api/checkout, /api/paystack-webhook, /api/book-download)
 // is reused here unmodified rather than dropped, since the design mockup
 // only shows an Amazon CTA and doesn't know this site already has a working
@@ -16,10 +16,10 @@ import { BuyBookForm } from '../../_components/BuyBookForm';
 // verified copy points to https://www.amazon.com/dp/B0H954PD7T labelled
 // "Paperback". The existing, previously-confirmed-live /book page instead
 // links to https://www.amazon.com/dp/B0H8WM3HFX, noted in project history
-// as "Kindle only, no paperback listed yet" as of 2026-07-15 — and "confirm
+// as "Kindle only, no paperback listed yet" as of 2026-07-15, and "confirm
 // the paperback KDP listing goes live" was an open owner action item from
 // that same session. The new handoff's paperback ASIN reads as that
-// confirmation having happened since, not a conflicting/wrong link — so
+// confirmation having happened since, not a conflicting/wrong link, so
 // both are kept, labelled by format, rather than one silently overwriting
 // the other.
 
@@ -28,11 +28,11 @@ const AMAZON_KINDLE_URL = 'https://www.amazon.com/dp/B0H8WM3HFX';
 const ISBN = '979-8-1870-0005-0';
 
 export const metadata: Metadata = {
-  title: 'Born Broke, Built Loud — Eugine Micah’s memoir',
+  title: 'Born Broke, Built Loud: Eugine Micah’s memoir',
   description: 'Born Broke, Built Loud: Eugine Micah’s memoir. Out now, independently published.',
   alternates: { canonical: '/ideas' },
   openGraph: {
-    title: 'Born Broke, Built Loud — Eugine Micah',
+    title: 'Born Broke, Built Loud: Eugine Micah',
     description: 'The true story of a boy who was smuggled into the world and had to talk his way through it.',
     images: ['/assets/brand-2026-08/book-cover-paperback.webp'],
     type: 'book',
@@ -203,18 +203,18 @@ export default function IdeasPage() {
             Let me fix that.
           </h2>
           <p style={{ fontFamily: 'var(--f-work-sans)', fontSize: 17, lineHeight: 1.7, color: 'rgba(250,247,242,0.85)', margin: '0 0 22px' }}>
-            Eugine Micah arrived owing money &mdash; born on Christmas Eve in a hospital named after a country that
+            Eugine Micah arrived owing money, born on Christmas Eve in a hospital named after a country that
             had already collapsed, to a teenage mother who survived those first days on sugar water. He was an
             accomplice to a family crime before he could speak.
           </p>
           <p style={{ fontFamily: 'var(--f-work-sans)', fontSize: 17, lineHeight: 1.7, color: 'rgba(250,247,242,0.85)', margin: '0 0 22px' }}>
             What follows is red dust and cow-dung floors. The mathematics of hunger. A white American grandfather
             who built him on purpose, in the dark, without applause. Two coffins, seven days apart. A billboard, a
-            borrowed uniform, a library that did not judge his grammar &mdash; and the loud, improbable climb from a
+            borrowed uniform, a library that did not judge his grammar, and the loud, improbable climb from a
             grass-thatched mud house in Lugari to a national television screen.
           </p>
           <p style={{ fontFamily: 'var(--f-work-sans)', fontStyle: 'italic', fontSize: 17, lineHeight: 1.7, color: 'rgba(250,247,242,0.75)', margin: 0 }}>
-            This is not the story of a man who made it. It is the report of a man still climbing &mdash; out of
+            This is not the story of a man who made it. It is the report of a man still climbing, out of
             breath, pointing back down the slope, saying: can you believe a person starts there.
           </p>
         </div>
@@ -270,7 +270,7 @@ export default function IdeasPage() {
         <span>ISBN {ISBN}</span>
       </section>
 
-      {/* CHAPTER BY CHAPTER — real content already live on /book, carried
+      {/* CHAPTER BY CHAPTER: real content already live on /book, carried
           forward here since /ideas is now the canonical book page. */}
       <section style={{ background: 'var(--em-near-black)', padding: '90px 32px' }}>
         <div style={{ maxWidth: 1400, margin: '0 auto' }}>
@@ -327,7 +327,7 @@ export default function IdeasPage() {
         </div>
       </section>
 
-      {/* BUY — real, working instant-download checkout, unchanged */}
+      {/* BUY: real, working instant-download checkout, unchanged */}
       <section id="buy" style={{ padding: '90px 32px' }}>
         <div style={{ maxWidth: 700, margin: '0 auto' }}>
           <div style={{ marginBottom: 32 }}>
@@ -336,7 +336,7 @@ export default function IdeasPage() {
               Read it tonight.
             </h2>
             <p style={{ fontFamily: 'var(--f-work-sans)', fontSize: 15, lineHeight: 1.6, opacity: 0.75, margin: '14px 0 0' }}>
-              Instant PDF download after payment via Paystack (card or M-Pesa) &mdash; or buy the paperback or Kindle
+              Instant PDF download after payment via Paystack (card or M-Pesa), or buy the paperback or Kindle
               edition on Amazon above.
             </p>
           </div>
@@ -351,7 +351,7 @@ export default function IdeasPage() {
             More writing
           </div>
           <p style={{ fontFamily: 'var(--f-work-sans)', fontSize: 16, lineHeight: 1.65, color: 'rgba(23,23,26,0.7)', maxWidth: 600, margin: '0 0 28px' }}>
-            Commentary and essays on media, technology and youth culture in Kenya. Selected writing &mdash; coming
+            Commentary and essays on media, technology and youth culture in Kenya. Selected writing: coming
             soon.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>

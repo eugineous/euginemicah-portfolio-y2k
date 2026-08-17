@@ -3,11 +3,11 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-// 2026-08 rebrand — structure and copy from
+// 2026-08 rebrand: structure and copy from
 // design_handoff_full_site_backend/site/SiteFooter.dc.html: brand blurb,
 // Explore column, Elsewhere (socials) column, newsletter signup, bottom bar.
 // Newsletter posts to the existing real backend (app/api/newsletter/route.ts,
-// same service-role-bypasses-RLS pattern already used by /blog and /book) —
+// same service-role-bypasses-RLS pattern already used by /blog and /book):
 // the design's own footer form is local-only ("needs real email delivery"
 // per README's "Known limitation to fix in the rebuild"), so this wires it
 // to the already-working route instead of leaving it fake.

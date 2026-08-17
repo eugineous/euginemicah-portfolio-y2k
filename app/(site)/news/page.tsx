@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getPublishedPosts, formatPostDate } from '@/lib/blog';
 
-// New route — verbatim structure/copy from design_handoff_full_site_backend
+// New route, verbatim structure/copy from design_handoff_full_site_backend
 // /site/News.dc.html. The design's own "from the blog" grid was client-side
 // (fetched a static JSON file); this uses the same real Supabase-backed
 // getPublishedPosts() the rest of the site already uses for /blog, as a
 // server component, instead of porting the client-fetch pattern.
 
 export const metadata: Metadata = {
-  title: 'News — Eugine Micah',
+  title: 'News: Eugine Micah',
   description: 'Press clips, publications, and writing from Eugine Micah.',
   alternates: { canonical: '/news' },
 };

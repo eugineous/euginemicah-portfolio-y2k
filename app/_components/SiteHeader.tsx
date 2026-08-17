@@ -5,10 +5,10 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { ThemeToggle } from './ThemeToggle';
 
-// 2026-08 rebrand — nav order from design_handoff_full_site_backend/README.md
+// 2026-08 rebrand: nav order from design_handoff_full_site_backend/README.md
 // (SiteHeader.dc.html): Home, Profile, Work, Build, Ideas, Now, News, with
 // "Work With Eugine" as the CTA. Replaces the 2026-07 About/Shows/Book/Press
-// /Blog/Roylandz/Work with me set — those routes 301-redirect (see
+// /Blog/Roylandz/Work with me set, those routes 301-redirect (see
 // next.config.mjs) to their new equivalents.
 const navLinks: [string, string][] = [
   ['Profile', '/profile'],

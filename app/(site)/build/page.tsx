@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-// New route under the brand IA — verbatim structure/copy from
+// New route under the brand IA, verbatim structure/copy from
 // design_handoff_full_site_backend/site/Build.dc.html.
 //
 // Roylandz Media here is deliberately brief per the source ("a fuller
-// company profile is in progress") — the existing app/(site)/roylandz/
+// company profile is in progress"): the existing app/(site)/roylandz/
 // page.tsx already has that fuller, previously fact-checked profile
 // (services, case studies, process, stats), so rather than lose it this
 // section links out to it instead of duplicating or shortening it.
@@ -18,7 +18,7 @@ import Link from 'next/link';
 // the descriptive text kept.
 
 export const metadata: Metadata = {
-  title: 'Build — Eugine Micah',
+  title: 'Build: Eugine Micah',
   description: 'What exists because he built it.',
   alternates: { canonical: '/build' },
 };
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
 const ugtSections = [
   { title: 'Format', desc: 'A touring talent showcase held at partner schools.' },
   { title: 'Who it serves', desc: 'High-school students across Kenya.' },
-  { title: 'Crew & partnerships', desc: 'Growing — full listing in progress.' },
-  { title: 'Status', desc: 'Active, running since 2024.' },
+  { title: 'Crew & partnerships', desc: 'Growing, full listing in progress.' },
+  { title: 'Status', desc: 'Active, running since January 2026.' },
 ];
 
 const builds = [
@@ -43,7 +43,7 @@ const buildJsonLd = {
       '@type': 'Organization',
       name: 'Urban Gang Tour',
       founder: { '@type': 'Person', name: 'Eugine Micah' },
-      description: 'A talent tour for Kenyan high schools, running since 2024.',
+      description: 'A talent tour for Kenyan high schools, running since January 2026.',
       email: 'admin@urbangangtour.co.ke',
     },
   ],
@@ -115,7 +115,7 @@ export default function BuildPage() {
           </div>
           <div style={{ fontFamily: 'var(--f-work-sans)', fontSize: 15, color: 'rgba(23,23,26,0.7)', lineHeight: 1.6, maxWidth: 480, marginBottom: 14 }}>
             The company that grew out of a personal brand Eugine built as a teenager. Currently the umbrella for his
-            production and hosting work — a fuller company profile is in progress.
+            production and hosting work (a fuller company profile is in progress).
           </div>
           <Link href="/roylandz" style={{ fontFamily: 'var(--f-work-sans)', fontSize: 13, fontWeight: 700, color: 'var(--em-crimson)', textDecoration: 'none' }}>
             Full company profile &rarr;
@@ -134,8 +134,8 @@ export default function BuildPage() {
             </div>
             <div style={{ fontFamily: 'var(--f-archivo)', fontWeight: 900, fontSize: 34, marginBottom: 14 }}>Urban Gang Tour</div>
             <div style={{ fontFamily: 'var(--f-work-sans)', fontSize: 15, color: 'rgba(250,247,242,0.7)', lineHeight: 1.6, maxWidth: 560 }}>
-              A talent tour for Kenyan high schools — giving students a stage and a camera. Co-run with Lucy, backed
-              by Charles Luche of LUCH Production, and running since 2024.
+              A talent tour for Kenyan high schools, giving students a stage and a camera. Co-run with Lucy, backed
+              by Charles Luche of LUCH Production, and running since January 2026.
             </div>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 24 }}>
@@ -158,7 +158,7 @@ export default function BuildPage() {
         </div>
       </section>
 
-      {/* NYROX LAROIX / COLOR BLAST */}
+      {/* NAIROX / COLOR BLAST */}
       <section
         style={{
           maxWidth: 1400,
@@ -174,7 +174,7 @@ export default function BuildPage() {
           <div style={{ fontFamily: 'var(--f-work-sans)', fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--em-crimson)', marginBottom: 12 }}>
             Publishing
           </div>
-          <div style={{ fontFamily: 'var(--f-archivo)', fontWeight: 800, fontSize: 22, color: 'var(--em-near-black)', marginBottom: 12 }}>Nyrox Laroix</div>
+          <div style={{ fontFamily: 'var(--f-archivo)', fontWeight: 800, fontSize: 22, color: 'var(--em-near-black)', marginBottom: 12 }}>Nairox</div>
           <div style={{ fontFamily: 'var(--f-work-sans)', fontSize: 14, color: 'rgba(23,23,26,0.65)', lineHeight: 1.6 }}>
             Currently a magazine company. A future move into talent management is under consideration, not yet
             active.

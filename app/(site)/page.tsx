@@ -1,30 +1,30 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-// HOMEPAGE — 2026-08 rebrand full replace.
+// HOMEPAGE: 2026-08 rebrand full replace.
 //
 // Ported verbatim from the design handoff's Home.dc.html (Pages/Home.dc.html
-// in the "Eugine Micah — Full Site Rebuild" bundle, found locally at
-// "Downloads/eugine micah brand new website" — the DesignSync MCP tool
+// in the "Eugine Micah, Full Site Rebuild" bundle, found locally at
+// "Downloads/eugine micah brand new website": the DesignSync MCP tool
 // named in this phase's brief was not available in this session, so the
 // bundle's own copy of the .dc.html source file was used directly instead;
 // its README.md confirms it as the same content-final, ground-truth handoff
-// — "every page has final copy, final colors, final typography... none of
+// ("every page has final copy, final colors, final typography... none of
 // it is lorem ipsum"). Every heading, kicker, card description and proof
 // point below is copied as-is from that file's renderVals() block, not
 // paraphrased.
 //
 // Routes: Urban News / Campus Xposure / The Nairobi Podcast point at /work,
 // Urban Gang Tour / Roylandz Media point at /build, the hero CTA points at
-// /profile, and the closing CTA points at /work-with-eugine — matching the
+// /profile, and the closing CTA points at /work-with-eugine, matching the
 // nav map already wired up in SiteHeader.tsx for this same rebrand phase.
 //
 // Testimonials: the source renders this section's shell with
-// hasTestimonials:false / testimonials:[] — i.e. intentionally empty until
+// hasTestimonials:false / testimonials:[], i.e. intentionally empty until
 // real quotes exist (see the handoff README's "Known gaps" list). Kept as
-// an empty shell here too — no invented quotes.
+// an empty shell here too, no invented quotes.
 export const metadata: Metadata = {
-  title: 'Eugine Micah — Broadcaster, Journalist, Founder',
+  title: 'Eugine Micah: Broadcaster, Journalist, Founder',
   description:
     'Broadcaster, journalist, and founder building media, technology, and youth culture platforms across Kenya.',
   alternates: { canonical: '/' },
@@ -59,10 +59,10 @@ const personJsonLd = {
   ],
 };
 
-const background = ['Citizen TV', 'Royal Media Services', 'PPP TV — Urban News', 'Global Cyber Alliance'];
+const background = ['Citizen TV', 'Royal Media Services', 'PPP TV: Urban News', 'Global Cyber Alliance'];
 
 const properties: { kicker: string; title: string; desc: string; href: string }[] = [
-  { kicker: 'Broadcast', title: 'Urban News', desc: 'Co-hosted current affairs and culture coverage.', href: '/work' },
+  { kicker: 'Broadcast', title: 'Urban News', desc: 'Hosted current affairs and culture coverage.', href: '/work' },
   { kicker: 'Campus', title: 'Campus Xposure', desc: 'Student culture and innovation across Kenyan universities.', href: '/work' },
   { kicker: 'Audio', title: 'The Nairobi Podcast', desc: 'Conversations recorded around the city.', href: '/work' },
   { kicker: 'Founder', title: 'Urban Gang Tour', desc: 'A high-school talent tour reaching schools across Kenya.', href: '/build' },
@@ -70,14 +70,14 @@ const properties: { kicker: string; title: string; desc: string; href: string }[
 ];
 
 const currently: { label: string; desc: string }[] = [
-  { label: 'On air', desc: 'Co-hosting Urban News' },
+  { label: 'On air', desc: 'Hosting Urban News' },
   { label: 'Hosting', desc: 'Campus Xposure across Kenyan campuses' },
   { label: 'Building', desc: "Urban Gang Tour's next school tour" },
 ];
 
 const proof: { title: string; sub: string; href?: string }[] = [
-  { title: 'Co-host, Urban News', sub: 'Broadcast journalism' },
-  { title: 'Founder, Urban Gang Tour', sub: 'Youth talent platform, since 2024' },
+  { title: 'Host, Urban News', sub: 'Broadcast journalism' },
+  { title: 'Founder, Urban Gang Tour', sub: 'Youth talent platform, since January 2026' },
   { title: 'Contributor, Global Cyber Alliance', sub: 'Editorial writing' },
   { title: 'Journalist portfolio', sub: 'Published clips on Muck Rack', href: 'https://muckrack.com/eugine-micah/portfolio' },
 ];
@@ -87,7 +87,7 @@ export default function HomePage() {
     <main style={{ overflowX: 'hidden' }}>
       {/* eslint-disable-next-line @next/next/no-script-component-in-head */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
-      {/* Scoped motion rules — kept local to this file (page.tsx is the only
+      {/* Scoped motion rules, kept local to this file (page.tsx is the only
           file this phase may touch). Reuses globals.css's existing
           `em-marquee` keyframe (translateX 0 → -50%, already shipped for
           the pre-rebrand homepage's own ticker) rather than declaring a
@@ -106,7 +106,7 @@ export default function HomePage() {
         }
       `}</style>
 
-      {/* HERO — full-bleed portrait, dark gradient, headline bottom-aligned */}
+      {/* HERO: full-bleed portrait, dark gradient, headline bottom-aligned */}
       <section style={{ position: 'relative', minHeight: '86vh', overflow: 'hidden', background: 'var(--em-near-black)' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -340,7 +340,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WHAT PEOPLE SAY — shell only. Source renders this with
+      {/* WHAT PEOPLE SAY: shell only. Source renders this with
           hasTestimonials:false / testimonials:[]; no quotes exist yet, so
           none are invented here. Remove the "More to come." note and map
           over real entries once testimonials are supplied. */}
@@ -351,7 +351,7 @@ export default function HomePage() {
         <div style={{ fontSize: 14, color: 'var(--text)', opacity: 0.5 }}>More to come.</div>
       </section>
 
-      {/* WORK WITH EUGINE — closing CTA */}
+      {/* WORK WITH EUGINE: closing CTA */}
       <section style={{ background: 'var(--em-near-black)' }}>
         <div
           style={{

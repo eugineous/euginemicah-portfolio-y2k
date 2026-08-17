@@ -1,18 +1,18 @@
 import type { Metadata } from 'next';
 import { getPublishedShows } from '@/lib/shows';
 
-// Full replace under the new brand IA — structure/design from
+// Full replace under the new brand IA, structure/design from
 // design_handoff_full_site_backend/site/Work.dc.html (6-entry alternating
 // layout). Originally shipped with hardcoded content; now reads from the
 // real `shows` table (see lib/shows.ts, supabase/migrations/
 // 005_shows_details_and_logo.sql) so editing it in /control-room actually
-// changes what's live here — that table previously backed the old /work
+// changes what's live here: that table previously backed the old /work
 // (booking/hire) page and had gone orphaned when this route was replaced.
 // Falls back to an empty-state message rather than 500ing if the table
 // isn't reachable or has no published rows.
 
 export const metadata: Metadata = {
-  title: 'Work — Eugine Micah',
+  title: 'Work: Eugine Micah',
   description: 'Where the work actually happens.',
   alternates: { canonical: '/work' },
 };
@@ -120,7 +120,7 @@ export default async function WorkPage() {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                       {w.details.map((d) => (
                         <div key={d} style={{ fontFamily: 'var(--f-work-sans)', fontSize: 14, color: 'rgba(23,23,26,0.55)' }}>
-                          — {d}
+                          • {d}
                         </div>
                       ))}
                     </div>
