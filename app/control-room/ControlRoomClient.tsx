@@ -12,21 +12,25 @@
 import { useCallback, useEffect, useState } from 'react';
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { Button, Card, Toast } from './ui';
+import { OverviewTab } from './OverviewTab';
 import { BlogTab } from './BlogTab';
 import { ShowsTab } from './ShowsTab';
 import { NowTab } from './NowTab';
 import { MessagesTab } from './MessagesTab';
 import { OrdersTab } from './OrdersTab';
 import { NewsletterTab } from './NewsletterTab';
+import { AdminsTab } from './AdminsTab';
 
-type Tab = 'blog' | 'shows' | 'now' | 'messages' | 'orders' | 'newsletter';
+type Tab = 'overview' | 'blog' | 'shows' | 'now' | 'messages' | 'orders' | 'newsletter' | 'admins';
 const TABS: { id: Tab; label: string }[] = [
+  { id: 'overview', label: 'Overview' },
   { id: 'blog', label: 'Blog' },
   { id: 'shows', label: 'Work' },
   { id: 'now', label: 'Now' },
   { id: 'messages', label: 'Messages' },
   { id: 'orders', label: 'Book Orders' },
   { id: 'newsletter', label: 'Newsletter' },
+  { id: 'admins', label: 'Admin Access' },
 ];
 
 let supa: SupabaseClient | null = null;
@@ -43,7 +47,7 @@ export default function ControlRoomClient() {
   const [checking, setChecking] = useState(true);
   const [session, setSession] = useState<{ token: string; email: string } | null>(null);
   const [authorized, setAuthorized] = useState<boolean | null>(null); // null = still checking server-side
-  const [tab, setTab] = useState<Tab>('blog');
+  const [tab, setTab] = useState<Tab>('overview');
   const [toast, setToast] = useState('');
   const say = useCallback((m: string) => { setToast(m); setTimeout(() => setToast(''), 3500); }, []);
 
@@ -161,12 +165,14 @@ export default function ControlRoomClient() {
 
       <Toast message={toast} />
 
+      {tab === 'overview' && <OverviewTab api={api} onNavigate={(t) => setTab(t as Tab)} />}
       {tab === 'blog' && <BlogTab api={api} say={say} authToken={session.token} />}
       {tab === 'shows' && <ShowsTab api={api} say={say} />}
       {tab === 'now' && <NowTab api={api} say={say} />}
       {tab === 'messages' && <MessagesTab api={api} say={say} />}
       {tab === 'orders' && <OrdersTab api={api} say={say} />}
       {tab === 'newsletter' && <NewsletterTab api={api} say={say} />}
+      {tab === 'admins' && <AdminsTab api={api} say={say} currentEmail={session.email} />}
     </Shell>
   );
 }
