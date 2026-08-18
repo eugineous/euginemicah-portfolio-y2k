@@ -1,107 +1,110 @@
-# Eugine Micah — The Official Estate
+# euginemicah.tech
 
-A premium vintage personal-brand website for **Eugine Micah** — Kenyan broadcast journalist, author, speaker, and curator of culture. Head of Digital at PPP TV. Founder of Roylandz Media. Co-founder of Urban Gang Tour.
+Eugine Micah's personal-brand website — Kenyan broadcast journalist, author, speaker, and Head of Digital at PPP TV. The site covers his profile, work, shows, blog, and a real e-commerce checkout for his memoir, *Born Broke, Built Loud*.
 
-> **Build it · Brand it · Believe it.**
-
----
-
-## What this is
-
-A seven-page static website built to read like a private maison — warm noir base, parchment cream, champagne gold, oxblood accents. Editorial typography (Bodoni Moda + EB Garamond), Roman-numeral chapters, gold rules, and slow cinematic reveals. The aesthetic reference is Don Julio's official site; the voice is funny-but-serious, never corporate, never filler.
-
-No build step. No frameworks. Open `index.html` and the site runs.
+Live at **[euginemicah.tech](https://euginemicah.tech)**.
 
 ---
 
-## Pages
+## Tech stack
 
-| File             | Chapter | Purpose                                                              |
-|------------------|---------|----------------------------------------------------------------------|
-| `index.html`     | Home    | Hero, four chairs, metrics, story teaser, selected work, memoir CTA  |
-| `story.html`     | II      | Long-form magazine profile · drop caps · pull quotes · dossier       |
-| `work.html`      | III     | The four chairs in detail · Urban News · Tour · Roylandz · Speaker   |
-| `book.html`      | IV      | *Born Broke. Built Loud.* · 3D book mockup · chapters · prologue     |
-| `press.html`     | V       | Press recognition list · press-kit request                           |
-| `booking.html`   | VI      | Services · rates · inquiry form                                      |
-| `contact.html`   | VII     | The line. Email, phone, socials.                                     |
-
-Plus `404.html` for missing routes.
-
----
+- **[Next.js 15](https://nextjs.org/)** (App Router) + **React 19** + **TypeScript**
+- **[Tailwind CSS 4](https://tailwindcss.com/)**
+- **[Supabase](https://supabase.com/)** — Postgres database, auth, and storage (blog posts, shows, "now" updates, book purchases, LinkedIn tokens)
+- **[Paystack](https://paystack.com/)** — real checkout for the memoir (`app/api/checkout`, `app/api/paystack-webhook`, `app/api/book-download`)
+- **[pdf-lib](https://pdf-lib.js.org/)** — server-side PDF handling for the book download flow
+- Deployed on **[Vercel](https://vercel.com/)**, with a Vercel Cron job hitting `/api/cron/reindex` daily and a separate poster-cron piece under `cloudflare/poster-cron`
 
 ## Project structure
 
 ```
-.
-├── index.html
-├── story.html
-├── work.html
-├── book.html
-├── press.html
-├── booking.html
-├── contact.html
-├── 404.html
-├── robots.txt
-├── sitemap.xml
-├── assets/
-│   ├── em.css                  ← design system + all page styles
-│   ├── em.js                   ← masthead, reveal, back-to-top
-│   ├── em-monogram.png         ← black EM crown
-│   ├── em-wordmark.png         ← red crown + EUGINE MICAH wordmark
-│   ├── em-graduation.jpg       ← milestone photograph
-│   ├── em-portrait-suit.png    ← formal portrait
-│   ├── em-headshot-circle.png  ← press headshot
-│   ├── em-blue-knit.png        ← editorial portrait
-│   ├── em-varsity-a / b.png    ← varsity portraits
-│   ├── studio-*.jpeg           ← Urban News studio plates
-│   └── logo-*.png              ← brand partner logos
-└── docs/
-    ├── BRAND.md                ← voice, type, color, photography
-    ├── SITEMAP.md              ← page hierarchy
-    ├── CONTENT.md              ← copy inventory & source citations
-    └── DEPLOY.md               ← deployment instructions
+app/
+  (site)/            Public marketing routes: profile, work, shows, blog, book,
+                      press, messages, now, ideas, roylandz, work-with-eugine, etc.
+  admin/              Pre-existing LinkedIn tool (linkedin-audit) — separate surface
+  control-room/       Site CMS / content control room
+  api/
+    checkout/         Creates a Paystack transaction for the book
+    paystack-webhook/ Verifies and processes charge.success events
+    book-download/    Issues signed download links after a verified purchase
+    cms/               Content endpoints backing the control room
+    cron/              Vercel Cron handlers (reindex, post-due)
+    linkedin/          LinkedIn integration endpoints
+    media-kit/         Press kit generation
+    messages/          Contact/enquiry form handling
+    newsletter/        Newsletter signup
+    admin/             Admin-only API routes
+  feed.xml            Blog RSS feed
+lib/                  Supabase clients, blog/shows/now data access, LinkedIn helpers,
+                      IndexNow submission, CMS auth
+supabase/
+  migrations/          Schema migrations (run in order against the Supabase project)
+  seed.sql             Sample/seed content
+cloudflare/
+  poster-cron/          Cloudflare Worker piece for scheduled social posting
+scripts/
+  analyze-linkedin.mjs   `npm run analyze-linkedin`
+  generate-calendar.mjs  `npm run generate-calendar`
+docs/                  Brand voice guide, content inventory, deploy notes, sitemap
 ```
 
----
+## Running locally
 
-## Deploy
-
-This is a static site. Drop it on any static host.
-
-- **Netlify / Vercel / Cloudflare Pages** — connect the repo, point the build at root, no build command needed. Publish directory is `.`
-- **GitHub Pages** — enable Pages on the main branch, root folder.
-- **Custom host (euginemicah.tech)** — upload contents of the repo root to `public_html/`. No server-side anything required.
-
-See `docs/DEPLOY.md` for fuller notes.
-
----
-
-## Local preview
+Requirements: Node 20+ and npm.
 
 ```bash
-# any tiny static server works
-python3 -m http.server 8080
-# then open http://localhost:8080
+npm install
+cp .env.example .env.local   # fill in real values, see below
+npm run dev
 ```
 
-Or just double-click `index.html`.
+The dev server runs at `http://localhost:3000`.
 
----
+### Environment variables
 
-## Editing content
+Copy `.env.example` to `.env.local` and fill in real values. At minimum for local development you'll want a Supabase project (URL + anon key). The rest — Paystack keys, the LinkedIn app, `CRON_SECRET` — are only needed to exercise those specific flows (checkout, the LinkedIn admin tool, cron endpoints).
 
-All text lives inline in the HTML files. There is no CMS by design — the site is small, the voice is precise, and a CMS would dilute both.
+| Variable | Purpose |
+|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase client config |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server-only Supabase access (never exposed to the client) |
+| `ADMIN_EMAIL` | Sole email allowed into `/admin` |
+| `CMS_ADMIN_EMAILS` | Comma-separated emails allowed into `/control-room` |
+| `LINKEDIN_CLIENT_ID` / `LINKEDIN_CLIENT_SECRET` | LinkedIn developer app credentials |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL, used in metadata/redirects |
+| `CRON_SECRET` | Shared secret Vercel Cron sends to `/api/cron/*` |
+| `PAYSTACK_SECRET_KEY` | Live secret key for the book checkout |
 
-When you need to update copy, follow the **voice and tone guide** in `docs/BRAND.md`. The most important rule: no em-dashes anywhere. Use commas, periods, or start a new sentence.
+### Database
 
----
+Apply the migrations in `supabase/migrations/` in order (via the Supabase SQL editor, CLI, or MCP) against your Supabase project, then optionally load `supabase/seed.sql` for sample content.
 
-## Credits
+## Scripts
 
-- **Subject** — Eugine Micah · Nairobi, Kenya
-- **Design system** — bespoke premium vintage editorial
-- **Type** — Bodoni Moda, EB Garamond, Pinyon Script (Google Fonts)
-- **Build** — handwritten static HTML/CSS/JS · zero dependencies
+```bash
+npm run dev               # start the Next.js dev server
+npm run build              # production build
+npm run start               # run the production build
+npm run analyze-linkedin    # scripts/analyze-linkedin.mjs
+npm run generate-calendar   # scripts/generate-calendar.mjs
+```
 
-© MMXXVI Eugine Micah. All rights reserved.
+## Deploying
+
+The project is deployed on **Vercel** (`vercel.json` sets security headers and the daily cron). Connect the repo, set the environment variables above in the Vercel project settings, and deploy — no custom build command needed, framework preset is Next.js.
+
+Before the book checkout goes fully live, three things need owner action: `PAYSTACK_SECRET_KEY` set in Vercel, the `charge.success` webhook registered in the Paystack dashboard pointing at `/api/paystack-webhook`, and the manuscript PDF uploaded to a private Supabase Storage bucket. See `docs/DEPLOY.md` for fuller notes (some content there predates the Next.js rebuild and should be read alongside this README).
+
+## Docs
+
+- `docs/BRAND.md` — voice, type, color, photography guidelines
+- `docs/CONTENT.md` — copy inventory and source citations
+- `docs/SITEMAP.md` — page hierarchy
+- `docs/FACTS.md` — factual reference notes
+- `docs/DEPLOY.md` — deployment notes (partially predates the current Next.js stack)
+
+## License
+
+MIT, see `LICENSE`. Note that the site's written content (memoir text, blog posts, personal photography) belongs to Eugine Micah and is not covered by the code license.
+
+© Eugine Micah.
